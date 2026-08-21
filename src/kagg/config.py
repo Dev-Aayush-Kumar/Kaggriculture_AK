@@ -1,0 +1,60 @@
+"""Every tunable in one place.
+
+Strategy families are expressed as `Config` instances, so a portfolio experiment
+is a list of configs rather than a list of agent classes.
+"""
+
+
+class Config:
+    # --- labour
+    # Hiring is the cheapest thing on the board: six hands cost $20 for a whole
+    # day and multiply the action budget sevenfold, so the reserve is token.
+    hands_per_day = 6          # HIRE requests issued at the start of each day
+    hire_hour = 0
+    hire_reserve = 30
+
+    # --- routing policy under test: "nearest" | "zone" | "zone_nearest"
+    routing = "nearest"
+
+    # --- livestock (placed on the tiles closest to the shed)
+    geese = 4
+    cows = 0
+    sheep = 0
+    care = True
+    collect_fertilizer = True
+
+    # --- crops (rotated over the remaining tiles)
+    crops = ("WHEAT",)
+    fertilize_crops = False
+    max_crop_tiles = 25
+    tiles_per_unit = 3.0       # crop tiles opened per planned crew member
+
+    # --- market
+    feed_buffer = 2            # wheat kept in the shed per animal
+    sell_floor_fraction = 0.30  # hold produce quoted below this share of base...
+    liquidate_day = 27         # ...until here, then dump everything every turn
+    buy_land = ()              # quadrants to unlock, e.g. ("NE",)
+    land_reserve = 500         # keep this much liquid after buying land
+    livestock_reserve = 300    # cash kept back when stocking animals
+    seed_reserve = 150         # cash kept back when buying seed
+    seed_batch = 8             # seeds bought per crop per turn at most
+
+    # --- safety
+    drop_threshold = 4         # carry this many items before making a shed trip
+    turn_budget_ms = 250       # hard stop; the engine allows 1000 ms
+
+    def __init__(self, **overrides):
+        for key, value in overrides.items():
+            if not hasattr(Config, key):
+                raise AttributeError(f"unknown config field: {key}")
+            setattr(self, key, value)
+
+    def replace(self, **overrides):
+        merged = {k: getattr(self, k) for k in vars(Config) if not k.startswith("_")
+                  and not callable(getattr(Config, k))}
+        merged.update(overrides)
+        return Config(**merged)
+
+    def __repr__(self):
+        fields = {k: getattr(self, k) for k in vars(self)}
+        return "Config(" + ", ".join(f"{k}={v!r}" for k, v in sorted(fields.items())) + ")"

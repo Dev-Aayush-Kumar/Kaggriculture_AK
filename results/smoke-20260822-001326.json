@@ -1,0 +1,1148 @@
+[
+ {
+  "seed": 0,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "starter",
+   "pass"
+  ],
+  "money": [
+   3421.0,
+   3000.0
+  ],
+  "rewards": [
+   3421.0,
+   3000.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 27.484,
+  "failure": null,
+  "players": [
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.052,
+    "latency_p50_ms": 0.0215,
+    "latency_p99_ms": 0.8146,
+    "latency_max_ms": 7.6797,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3060.0,
+     3060.0,
+     3040.0,
+     3110.0,
+     3110.0,
+     3090.0,
+     3161.0,
+     3161.0,
+     3141.0,
+     3213.0,
+     3213.0,
+     3193.0,
+     3265.0,
+     3265.0,
+     3245.0,
+     3317.0,
+     3317.0,
+     3297.0,
+     3369.0,
+     3369.0,
+     3349.0,
+     3421.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.0104,
+    "latency_p50_ms": 0.0046,
+    "latency_p99_ms": 0.1514,
+    "latency_max_ms": 1.6338,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 0,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "pass",
+   "starter"
+  ],
+  "money": [
+   3000.0,
+   3421.0
+  ],
+  "rewards": [
+   3000.0,
+   3421.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 1,
+  "wall_seconds": 20.659,
+  "failure": null,
+  "players": [
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.006,
+    "latency_p50_ms": 0.0041,
+    "latency_p99_ms": 0.0149,
+    "latency_max_ms": 0.7328,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.034,
+    "latency_p50_ms": 0.0181,
+    "latency_p99_ms": 0.3192,
+    "latency_max_ms": 2.7309,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3060.0,
+     3060.0,
+     3040.0,
+     3110.0,
+     3110.0,
+     3090.0,
+     3161.0,
+     3161.0,
+     3141.0,
+     3213.0,
+     3213.0,
+     3193.0,
+     3265.0,
+     3265.0,
+     3245.0,
+     3317.0,
+     3317.0,
+     3297.0,
+     3369.0,
+     3369.0,
+     3349.0,
+     3421.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 1,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "starter",
+   "pass"
+  ],
+  "money": [
+   3506.0,
+   3000.0
+  ],
+  "rewards": [
+   3506.0,
+   3000.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 8.82,
+  "failure": null,
+  "players": [
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.0203,
+    "latency_p50_ms": 0.0116,
+    "latency_p99_ms": 0.0635,
+    "latency_max_ms": 4.0853,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3062.0,
+     3062.0,
+     3042.0,
+     3116.0,
+     3116.0,
+     3096.0,
+     3174.0,
+     3174.0,
+     3154.0,
+     3234.0,
+     3234.0,
+     3214.0,
+     3298.0,
+     3298.0,
+     3278.0,
+     3364.0,
+     3364.0,
+     3344.0,
+     3434.0,
+     3434.0,
+     3414.0,
+     3506.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.003,
+    "latency_p50_ms": 0.0022,
+    "latency_p99_ms": 0.0092,
+    "latency_max_ms": 0.2627,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 1,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "pass",
+   "starter"
+  ],
+  "money": [
+   3000.0,
+   3506.0
+  ],
+  "rewards": [
+   3000.0,
+   3506.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 1,
+  "wall_seconds": 9.703,
+  "failure": null,
+  "players": [
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.0032,
+    "latency_p50_ms": 0.0025,
+    "latency_p99_ms": 0.0106,
+    "latency_max_ms": 0.1582,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.0158,
+    "latency_p50_ms": 0.011,
+    "latency_p99_ms": 0.0554,
+    "latency_max_ms": 1.8307,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3062.0,
+     3062.0,
+     3042.0,
+     3116.0,
+     3116.0,
+     3096.0,
+     3174.0,
+     3174.0,
+     3154.0,
+     3234.0,
+     3234.0,
+     3214.0,
+     3298.0,
+     3298.0,
+     3278.0,
+     3364.0,
+     3364.0,
+     3344.0,
+     3434.0,
+     3434.0,
+     3414.0,
+     3506.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 2,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "starter",
+   "pass"
+  ],
+  "money": [
+   3798.0,
+   3000.0
+  ],
+  "rewards": [
+   3798.0,
+   3000.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 4.874,
+  "failure": null,
+  "players": [
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.0097,
+    "latency_p50_ms": 0.0074,
+    "latency_p99_ms": 0.0438,
+    "latency_max_ms": 0.1532,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3062.0,
+     3062.0,
+     3042.0,
+     3122.0,
+     3122.0,
+     3102.0,
+     3194.0,
+     3194.0,
+     3174.0,
+     3276.0,
+     3276.0,
+     3256.0,
+     3370.0,
+     3370.0,
+     3350.0,
+     3478.0,
+     3478.0,
+     3458.0,
+     3604.0,
+     3604.0,
+     3584.0,
+     3798.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.0018,
+    "latency_p50_ms": 0.0014,
+    "latency_p99_ms": 0.0061,
+    "latency_max_ms": 0.0293,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 2,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "pass",
+   "starter"
+  ],
+  "money": [
+   3000.0,
+   3798.0
+  ],
+  "rewards": [
+   3000.0,
+   3798.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 1,
+  "wall_seconds": 5.613,
+  "failure": null,
+  "players": [
+   {
+    "name": "pass",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 0,
+    "effective_rate": 0.0,
+    "travel": 0,
+    "categories": {
+     "idle": 719
+    },
+    "category_share": {
+     "idle": 1.0
+    },
+    "ops": {
+     "PASS": 719
+    },
+    "top_waste": {},
+    "harvested": {},
+    "harvested_units": 0,
+    "fertilizer_collected": 0,
+    "market_ops": {},
+    "sell_requested": {},
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 0.0025,
+    "latency_p50_ms": 0.0018,
+    "latency_p99_ms": 0.0071,
+    "latency_max_ms": 0.222,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0,
+     3000.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "starter",
+    "turns": 719,
+    "unit_turns": 719,
+    "hand_turns": 0,
+    "hires": 0,
+    "effective_actions": 49,
+    "effective_rate": 0.0682,
+    "travel": 0,
+    "categories": {
+     "idle": 670,
+     "plant": 10,
+     "water": 30,
+     "harvest": 9
+    },
+    "category_share": {
+     "idle": 0.9318,
+     "plant": 0.0139,
+     "water": 0.0417,
+     "harvest": 0.0125
+    },
+    "ops": {
+     "PASS": 670,
+     "PLANT": 10,
+     "WATER": 30,
+     "HARVEST": 9
+    },
+    "top_waste": {},
+    "harvested": {
+     "CARROT": 18
+    },
+    "harvested_units": 18,
+    "fertilizer_collected": 0,
+    "market_ops": {
+     "BUY_SEED": 11,
+     "SELL": 9
+    },
+    "sell_requested": {
+     "CARROT": 18
+    },
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 0,
+    "decay_deaths": 0,
+    "decayed_units": 0,
+    "animals_escaped": 0,
+    "shed_overflow": 0,
+    "final_shed": {},
+    "unsold_units": 0,
+    "unsold_seeds": 1,
+    "latency_mean_ms": 0.0106,
+    "latency_p50_ms": 0.008,
+    "latency_p99_ms": 0.0604,
+    "latency_max_ms": 0.1938,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     2960.0,
+     2960.0,
+     2960.0,
+     2940.0,
+     3010.0,
+     3010.0,
+     2990.0,
+     3062.0,
+     3062.0,
+     3042.0,
+     3122.0,
+     3122.0,
+     3102.0,
+     3194.0,
+     3194.0,
+     3174.0,
+     3276.0,
+     3276.0,
+     3256.0,
+     3370.0,
+     3370.0,
+     3350.0,
+     3478.0,
+     3478.0,
+     3458.0,
+     3604.0,
+     3604.0,
+     3584.0,
+     3798.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ }
+]
