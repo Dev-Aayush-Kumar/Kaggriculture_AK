@@ -19,7 +19,7 @@ import time
 from .actions import (OK, blocked_plant_crops, check_unit_action,
                       is_shed_adjacent)
 from .config import Config
-from .econ.tables import (ANIMALS, CROPS, MARKET_PARAMS, PRODUCTS,
+from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_PARAMS, PRODUCTS,
                           cumulative_hire_cost, shed_access_tiles)
 
 # Task urgency. Lower runs first; anything that can be permanently lost today
@@ -69,7 +69,12 @@ class World:
         self.turns_per_day = int(cfg.get("turnsPerDay", 24) or 24)
         self.episode_steps = int(cfg.get("episodeSteps", 720) or 720)
         self.shed_capacity = int(cfg.get("shedCapacity", 100) or 100)
-        self.last_day = (self.episode_steps - 1) // self.turns_per_day
+        self.step = obs.get("step", self.day * self.turns_per_day + self.hour)
+        # E7: the interpreter stops at episodeSteps - 2, so that is the last turn
+        # on which any action is processed, and no end-of-day refresh follows it.
+        self.final_step = self.episode_steps - 2
+        self.turns_left = max(0, self.final_step - self.step)
+        self.last_day = self.final_step // self.turns_per_day
         self.money = self.farm["money"]
         self.shed = self.private["shed"]
         self.seeds = self.private["seeds"]
@@ -260,7 +265,12 @@ class Executor:
         return out
 
     def _can_mature(self, w, crop):
-        return w.day + CROPS[crop]["max_yield_day"] <= w.last_day
+        """E7: a crop planted first_yield_day before the end still pays.
+
+        It will not reach full yield, but watering adds units immediately, so a
+        late planting is harvested short rather than wasted.
+        """
+        return w.day + CROPS[crop]["first_yield_day"] <= w.last_day
 
     # -- routing ------------------------------------------------------------
     def _assign(self, w, tasks, deadline):
@@ -350,6 +360,9 @@ class Executor:
     def _action_for(self, w, idx, task):
         pos = w.units[idx]
         inv = w.inv(idx)
+        closing = self._endgame_action(w, pos, inv)
+        if closing is not None:
+            return closing
         if task is None:
             return self._idle_action(w, idx, pos, inv)
         if task.item and inv.get(task.item, 0) < 1:
@@ -368,6 +381,25 @@ class Executor:
         n_animals = sum(1 for y, row in enumerate(w.tiles) for x, t in enumerate(row)
                         if isinstance(t, dict) and "animal" in t)
         return max(1, min(w.shed.get("WHEAT", 0), max(1, n_animals)))
+
+    def _endgame_action(self, w, pos, inv):
+        """In the closing turns the only thing worth doing is banking stock.
+
+        E7 established that there is no end-of-day drop after the final turn, so
+        anything still in a farmer's hands is simply lost. Unit actions do resolve
+        before the market, though, so a DROP and a SELL on the same last turn
+        still convert carried produce into money.
+        """
+        distance = w.dist_to_shed(pos)
+        if w.turns_left > distance + 1:
+            return None
+        if inv:
+            if is_shed_adjacent(pos, w.board):
+                return ["DROP"]
+            return self._step_toward(pos, w.nearest_access(pos))
+        if w.turns_left == 0:
+            return ["PASS"]     # nothing picked up now can ever reach the shed
+        return None
 
     def _idle_action(self, w, idx, pos, inv):
         """Idle units run produce back to the shed so it can be sold today.
@@ -421,9 +453,12 @@ class Executor:
         orders.extend(self._acquisition_orders(w, n_animals))
         return orders
 
+    def _liquidating(self, w):
+        return w.day >= w.last_day - self.cfg.liquidate_before_end
+
     def _sell_orders(self, w, feed_target):
         cfg = self.cfg
-        liquidating = w.day >= cfg.liquidate_day
+        liquidating = self._liquidating(w)
         out = []
         for item in PRODUCTS:
             qty = w.shed.get(item, 0)
@@ -441,13 +476,15 @@ class Executor:
         cfg = self.cfg
         out = []
         slots, crop_tiles = self._layout(w)
-        if w.day >= cfg.liquidate_day:
+        if self._liquidating(w):
             return out
 
-        for quadrant in cfg.buy_land:
-            if quadrant not in w.farm["unlocked_quadrants"]:
+        bought = len(w.farm["unlocked_quadrants"]) - 1     # NW is free
+        if bought < cfg.buy_land:
+            price = LAND_PRICES[bought]
+            # Only worth it while there is still season left to farm it.
+            if w.money - price >= cfg.land_reserve and w.day <= w.last_day // 2:
                 out.append(["BUY_LAND"])
-                break
 
         wanted = {}
         for animal in slots.values():
@@ -462,6 +499,11 @@ class Executor:
             short = n - have
             cost = ANIMALS[animal]["cost"]
             budget = w.money - cfg.livestock_reserve
+            # E7: an animal placed later than first_yield_day before the end
+            # never produces anything at all.
+            too_late = w.day + ANIMALS[animal]["first_yield_day"] > w.last_day
+            if too_late:
+                continue
             if short > 0 and budget >= cost and w.shed_used() < w.shed_capacity:
                 out.append(["BUY_ANIMAL", animal, min(short, int(budget // cost))])
 

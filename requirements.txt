@@ -1,0 +1,3 @@
+# Research/development only. The submitted agent (src/kagg) is stdlib-only and
+# must stay that way -- nothing here is importable at competition runtime.
+kaggle-environments==1.32.7

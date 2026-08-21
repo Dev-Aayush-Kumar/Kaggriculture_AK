@@ -32,8 +32,10 @@ class Config:
     # --- market
     feed_buffer = 2            # wheat kept in the shed per animal
     sell_floor_fraction = 0.30  # hold produce quoted below this share of base...
-    liquidate_day = 27         # ...until here, then dump everything every turn
-    buy_land = ()              # quadrants to unlock, e.g. ("NE",)
+    liquidate_before_end = 2   # ...until this many days from the end, then dump
+    # Land unlocks in the engine's fixed order NE, SW, SE at $1k/$2k/$4k, so the
+    # only decision is how many to buy.
+    buy_land = 0
     land_reserve = 500         # keep this much liquid after buying land
     livestock_reserve = 300    # cash kept back when stocking animals
     seed_reserve = 150         # cash kept back when buying seed
