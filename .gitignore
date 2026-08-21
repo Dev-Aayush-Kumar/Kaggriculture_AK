@@ -1,0 +1,19 @@
+# virtualenv / local tooling
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# simulation artefacts
+replays/
+logs/
+out/
+*.replay.json
+submission.tar.gz
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
