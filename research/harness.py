@@ -38,10 +38,28 @@ with contextlib.redirect_stderr(io.StringIO()):
 from kagg import actions as A  # noqa: E402
 from kagg.agent import Executor  # noqa: E402
 from kagg.config import Config  # noqa: E402
+from kagg.econ.market import PRICE_FLOOR, price, sell_revenue  # noqa: E402
 
 RESULTS_DIR = os.path.join(_ROOT, "results")
 
 BUILTIN = dict(engine.agents)
+
+
+def quote_sale(item, qty, inventory):
+    """Single-seller revenue and $1-floor units at this inventory.
+
+    Uses the Phase-1 price curve. Units quoted at PRICE_FLOOR do not add
+    supply, matching `sell_revenue`.
+    """
+    rev, _ = sell_revenue(item, qty, inventory)
+    floor, inv = 0, inventory
+    for _ in range(qty):
+        p = price(item, inv)
+        if p <= PRICE_FLOOR:
+            floor += 1
+        if p > PRICE_FLOOR:
+            inv += 1
+    return rev, floor
 
 # ------------------------------------------------------------ agent registry
 # Worker processes rebuild agents from a Spec rather than receiving a closure,
@@ -104,7 +122,11 @@ class Probe:
         self.reasons = Counter()
         self.market_ops = Counter()
         self.sell_requested = Counter()
+        self.sell_revenue = Counter()
+        self.sell_floor_units = Counter()
         self.harvested = Counter()
+        self.price_by_day = []
+        self._animals = {}
         self.unit_turns = 0
         self.unit_actions_ok = 0
         self.travel = 0
@@ -148,6 +170,18 @@ class Probe:
         self.turns += 1
         if hour == 0:
             self.money_by_day.append(round(farm["money"], 2))
+            quotes = (obs.get("market") or {}).get("prices") or {}
+            self.price_by_day.append({
+                "MILK": quotes.get("MILK"),
+                "WOOL": quotes.get("WOOL"),
+                "EGG": quotes.get("EGG"),
+            })
+        animals = {}
+        for row in farm["tiles"]:
+            for tile in row:
+                if isinstance(tile, dict) and "animal" in tile:
+                    animals[tile["animal"]] = animals.get(tile["animal"], 0) + 1
+        self._animals = animals
         overage = obs.get("remainingOverageTime")
         if overage is not None:
             self._min_overage = overage if self._min_overage is None else min(self._min_overage, overage)
@@ -164,7 +198,7 @@ class Probe:
         if elapsed > self._worst_latency[0]:
             self._worst_latency = (elapsed, step)
 
-        self._score_action(action, farm, private, day)
+        self._score_action(action, farm, private, day, obs.get("market") or {})
 
         self._last_shed = dict(private["shed"])
         self._last_seeds = dict(private["seeds"])
@@ -205,7 +239,7 @@ class Probe:
         self._prev_tiles = snap
         self._prev_step = step
 
-    def _score_action(self, action, farm, private, day):
+    def _score_action(self, action, farm, private, day, market=None):
         if not isinstance(action, dict):
             self.cats["wasted"] += 1
             self.reasons["action_not_a_dict"] += 1
@@ -259,7 +293,16 @@ class Probe:
                 continue
             self.market_ops[parsed["type"]] += 1
             if parsed["type"] == "SELL":
-                self.sell_requested[parsed["item"]] += parsed["remaining"]
+                item, qty = parsed["item"], parsed["remaining"]
+                self.sell_requested[item] += qty
+                # Quote-time walk of the existing price curve. Lockstep with the
+                # other seat is not visible here, so this is the single-seller
+                # estimate, not the engine's post-fill ledger.
+                inv = ((market or {}).get("inventory") or {}).get(item)
+                if inv is not None:
+                    rev, floor = quote_sale(item, qty, inv)
+                    self.sell_revenue[item] += rev
+                    self.sell_floor_units[item] += floor
 
     # -- output -------------------------------------------------------------
     def stats(self):
@@ -283,6 +326,11 @@ class Probe:
             "fertilizer_collected": self.fertilizer_collected,
             "market_ops": dict(self.market_ops),
             "sell_requested": dict(self.sell_requested),
+            "sell_revenue": dict(self.sell_revenue),
+            "sell_floor_units": dict(self.sell_floor_units),
+            "price_by_day": self.price_by_day,
+            "animals": dict(self._animals),
+            "animal_count": sum(self._animals.values()),
             "dropped_orders": self.dropped_orders,
             "malformed_orders": self.malformed_orders,
             "drought_deaths": self.drought_deaths,
@@ -560,8 +608,17 @@ def save(records, tag):
                 "unit_turns": p["unit_turns"], "effective_rate": p["effective_rate"],
                 "move_share": p["category_share"].get("move", 0.0),
                 "harvested_units": p["harvested_units"],
+                "milk_harvested": p.get("harvested", {}).get("MILK", 0),
+                "wool_harvested": p.get("harvested", {}).get("WOOL", 0),
+                "milk_revenue": p.get("sell_revenue", {}).get("MILK", 0),
+                "wool_revenue": p.get("sell_revenue", {}).get("WOOL", 0),
+                "milk_floor": p.get("sell_floor_units", {}).get("MILK", 0),
+                "wool_floor": p.get("sell_floor_units", {}).get("WOOL", 0),
+                "animal_count": p.get("animal_count", 0),
                 "fertilizer_collected": p["fertilizer_collected"],
                 "unsold_units": p["unsold_units"],
+                "unsold_milk": p.get("final_shed", {}).get("MILK", 0),
+                "unsold_wool": p.get("final_shed", {}).get("WOOL", 0),
                 "drought_deaths": p["drought_deaths"],
                 "animals_escaped": p["animals_escaped"],
                 "shed_overflow": p["shed_overflow"],
