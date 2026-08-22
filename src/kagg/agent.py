@@ -19,6 +19,7 @@ import time
 from .actions import (OK, blocked_plant_crops, check_unit_action,
                       is_shed_adjacent)
 from .config import Config
+from .econ.market import buy_cost
 from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_PARAMS, PRODUCTS,
                           cumulative_hire_cost, shed_access_tiles)
 
@@ -83,6 +84,7 @@ class World:
         self.n_units = 1 + len(self.hands)
         self.units = [tuple(self.farm["farmer"])] + [tuple(h) for h in self.hands]
         self.prices = obs["market"]["prices"]
+        self.market_inventory = obs["market"]["inventory"]
         self.access = shed_access_tiles(self.board)
         self.owned = [(x, y) for y, row in enumerate(self.tiles)
                       for x, t in enumerate(row) if t != "LOCKED"]
@@ -96,6 +98,21 @@ class World:
 
     def shed_used(self):
         return sum(self.shed.values())
+
+    def priced_buy(self, item, qty, budget):
+        """(cost, qty) for buying a market product without exceeding `budget`.
+
+        The engine quotes each unit at the post-buy inventory, so a large order
+        walks up its own price curve; `econ.market.buy_cost` reproduces that
+        walk exactly and stops early the same way the engine does.
+        """
+        inv = self.market_inventory.get(item)
+        if inv is None:      # no market view; fall back to the shown quote
+            unit = self.prices.get(item, MARKET_PARAMS[item]["base"])
+            n = min(qty, int(budget // unit) if unit > 0 else qty)
+            return n * unit, n
+        cost, bought, _ = buy_cost(item, qty, inv, budget)
+        return cost, bought
 
     def nearest_access(self, pos):
         return min(self.access, key=lambda t: (manhattan(pos, t), t))
@@ -427,14 +444,28 @@ class Executor:
 
     # -- market -------------------------------------------------------------
     def _market_orders(self, w):
+        """Plan the turn's orders against one shared purse.
+
+        Every buy draws from the same running balance, in priority order, so a
+        plan that wants land and livestock and seed on the same day is forced to
+        choose instead of committing the same dollar three times. Sale revenue
+        is deliberately not counted: sells do land earlier in the queue and do
+        fund later buys, but the price they clear at depends on what the
+        opponent dumps in the same lockstep, and spending money we only hope to
+        receive is how the farm starved.
+        """
         cfg = self.cfg
         orders = []
+        purse = w.money
+
         # The final day still has a full harvest and the liquidation on it, so
         # hire right through it.
         if w.hour == cfg.hire_hour and w.day <= w.last_day and cfg.hands_per_day > 0:
             n = min(cfg.hands_per_day, MAX_MARKET_ORDERS)
-            if w.money - cumulative_hire_cost(n) >= cfg.hire_reserve:
+            cost = cumulative_hire_cost(n)
+            if purse - cost >= cfg.hire_reserve:
                 orders.extend([["HIRE"]] * n)
+                purse -= cost
 
         n_animals = sum(1 for row in w.tiles for t in row
                         if isinstance(t, dict) and "animal" in t)
@@ -442,15 +473,18 @@ class Executor:
         orders.extend(self._sell_orders(w, feed_target))
 
         # Feed outranks every other purchase: two missed days and the animal is
-        # gone along with the capital that bought it.
+        # gone along with the capital that bought it. It draws on the whole
+        # purse for that reason.
         wheat_short = feed_target - w.shed.get("WHEAT", 0)
         if n_animals and wheat_short > 0:
             room = w.shed_capacity - w.shed_used()
-            qty = max(0, min(wheat_short, room))
+            want = max(0, min(wheat_short, room))
+            cost, qty = w.priced_buy("WHEAT", want, purse)
             if qty:
                 orders.append(["BUY_PRODUCT", "WHEAT", qty])
+                purse -= cost
 
-        orders.extend(self._acquisition_orders(w, n_animals))
+        orders.extend(self._acquisition_orders(w, purse))
         return orders
 
     def _liquidating(self, w):
@@ -472,19 +506,18 @@ class Executor:
                 out.append(["SELL", item, qty])
         return out
 
-    def _acquisition_orders(self, w, n_animals):
+    def _acquisition_orders(self, w, purse):
+        """Capital spending, cheapest payback first, out of what feed left over.
+
+        Order matters twice over: the engine fills orders by index, so earlier
+        entries get the money, and each entry here also shrinks the purse the
+        later ones see.
+        """
         cfg = self.cfg
         out = []
         slots, crop_tiles = self._layout(w)
         if self._liquidating(w):
             return out
-
-        bought = len(w.farm["unlocked_quadrants"]) - 1     # NW is free
-        if bought < cfg.buy_land:
-            price = LAND_PRICES[bought]
-            # Only worth it while there is still season left to farm it.
-            if w.money - price >= cfg.land_reserve and w.day <= w.last_day // 2:
-                out.append(["BUY_LAND"])
 
         wanted = {}
         for animal in slots.values():
@@ -497,15 +530,17 @@ class Executor:
             have += w.shed.get(animal, 0)
             have += sum(w.inv(i).get(animal, 0) for i in range(w.n_units))
             short = n - have
-            cost = ANIMALS[animal]["cost"]
-            budget = w.money - cfg.livestock_reserve
             # E7: an animal placed later than first_yield_day before the end
             # never produces anything at all.
-            too_late = w.day + ANIMALS[animal]["first_yield_day"] > w.last_day
-            if too_late:
+            if short <= 0 or w.day + ANIMALS[animal]["first_yield_day"] > w.last_day:
                 continue
-            if short > 0 and budget >= cost and w.shed_used() < w.shed_capacity:
-                out.append(["BUY_ANIMAL", animal, min(short, int(budget // cost))])
+            cost = ANIMALS[animal]["cost"]
+            # An animal also commits us to feeding it for the rest of the run,
+            # so it has to clear the reserve rather than merely be affordable.
+            qty = min(short, int(max(0, purse - cfg.livestock_reserve) // cost))
+            if qty and w.shed_used() < w.shed_capacity:
+                out.append(["BUY_ANIMAL", animal, qty])
+                purse -= qty * cost
 
         if cfg.crops:
             empty = sum(1 for (x, y) in crop_tiles if w.tile(x, y) is None)
@@ -515,9 +550,20 @@ class Executor:
                 share = -(-empty // len(cfg.crops))          # ceil
                 need = min(share, cfg.seed_batch) - w.seeds.get(crop, 0)
                 cost = CROPS[crop]["seed"]
-                budget = w.money - cfg.seed_reserve
-                if need > 0 and budget >= cost:
-                    out.append(["BUY_SEED", crop, min(need, int(budget // cost))])
+                qty = min(need, int(max(0, purse - cfg.seed_reserve) // cost))
+                if qty > 0:
+                    out.append(["BUY_SEED", crop, qty])
+                    purse -= qty * cost
+
+        # Land last. It earns nothing by itself -- it only makes room for stock
+        # and crops we then have to afford, and buying it first is what starved
+        # the livestock in the screening run.
+        bought = len(w.farm["unlocked_quadrants"]) - 1     # NW is free
+        if bought < cfg.buy_land:
+            price = LAND_PRICES[bought]
+            # Only worth it while there is still season left to farm it.
+            if purse - price >= cfg.land_reserve and w.day <= w.last_day // 2:
+                out.append(["BUY_LAND"])
         return out
 
     # -- validation ---------------------------------------------------------
