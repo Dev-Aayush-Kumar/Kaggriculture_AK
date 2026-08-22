@@ -49,6 +49,12 @@ class Config:
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
+    # Off by default so P0/B2 is unchanged. When on, an idle shed walk is taken
+    # only if the carried quote-value covers min_trip_value_per_step per tile,
+    # except in the last hours of the day when the free end-of-day drop is near
+    # and a late walk is the hard-loss alternative.
+    move_ev_enabled = False
+    min_trip_value_per_step = 10
     turn_budget_ms = 250       # hard stop; the engine allows 1000 ms
 
     def __init__(self, **overrides):

@@ -42,6 +42,23 @@ P_DIG = 11
 MAX_MARKET_ORDERS = 10
 
 
+def shed_trip_justified(carried_count, carried_value, distance, hour, turns_per_day,
+                        drop_threshold, move_ev_enabled, min_trip_value_per_step):
+    """Whether an idle unit should walk a load to the shed.
+
+    The default (flag off) is the original count threshold. The EV rule only
+    changes idle logistics; assigned feed/water/rescue walks are untouched.
+    Late-day walks stay mandatory so stock is not left in hand overnight.
+    """
+    if carried_count <= 0:
+        return False
+    if hour >= turns_per_day - 4:
+        return True
+    if not move_ev_enabled:
+        return carried_count >= drop_threshold
+    return carried_value >= min_trip_value_per_step * max(1, distance)
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -515,7 +532,11 @@ class Executor:
             return ["PASS"]
         if is_shed_adjacent(pos, w.board):
             return ["DROP"]
-        if carried >= self.cfg.drop_threshold or w.hour >= w.turns_per_day - 4:
+        value = sum((w.prices.get(item, 0) or 0) * n for item, n in inv.items())
+        if shed_trip_justified(
+                carried, value, w.dist_to_shed(pos), w.hour, w.turns_per_day,
+                self.cfg.drop_threshold, self.cfg.move_ev_enabled,
+                self.cfg.min_trip_value_per_step):
             return self._step_toward(pos, w.nearest_access(pos))
         return ["PASS"]
 
