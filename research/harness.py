@@ -615,6 +615,8 @@ def save(records, tag):
                 "harvested_units": p["harvested_units"],
                 "milk_harvested": p.get("harvested", {}).get("MILK", 0),
                 "wool_harvested": p.get("harvested", {}).get("WOOL", 0),
+                "milk_sold": p.get("sell_requested", {}).get("MILK", 0),
+                "wool_sold": p.get("sell_requested", {}).get("WOOL", 0),
                 "milk_revenue": p.get("sell_revenue", {}).get("MILK", 0),
                 "wool_revenue": p.get("sell_revenue", {}).get("WOOL", 0),
                 "milk_floor": p.get("sell_floor_units", {}).get("MILK", 0),

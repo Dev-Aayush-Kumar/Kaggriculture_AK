@@ -53,6 +53,13 @@ class Config:
     livestock_cap_enabled = False
     livestock_absorb_slack = 1.0
     livestock_cap_floor = 0.30
+    # Off by default so P1 is unchanged. When on, a sale lot is truncated to
+    # units_until_price(..., sale_qty_floor) unless remaining days are at or
+    # below sale_qty_force_days or the shed is approaching capacity.
+    sale_qty_enabled = False
+    sale_qty_floor = 0.30
+    sale_qty_force_days = 0
+    sale_qty_shed_frac = 0.80
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip

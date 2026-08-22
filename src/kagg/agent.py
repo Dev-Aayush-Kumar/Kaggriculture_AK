@@ -80,6 +80,24 @@ def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
     return False
 
 
+def capped_sale_qty(qty, item, inventory, sale_qty_floor, sale_qty_enabled,
+                    day, last_day, shed_used, shed_capacity,
+                    sale_qty_force_days, sale_qty_shed_frac):
+    """How many units of `item` to sell this turn.
+
+    Flag off returns the whole lot. Flag on walks the existing price curve
+    only as far as sale_qty_floor, except on a hard-loss turn (last days or
+    a nearly full shed) when leftover stock would be worse than a cheap sale.
+    """
+    if qty <= 0:
+        return 0
+    forced = (last_day - day <= sale_qty_force_days) or (
+        shed_capacity > 0 and shed_used >= sale_qty_shed_frac * shed_capacity)
+    if not sale_qty_enabled or forced or inventory is None:
+        return qty
+    return min(qty, units_until_price(item, inventory, sale_qty_floor))
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -634,7 +652,13 @@ class Executor:
                     quote, base, w.day, w.last_day, w.shed_used(), w.shed_capacity,
                     cfg.sell_floor_fraction, liquidating, cfg.sell_defer_enabled,
                     cfg.sell_defer_force_days, cfg.sell_defer_shed_frac):
-                out.append(["SELL", item, qty])
+                n = capped_sale_qty(
+                    qty, item, w.market_inventory.get(item),
+                    cfg.sale_qty_floor, cfg.sale_qty_enabled,
+                    w.day, w.last_day, w.shed_used(), w.shed_capacity,
+                    cfg.sale_qty_force_days, cfg.sale_qty_shed_frac)
+                if n > 0:
+                    out.append(["SELL", item, n])
         return out
 
     def _acquisition_orders(self, w, purse):
