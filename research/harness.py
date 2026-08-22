@@ -124,6 +124,7 @@ class Probe:
         self.sell_requested = Counter()
         self.sell_revenue = Counter()
         self.sell_floor_units = Counter()
+        self.sell_qty_by_day = {"MILK": Counter(), "WOOL": Counter(), "EGG": Counter()}
         self.harvested = Counter()
         self.price_by_day = []
         self._animals = {}
@@ -303,6 +304,8 @@ class Probe:
                     rev, floor = quote_sale(item, qty, inv)
                     self.sell_revenue[item] += rev
                     self.sell_floor_units[item] += floor
+                if item in self.sell_qty_by_day:
+                    self.sell_qty_by_day[item][day] += qty
 
     # -- output -------------------------------------------------------------
     def stats(self):
@@ -328,6 +331,8 @@ class Probe:
             "sell_requested": dict(self.sell_requested),
             "sell_revenue": dict(self.sell_revenue),
             "sell_floor_units": dict(self.sell_floor_units),
+            "sell_qty_by_day": {k: dict(sorted(v.items()))
+                                for k, v in self.sell_qty_by_day.items()},
             "price_by_day": self.price_by_day,
             "animals": dict(self._animals),
             "animal_count": sum(self._animals.values()),

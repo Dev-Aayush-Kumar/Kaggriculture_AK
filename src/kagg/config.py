@@ -33,6 +33,13 @@ class Config:
     feed_buffer = 2            # wheat kept in the shed per animal
     sell_floor_fraction = 0.30  # hold produce quoted below this share of base...
     liquidate_before_end = 2   # ...until this many days from the end, then dump
+    # Off by default so P0/B2 is unchanged. When on, a quote below
+    # sell_floor_fraction is not dumped during the liquidation window unless
+    # remaining days are at or below sell_defer_force_days or the shed is
+    # approaching capacity (the hard-loss conditions).
+    sell_defer_enabled = False
+    sell_defer_force_days = 0
+    sell_defer_shed_frac = 0.80
     # Land unlocks in the engine's fixed order NE, SW, SE at $1k/$2k/$4k, so the
     # only decision is how many to buy.
     buy_land = 0

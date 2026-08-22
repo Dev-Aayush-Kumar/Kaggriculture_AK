@@ -59,6 +59,27 @@ def shed_trip_justified(carried_count, carried_value, distance, hour, turns_per_
     return carried_value >= min_trip_value_per_step * max(1, distance)
 
 
+def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
+                   sell_floor_fraction, liquidating, sell_defer_enabled,
+                   sell_defer_force_days, sell_defer_shed_frac):
+    """Whether a produce lot should be sold this turn.
+
+    Flag off is the original rule: sell if liquidating or the quote clears the
+    floor. Flag on applies that floor even inside the liquidation window,
+    unless remaining time is gone or the shed is approaching capacity.
+    """
+    above_floor = quote >= base * sell_floor_fraction
+    if not sell_defer_enabled:
+        return liquidating or above_floor
+    if above_floor:
+        return True
+    if last_day - day <= sell_defer_force_days:
+        return True
+    if shed_capacity > 0 and shed_used >= sell_defer_shed_frac * shed_capacity:
+        return True
+    return False
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -609,7 +630,10 @@ class Executor:
                 continue
             base = MARKET_PARAMS[item]["base"]
             quote = w.prices.get(item, base)
-            if liquidating or quote >= base * cfg.sell_floor_fraction:
+            if sale_justified(
+                    quote, base, w.day, w.last_day, w.shed_used(), w.shed_capacity,
+                    cfg.sell_floor_fraction, liquidating, cfg.sell_defer_enabled,
+                    cfg.sell_defer_force_days, cfg.sell_defer_shed_frac):
                 out.append(["SELL", item, qty])
         return out
 
