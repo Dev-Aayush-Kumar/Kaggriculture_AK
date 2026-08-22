@@ -19,9 +19,10 @@ import time
 from .actions import (OK, blocked_plant_crops, check_unit_action,
                       is_shed_adjacent)
 from .config import Config
-from .econ.market import buy_cost
-from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_PARAMS, PRODUCTS,
-                          cumulative_hire_cost, shed_access_tiles)
+from .econ.market import (buy_cost, expected_remaining_demand, marginal_value,
+                          units_until_price)
+from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_I0, MARKET_PARAMS,
+                          PRODUCTS, cumulative_hire_cost, shed_access_tiles)
 
 # Task urgency. Lower runs first; anything that can be permanently lost today
 # outranks anything that merely earns money.
@@ -39,6 +40,22 @@ P_FERTILIZE = 10
 P_DIG = 11
 
 MAX_MARKET_ORDERS = 10
+
+
+def remaining_yield_events(animal, placed_day, from_day, last_day):
+    """How many production events `animal` still has if placed on `placed_day`.
+
+    Mirrors the engine's end-of-day test:
+    `days_since_first = (day + 1) - placed_day - first_yield_day`.
+    """
+    spec = ANIMALS[animal]
+    first, interval = spec["first_yield_day"], spec["interval"]
+    n = 0
+    for day in range(from_day, last_day + 1):
+        days_since_first = (day + 1) - placed_day - first
+        if days_since_first >= 0 and days_since_first % interval == 0:
+            n += 1
+    return n
 
 
 class Task:
@@ -85,6 +102,7 @@ class World:
         self.units = [tuple(self.farm["farmer"])] + [tuple(h) for h in self.hands]
         self.prices = obs["market"]["prices"]
         self.market_inventory = obs["market"]["inventory"]
+        self.shops = list((obs.get("town") or {}).get("unlocked_shops") or [])
         self.access = shed_access_tiles(self.board)
         self.owned = [(x, y) for y, row in enumerate(self.tiles)
                       for x, t in enumerate(row) if t != "LOCKED"]
@@ -150,6 +168,72 @@ class Executor:
         raw = self._finalize(w, raw)
         return {"farmer": raw[0], "hands": raw[1:], "market": orders[:MAX_MARKET_ORDERS]}
 
+    # -- livestock targets --------------------------------------------------
+    def _owned_animals(self, w, animal):
+        n = sum(1 for row in w.tiles for t in row
+                if isinstance(t, dict) and t.get("animal") == animal)
+        n += w.shed.get(animal, 0)
+        n += sum(w.inv(i).get(animal, 0) for i in range(w.n_units))
+        return n
+
+    def _projected_units(self, w, animal, extra=0):
+        """Remaining harvest units from current stock plus `extra` new animals.
+
+        Care is counted as a second unit per event when enabled; that is the
+        optimistic own-supply number, so the cap binds a little early rather
+        than a little late.
+        """
+        per = 2 if self.cfg.care else 1
+        units = 0
+        placed = 0
+        for row in w.tiles:
+            for tile in row:
+                if isinstance(tile, dict) and tile.get("animal") == animal:
+                    units += remaining_yield_events(
+                        animal, tile.get("placed_day", w.day), w.day, w.last_day) * per
+                    placed += 1
+        floating = extra + self._owned_animals(w, animal) - placed
+        if floating > 0:
+            units += floating * remaining_yield_events(
+                animal, w.day + 1, w.day, w.last_day) * per
+        return units
+
+    def _absorption(self, w, item):
+        inv = w.market_inventory.get(item, MARKET_I0)
+        room = units_until_price(item, inv, self.cfg.livestock_cap_floor)
+        town = expected_remaining_demand(
+            item, w.day, w.shops, w.turns_per_day, season_days=w.last_day + 1)
+        return room + town
+
+    def _can_add_animal(self, w, animal, extra=1):
+        if not self.cfg.livestock_cap_enabled:
+            return True
+        product = ANIMALS[animal]["product"]
+        projected = self._projected_units(w, animal, extra=extra)
+        if projected > self._absorption(w, product) * self.cfg.livestock_absorb_slack:
+            return False
+        already = self._projected_units(w, animal, extra=0)
+        lookahead = max(1, int(projected - already))
+        inv = w.market_inventory.get(product, MARKET_I0)
+        mv = marginal_value(product, inv, lookahead=lookahead)
+        return mv >= MARKET_PARAMS[product]["base"] * self.cfg.livestock_cap_floor
+
+    def _livestock_targets(self, w):
+        cfg = self.cfg
+        raw = {"GOOSE": cfg.geese, "COW": cfg.cows, "SHEEP": cfg.sheep}
+        if not cfg.livestock_cap_enabled:
+            return raw
+        out = {}
+        for animal, want in raw.items():
+            have = self._owned_animals(w, animal)
+            n = have
+            while n < want:
+                if not self._can_add_animal(w, animal, extra=n - have + 1):
+                    break
+                n += 1
+            out[animal] = n
+        return out
+
     # -- layout -------------------------------------------------------------
     def _layout(self, w):
         """Livestock takes the tiles nearest the shed; crops get the rest.
@@ -162,7 +246,9 @@ class Executor:
             return w.layout_cache
         cfg = self.cfg
         ordered = sorted(w.owned, key=lambda p: (w.dist_to_shed(p), p[1], p[0]))
-        wanted = (["GOOSE"] * cfg.geese) + (["COW"] * cfg.cows) + (["SHEEP"] * cfg.sheep)
+        targets = self._livestock_targets(w)
+        wanted = (["GOOSE"] * targets["GOOSE"] + ["COW"] * targets["COW"]
+                  + ["SHEEP"] * targets["SHEEP"])
         slots = {}
         for animal, pos in zip(wanted, ordered):
             slots[pos] = animal

@@ -40,6 +40,12 @@ class Config:
     livestock_reserve = 300    # cash kept back when stocking animals
     seed_reserve = 150         # cash kept back when buying seed
     seed_batch = 8             # seeds bought per crop per turn at most
+    # Off by default so B0 is unchanged. When on, extra animals of a type are
+    # refused once own projected output would exceed remaining profitable
+    # absorption (town demand + units until the price floor).
+    livestock_cap_enabled = False
+    livestock_absorb_slack = 1.0
+    livestock_cap_floor = 0.30
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip

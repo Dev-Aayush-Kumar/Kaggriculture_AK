@@ -1,0 +1,9910 @@
+[
+ {
+  "seed": 0,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   45899.0,
+   45899.0
+  ],
+  "rewards": [
+   45899.0,
+   45899.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 29.143,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 37108,
+     "FERTILIZER": 10641,
+     "WOOL": 18185,
+     "MILK": 12895
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 53
+     },
+     {
+      "MILK": 118,
+      "WOOL": 189,
+      "EGG": 53
+     },
+     {
+      "MILK": 120,
+      "WOOL": 151,
+      "EGG": 54
+     },
+     {
+      "MILK": 110,
+      "WOOL": 107,
+      "EGG": 54
+     },
+     {
+      "MILK": 112,
+      "WOOL": 158,
+      "EGG": 54
+     },
+     {
+      "MILK": 101,
+      "WOOL": 172,
+      "EGG": 55
+     },
+     {
+      "MILK": 103,
+      "WOOL": 183,
+      "EGG": 55
+     },
+     {
+      "MILK": 93,
+      "WOOL": 192,
+      "EGG": 56
+     },
+     {
+      "MILK": 82,
+      "WOOL": 197,
+      "EGG": 56
+     },
+     {
+      "MILK": 84,
+      "WOOL": 194,
+      "EGG": 57
+     },
+     {
+      "MILK": 99,
+      "WOOL": 199,
+      "EGG": 57
+     },
+     {
+      "MILK": 101,
+      "WOOL": 219,
+      "EGG": 57
+     },
+     {
+      "MILK": 103,
+      "WOOL": 223,
+      "EGG": 58
+     },
+     {
+      "MILK": 118,
+      "WOOL": 221,
+      "EGG": 58
+     },
+     {
+      "MILK": 133,
+      "WOOL": 227,
+      "EGG": 59
+     },
+     {
+      "MILK": 135,
+      "WOOL": 229,
+      "EGG": 59
+     },
+     {
+      "MILK": 150,
+      "WOOL": 230,
+      "EGG": 60
+     },
+     {
+      "MILK": 152,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 175,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 177,
+      "WOOL": 233,
+      "EGG": 62
+     },
+     {
+      "MILK": 196,
+      "WOOL": 235,
+      "EGG": 63
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.8171,
+    "latency_p50_ms": 1.1669,
+    "latency_p99_ms": 11.4323,
+    "latency_max_ms": 32.9119,
+    "latency_max_step": 548,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4208.0,
+     7981.0,
+     8317.0,
+     11800.0,
+     13792.0,
+     14640.0,
+     16287.0,
+     17275.0,
+     20049.0,
+     22286.0,
+     24207.0,
+     25363.0,
+     26519.0,
+     29476.0,
+     31801.0,
+     32297.0,
+     34466.0,
+     36273.0,
+     39007.0,
+     41484.0,
+     43369.0,
+     43400.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 37108,
+     "FERTILIZER": 10641,
+     "WOOL": 18185,
+     "MILK": 12895
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 53
+     },
+     {
+      "MILK": 118,
+      "WOOL": 189,
+      "EGG": 53
+     },
+     {
+      "MILK": 120,
+      "WOOL": 151,
+      "EGG": 54
+     },
+     {
+      "MILK": 110,
+      "WOOL": 107,
+      "EGG": 54
+     },
+     {
+      "MILK": 112,
+      "WOOL": 158,
+      "EGG": 54
+     },
+     {
+      "MILK": 101,
+      "WOOL": 172,
+      "EGG": 55
+     },
+     {
+      "MILK": 103,
+      "WOOL": 183,
+      "EGG": 55
+     },
+     {
+      "MILK": 93,
+      "WOOL": 192,
+      "EGG": 56
+     },
+     {
+      "MILK": 82,
+      "WOOL": 197,
+      "EGG": 56
+     },
+     {
+      "MILK": 84,
+      "WOOL": 194,
+      "EGG": 57
+     },
+     {
+      "MILK": 99,
+      "WOOL": 199,
+      "EGG": 57
+     },
+     {
+      "MILK": 101,
+      "WOOL": 219,
+      "EGG": 57
+     },
+     {
+      "MILK": 103,
+      "WOOL": 223,
+      "EGG": 58
+     },
+     {
+      "MILK": 118,
+      "WOOL": 221,
+      "EGG": 58
+     },
+     {
+      "MILK": 133,
+      "WOOL": 227,
+      "EGG": 59
+     },
+     {
+      "MILK": 135,
+      "WOOL": 229,
+      "EGG": 59
+     },
+     {
+      "MILK": 150,
+      "WOOL": 230,
+      "EGG": 60
+     },
+     {
+      "MILK": 152,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 175,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 177,
+      "WOOL": 233,
+      "EGG": 62
+     },
+     {
+      "MILK": 196,
+      "WOOL": 235,
+      "EGG": 63
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6223,
+    "latency_p50_ms": 0.8995,
+    "latency_p99_ms": 11.9201,
+    "latency_max_ms": 83.1427,
+    "latency_max_step": 308,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4208.0,
+     7981.0,
+     8317.0,
+     11800.0,
+     13792.0,
+     14640.0,
+     16287.0,
+     17275.0,
+     20049.0,
+     22286.0,
+     24207.0,
+     25363.0,
+     26519.0,
+     29476.0,
+     31801.0,
+     32297.0,
+     34466.0,
+     36273.0,
+     39007.0,
+     41484.0,
+     43369.0,
+     43400.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 0,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   45899.0,
+   45899.0
+  ],
+  "rewards": [
+   45899.0,
+   45899.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 34.644,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 37108,
+     "FERTILIZER": 10641,
+     "WOOL": 18185,
+     "MILK": 12895
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 53
+     },
+     {
+      "MILK": 118,
+      "WOOL": 189,
+      "EGG": 53
+     },
+     {
+      "MILK": 120,
+      "WOOL": 151,
+      "EGG": 54
+     },
+     {
+      "MILK": 110,
+      "WOOL": 107,
+      "EGG": 54
+     },
+     {
+      "MILK": 112,
+      "WOOL": 158,
+      "EGG": 54
+     },
+     {
+      "MILK": 101,
+      "WOOL": 172,
+      "EGG": 55
+     },
+     {
+      "MILK": 103,
+      "WOOL": 183,
+      "EGG": 55
+     },
+     {
+      "MILK": 93,
+      "WOOL": 192,
+      "EGG": 56
+     },
+     {
+      "MILK": 82,
+      "WOOL": 197,
+      "EGG": 56
+     },
+     {
+      "MILK": 84,
+      "WOOL": 194,
+      "EGG": 57
+     },
+     {
+      "MILK": 99,
+      "WOOL": 199,
+      "EGG": 57
+     },
+     {
+      "MILK": 101,
+      "WOOL": 219,
+      "EGG": 57
+     },
+     {
+      "MILK": 103,
+      "WOOL": 223,
+      "EGG": 58
+     },
+     {
+      "MILK": 118,
+      "WOOL": 221,
+      "EGG": 58
+     },
+     {
+      "MILK": 133,
+      "WOOL": 227,
+      "EGG": 59
+     },
+     {
+      "MILK": 135,
+      "WOOL": 229,
+      "EGG": 59
+     },
+     {
+      "MILK": 150,
+      "WOOL": 230,
+      "EGG": 60
+     },
+     {
+      "MILK": 152,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 175,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 177,
+      "WOOL": 233,
+      "EGG": 62
+     },
+     {
+      "MILK": 196,
+      "WOOL": 235,
+      "EGG": 63
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.9395,
+    "latency_p50_ms": 1.0532,
+    "latency_p99_ms": 18.5403,
+    "latency_max_ms": 31.3712,
+    "latency_max_step": 361,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4208.0,
+     7981.0,
+     8317.0,
+     11800.0,
+     13792.0,
+     14640.0,
+     16287.0,
+     17275.0,
+     20049.0,
+     22286.0,
+     24207.0,
+     25363.0,
+     26519.0,
+     29476.0,
+     31801.0,
+     32297.0,
+     34466.0,
+     36273.0,
+     39007.0,
+     41484.0,
+     43369.0,
+     43400.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 37108,
+     "FERTILIZER": 10641,
+     "WOOL": 18185,
+     "MILK": 12895
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 53
+     },
+     {
+      "MILK": 118,
+      "WOOL": 189,
+      "EGG": 53
+     },
+     {
+      "MILK": 120,
+      "WOOL": 151,
+      "EGG": 54
+     },
+     {
+      "MILK": 110,
+      "WOOL": 107,
+      "EGG": 54
+     },
+     {
+      "MILK": 112,
+      "WOOL": 158,
+      "EGG": 54
+     },
+     {
+      "MILK": 101,
+      "WOOL": 172,
+      "EGG": 55
+     },
+     {
+      "MILK": 103,
+      "WOOL": 183,
+      "EGG": 55
+     },
+     {
+      "MILK": 93,
+      "WOOL": 192,
+      "EGG": 56
+     },
+     {
+      "MILK": 82,
+      "WOOL": 197,
+      "EGG": 56
+     },
+     {
+      "MILK": 84,
+      "WOOL": 194,
+      "EGG": 57
+     },
+     {
+      "MILK": 99,
+      "WOOL": 199,
+      "EGG": 57
+     },
+     {
+      "MILK": 101,
+      "WOOL": 219,
+      "EGG": 57
+     },
+     {
+      "MILK": 103,
+      "WOOL": 223,
+      "EGG": 58
+     },
+     {
+      "MILK": 118,
+      "WOOL": 221,
+      "EGG": 58
+     },
+     {
+      "MILK": 133,
+      "WOOL": 227,
+      "EGG": 59
+     },
+     {
+      "MILK": 135,
+      "WOOL": 229,
+      "EGG": 59
+     },
+     {
+      "MILK": 150,
+      "WOOL": 230,
+      "EGG": 60
+     },
+     {
+      "MILK": 152,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 175,
+      "WOOL": 231,
+      "EGG": 61
+     },
+     {
+      "MILK": 177,
+      "WOOL": 233,
+      "EGG": 62
+     },
+     {
+      "MILK": 196,
+      "WOOL": 235,
+      "EGG": 63
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 2.3606,
+    "latency_p50_ms": 1.2301,
+    "latency_p99_ms": 14.8144,
+    "latency_max_ms": 162.8395,
+    "latency_max_step": 360,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4208.0,
+     7981.0,
+     8317.0,
+     11800.0,
+     13792.0,
+     14640.0,
+     16287.0,
+     17275.0,
+     20049.0,
+     22286.0,
+     24207.0,
+     25363.0,
+     26519.0,
+     29476.0,
+     31801.0,
+     32297.0,
+     34466.0,
+     36273.0,
+     39007.0,
+     41484.0,
+     43369.0,
+     43400.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 1,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   48953.0,
+   48953.0
+  ],
+  "rewards": [
+   48953.0,
+   48953.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 28.568,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 51440,
+     "FERTILIZER": 10641,
+     "WOOL": 7702,
+     "MILK": 23887
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 20,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 177,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 189,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 203,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 209,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 218,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 223,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 227,
+      "WOOL": 49,
+      "EGG": 52
+     },
+     {
+      "MILK": 234,
+      "WOOL": 55,
+      "EGG": 52
+     },
+     {
+      "MILK": 243,
+      "WOOL": 1,
+      "EGG": 53
+     },
+     {
+      "MILK": 249,
+      "WOOL": 5,
+      "EGG": 53
+     },
+     {
+      "MILK": 254,
+      "WOOL": 11,
+      "EGG": 53
+     },
+     {
+      "MILK": 264,
+      "WOOL": 18,
+      "EGG": 54
+     },
+     {
+      "MILK": 272,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 279,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 286,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 292,
+      "WOOL": 77,
+      "EGG": 56
+     },
+     {
+      "MILK": 299,
+      "WOOL": 61,
+      "EGG": 56
+     },
+     {
+      "MILK": 304,
+      "WOOL": 125,
+      "EGG": 56
+     },
+     {
+      "MILK": 312,
+      "WOOL": 169,
+      "EGG": 57
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 2.0613,
+    "latency_p50_ms": 1.1746,
+    "latency_p99_ms": 17.2119,
+    "latency_max_ms": 72.9716,
+    "latency_max_step": 291,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8386.0,
+     8946.0,
+     12773.0,
+     15211.0,
+     16315.0,
+     18288.0,
+     19186.0,
+     22250.0,
+     24685.0,
+     25405.0,
+     26293.0,
+     28484.0,
+     32003.0,
+     32962.0,
+     33842.0,
+     36200.0,
+     37838.0,
+     41115.0,
+     42740.0,
+     45856.0,
+     45914.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 51440,
+     "FERTILIZER": 10641,
+     "WOOL": 7702,
+     "MILK": 23887
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 20,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 177,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 189,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 203,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 209,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 218,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 223,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 227,
+      "WOOL": 49,
+      "EGG": 52
+     },
+     {
+      "MILK": 234,
+      "WOOL": 55,
+      "EGG": 52
+     },
+     {
+      "MILK": 243,
+      "WOOL": 1,
+      "EGG": 53
+     },
+     {
+      "MILK": 249,
+      "WOOL": 5,
+      "EGG": 53
+     },
+     {
+      "MILK": 254,
+      "WOOL": 11,
+      "EGG": 53
+     },
+     {
+      "MILK": 264,
+      "WOOL": 18,
+      "EGG": 54
+     },
+     {
+      "MILK": 272,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 279,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 286,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 292,
+      "WOOL": 77,
+      "EGG": 56
+     },
+     {
+      "MILK": 299,
+      "WOOL": 61,
+      "EGG": 56
+     },
+     {
+      "MILK": 304,
+      "WOOL": 125,
+      "EGG": 56
+     },
+     {
+      "MILK": 312,
+      "WOOL": 169,
+      "EGG": 57
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.3049,
+    "latency_p50_ms": 0.8919,
+    "latency_p99_ms": 8.2224,
+    "latency_max_ms": 32.6705,
+    "latency_max_step": 512,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8386.0,
+     8946.0,
+     12773.0,
+     15211.0,
+     16315.0,
+     18288.0,
+     19186.0,
+     22250.0,
+     24685.0,
+     25405.0,
+     26293.0,
+     28484.0,
+     32003.0,
+     32962.0,
+     33842.0,
+     36200.0,
+     37838.0,
+     41115.0,
+     42740.0,
+     45856.0,
+     45914.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 1,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   48953.0,
+   48953.0
+  ],
+  "rewards": [
+   48953.0,
+   48953.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 25.837,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 51440,
+     "FERTILIZER": 10641,
+     "WOOL": 7702,
+     "MILK": 23887
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 20,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 177,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 189,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 203,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 209,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 218,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 223,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 227,
+      "WOOL": 49,
+      "EGG": 52
+     },
+     {
+      "MILK": 234,
+      "WOOL": 55,
+      "EGG": 52
+     },
+     {
+      "MILK": 243,
+      "WOOL": 1,
+      "EGG": 53
+     },
+     {
+      "MILK": 249,
+      "WOOL": 5,
+      "EGG": 53
+     },
+     {
+      "MILK": 254,
+      "WOOL": 11,
+      "EGG": 53
+     },
+     {
+      "MILK": 264,
+      "WOOL": 18,
+      "EGG": 54
+     },
+     {
+      "MILK": 272,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 279,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 286,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 292,
+      "WOOL": 77,
+      "EGG": 56
+     },
+     {
+      "MILK": 299,
+      "WOOL": 61,
+      "EGG": 56
+     },
+     {
+      "MILK": 304,
+      "WOOL": 125,
+      "EGG": 56
+     },
+     {
+      "MILK": 312,
+      "WOOL": 169,
+      "EGG": 57
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.4259,
+    "latency_p50_ms": 0.9394,
+    "latency_p99_ms": 13.5162,
+    "latency_max_ms": 32.7968,
+    "latency_max_step": 415,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8386.0,
+     8946.0,
+     12773.0,
+     15211.0,
+     16315.0,
+     18288.0,
+     19186.0,
+     22250.0,
+     24685.0,
+     25405.0,
+     26293.0,
+     28484.0,
+     32003.0,
+     32962.0,
+     33842.0,
+     36200.0,
+     37838.0,
+     41115.0,
+     42740.0,
+     45856.0,
+     45914.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 51440,
+     "FERTILIZER": 10641,
+     "WOOL": 7702,
+     "MILK": 23887
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 20,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 177,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 189,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 203,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 209,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 218,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 223,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 227,
+      "WOOL": 49,
+      "EGG": 52
+     },
+     {
+      "MILK": 234,
+      "WOOL": 55,
+      "EGG": 52
+     },
+     {
+      "MILK": 243,
+      "WOOL": 1,
+      "EGG": 53
+     },
+     {
+      "MILK": 249,
+      "WOOL": 5,
+      "EGG": 53
+     },
+     {
+      "MILK": 254,
+      "WOOL": 11,
+      "EGG": 53
+     },
+     {
+      "MILK": 264,
+      "WOOL": 18,
+      "EGG": 54
+     },
+     {
+      "MILK": 272,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 279,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 286,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 292,
+      "WOOL": 77,
+      "EGG": 56
+     },
+     {
+      "MILK": 299,
+      "WOOL": 61,
+      "EGG": 56
+     },
+     {
+      "MILK": 304,
+      "WOOL": 125,
+      "EGG": 56
+     },
+     {
+      "MILK": 312,
+      "WOOL": 169,
+      "EGG": 57
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.7707,
+    "latency_p50_ms": 1.0926,
+    "latency_p99_ms": 10.0944,
+    "latency_max_ms": 100.2121,
+    "latency_max_step": 404,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8386.0,
+     8946.0,
+     12773.0,
+     15211.0,
+     16315.0,
+     18288.0,
+     19186.0,
+     22250.0,
+     24685.0,
+     25405.0,
+     26293.0,
+     28484.0,
+     32003.0,
+     32962.0,
+     33842.0,
+     36200.0,
+     37838.0,
+     41115.0,
+     42740.0,
+     45856.0,
+     45914.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 2,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   41765.0,
+   41569.0
+  ],
+  "rewards": [
+   41765.0,
+   41569.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 28.371,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4595,
+    "effective_rate": 0.9468,
+    "travel": 2806,
+    "categories": {
+     "build": 6,
+     "move": 2806,
+     "logistics": 405,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 12,
+     "idle": 258,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5782,
+     "logistics": 0.0835,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0025,
+     "idle": 0.0532,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 766,
+     "PICKUP": 302,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 97,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 12,
+     "PASS": 258,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 210
+    },
+    "sell_requested": {
+     "WHEAT": 1448,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 33119,
+     "FERTILIZER": 10641,
+     "WOOL": 21985,
+     "MILK": 5815
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 3
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 224,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 229,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 232,
+      "EGG": 50
+     },
+     {
+      "MILK": 183,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 185,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 129,
+      "WOOL": 235,
+      "EGG": 52
+     },
+     {
+      "MILK": 105,
+      "WOOL": 238,
+      "EGG": 52
+     },
+     {
+      "MILK": 95,
+      "WOOL": 239,
+      "EGG": 52
+     },
+     {
+      "MILK": 72,
+      "WOOL": 240,
+      "EGG": 53
+     },
+     {
+      "MILK": 61,
+      "WOOL": 242,
+      "EGG": 53
+     },
+     {
+      "MILK": 38,
+      "WOOL": 243,
+      "EGG": 54
+     },
+     {
+      "MILK": 40,
+      "WOOL": 244,
+      "EGG": 54
+     },
+     {
+      "MILK": 42,
+      "WOOL": 245,
+      "EGG": 55
+     },
+     {
+      "MILK": 45,
+      "WOOL": 245,
+      "EGG": 56
+     },
+     {
+      "MILK": 47,
+      "WOOL": 246,
+      "EGG": 57
+     },
+     {
+      "MILK": 1,
+      "WOOL": 246,
+      "EGG": 58
+     },
+     {
+      "MILK": 1,
+      "WOOL": 247,
+      "EGG": 59
+     },
+     {
+      "MILK": 3,
+      "WOOL": 248,
+      "EGG": 60
+     },
+     {
+      "MILK": 17,
+      "WOOL": 248,
+      "EGG": 61
+     },
+     {
+      "MILK": 32,
+      "WOOL": 249,
+      "EGG": 62
+     },
+     {
+      "MILK": 47,
+      "WOOL": 249,
+      "EGG": 63
+     },
+     {
+      "MILK": 11,
+      "WOOL": 250,
+      "EGG": 65
+     },
+     {
+      "MILK": 26,
+      "WOOL": 250,
+      "EGG": 66
+     },
+     {
+      "MILK": 40,
+      "WOOL": 250,
+      "EGG": 68
+     },
+     {
+      "MILK": 13,
+      "WOOL": 251,
+      "EGG": 69
+     },
+     {
+      "MILK": 28,
+      "WOOL": 252,
+      "EGG": 71
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 34
+    },
+    "unsold_units": 34,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.8508,
+    "latency_p50_ms": 1.1958,
+    "latency_p99_ms": 12.9246,
+    "latency_max_ms": 56.9307,
+    "latency_max_step": 165,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4308.0,
+     8324.0,
+     8687.0,
+     12491.0,
+     14949.0,
+     15651.0,
+     17394.0,
+     18401.0,
+     20657.0,
+     22546.0,
+     24640.0,
+     26013.0,
+     26559.0,
+     28903.0,
+     31145.0,
+     31258.0,
+     32748.0,
+     34508.0,
+     36426.0,
+     38546.0,
+     39617.0,
+     39657.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 211
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32766,
+     "FERTILIZER": 10641,
+     "WOOL": 21985,
+     "MILK": 5815
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 3
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 224,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 229,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 232,
+      "EGG": 50
+     },
+     {
+      "MILK": 183,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 185,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 129,
+      "WOOL": 235,
+      "EGG": 52
+     },
+     {
+      "MILK": 105,
+      "WOOL": 238,
+      "EGG": 52
+     },
+     {
+      "MILK": 95,
+      "WOOL": 239,
+      "EGG": 52
+     },
+     {
+      "MILK": 72,
+      "WOOL": 240,
+      "EGG": 53
+     },
+     {
+      "MILK": 61,
+      "WOOL": 242,
+      "EGG": 53
+     },
+     {
+      "MILK": 38,
+      "WOOL": 243,
+      "EGG": 54
+     },
+     {
+      "MILK": 40,
+      "WOOL": 244,
+      "EGG": 54
+     },
+     {
+      "MILK": 42,
+      "WOOL": 245,
+      "EGG": 55
+     },
+     {
+      "MILK": 45,
+      "WOOL": 245,
+      "EGG": 56
+     },
+     {
+      "MILK": 47,
+      "WOOL": 246,
+      "EGG": 57
+     },
+     {
+      "MILK": 1,
+      "WOOL": 246,
+      "EGG": 58
+     },
+     {
+      "MILK": 1,
+      "WOOL": 247,
+      "EGG": 59
+     },
+     {
+      "MILK": 3,
+      "WOOL": 248,
+      "EGG": 60
+     },
+     {
+      "MILK": 17,
+      "WOOL": 248,
+      "EGG": 61
+     },
+     {
+      "MILK": 32,
+      "WOOL": 249,
+      "EGG": 62
+     },
+     {
+      "MILK": 47,
+      "WOOL": 249,
+      "EGG": 63
+     },
+     {
+      "MILK": 11,
+      "WOOL": 250,
+      "EGG": 65
+     },
+     {
+      "MILK": 26,
+      "WOOL": 250,
+      "EGG": 66
+     },
+     {
+      "MILK": 40,
+      "WOOL": 250,
+      "EGG": 68
+     },
+     {
+      "MILK": 13,
+      "WOOL": 251,
+      "EGG": 69
+     },
+     {
+      "MILK": 28,
+      "WOOL": 252,
+      "EGG": 71
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.4549,
+    "latency_p50_ms": 0.9202,
+    "latency_p99_ms": 15.5985,
+    "latency_max_ms": 49.0019,
+    "latency_max_step": 7,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4308.0,
+     8324.0,
+     8687.0,
+     12491.0,
+     14949.0,
+     15651.0,
+     17394.0,
+     18401.0,
+     20657.0,
+     22546.0,
+     24640.0,
+     26013.0,
+     26559.0,
+     28903.0,
+     31145.0,
+     31258.0,
+     32748.0,
+     34508.0,
+     36426.0,
+     38546.0,
+     39617.0,
+     39657.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 2,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   41765.0,
+   41569.0
+  ],
+  "rewards": [
+   41765.0,
+   41569.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 27.989,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4595,
+    "effective_rate": 0.9468,
+    "travel": 2806,
+    "categories": {
+     "build": 6,
+     "move": 2806,
+     "logistics": 405,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 12,
+     "idle": 258,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5782,
+     "logistics": 0.0835,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0025,
+     "idle": 0.0532,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 766,
+     "PICKUP": 302,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 97,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 12,
+     "PASS": 258,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 210
+    },
+    "sell_requested": {
+     "WHEAT": 1448,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 33119,
+     "FERTILIZER": 10641,
+     "WOOL": 21985,
+     "MILK": 5815
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 3
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 224,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 229,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 232,
+      "EGG": 50
+     },
+     {
+      "MILK": 183,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 185,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 129,
+      "WOOL": 235,
+      "EGG": 52
+     },
+     {
+      "MILK": 105,
+      "WOOL": 238,
+      "EGG": 52
+     },
+     {
+      "MILK": 95,
+      "WOOL": 239,
+      "EGG": 52
+     },
+     {
+      "MILK": 72,
+      "WOOL": 240,
+      "EGG": 53
+     },
+     {
+      "MILK": 61,
+      "WOOL": 242,
+      "EGG": 53
+     },
+     {
+      "MILK": 38,
+      "WOOL": 243,
+      "EGG": 54
+     },
+     {
+      "MILK": 40,
+      "WOOL": 244,
+      "EGG": 54
+     },
+     {
+      "MILK": 42,
+      "WOOL": 245,
+      "EGG": 55
+     },
+     {
+      "MILK": 45,
+      "WOOL": 245,
+      "EGG": 56
+     },
+     {
+      "MILK": 47,
+      "WOOL": 246,
+      "EGG": 57
+     },
+     {
+      "MILK": 1,
+      "WOOL": 246,
+      "EGG": 58
+     },
+     {
+      "MILK": 1,
+      "WOOL": 247,
+      "EGG": 59
+     },
+     {
+      "MILK": 3,
+      "WOOL": 248,
+      "EGG": 60
+     },
+     {
+      "MILK": 17,
+      "WOOL": 248,
+      "EGG": 61
+     },
+     {
+      "MILK": 32,
+      "WOOL": 249,
+      "EGG": 62
+     },
+     {
+      "MILK": 47,
+      "WOOL": 249,
+      "EGG": 63
+     },
+     {
+      "MILK": 11,
+      "WOOL": 250,
+      "EGG": 65
+     },
+     {
+      "MILK": 26,
+      "WOOL": 250,
+      "EGG": 66
+     },
+     {
+      "MILK": 40,
+      "WOOL": 250,
+      "EGG": 68
+     },
+     {
+      "MILK": 13,
+      "WOOL": 251,
+      "EGG": 69
+     },
+     {
+      "MILK": 28,
+      "WOOL": 252,
+      "EGG": 71
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 34
+    },
+    "unsold_units": 34,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.4677,
+    "latency_p50_ms": 0.9604,
+    "latency_p99_ms": 10.5221,
+    "latency_max_ms": 46.3795,
+    "latency_max_step": 5,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4308.0,
+     8324.0,
+     8687.0,
+     12491.0,
+     14949.0,
+     15651.0,
+     17394.0,
+     18401.0,
+     20657.0,
+     22546.0,
+     24640.0,
+     26013.0,
+     26559.0,
+     28903.0,
+     31145.0,
+     31258.0,
+     32748.0,
+     34508.0,
+     36426.0,
+     38546.0,
+     39617.0,
+     39657.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 211
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32766,
+     "FERTILIZER": 10641,
+     "WOOL": 21985,
+     "MILK": 5815
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 3
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 224,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 229,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 232,
+      "EGG": 50
+     },
+     {
+      "MILK": 183,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 185,
+      "WOOL": 235,
+      "EGG": 51
+     },
+     {
+      "MILK": 129,
+      "WOOL": 235,
+      "EGG": 52
+     },
+     {
+      "MILK": 105,
+      "WOOL": 238,
+      "EGG": 52
+     },
+     {
+      "MILK": 95,
+      "WOOL": 239,
+      "EGG": 52
+     },
+     {
+      "MILK": 72,
+      "WOOL": 240,
+      "EGG": 53
+     },
+     {
+      "MILK": 61,
+      "WOOL": 242,
+      "EGG": 53
+     },
+     {
+      "MILK": 38,
+      "WOOL": 243,
+      "EGG": 54
+     },
+     {
+      "MILK": 40,
+      "WOOL": 244,
+      "EGG": 54
+     },
+     {
+      "MILK": 42,
+      "WOOL": 245,
+      "EGG": 55
+     },
+     {
+      "MILK": 45,
+      "WOOL": 245,
+      "EGG": 56
+     },
+     {
+      "MILK": 47,
+      "WOOL": 246,
+      "EGG": 57
+     },
+     {
+      "MILK": 1,
+      "WOOL": 246,
+      "EGG": 58
+     },
+     {
+      "MILK": 1,
+      "WOOL": 247,
+      "EGG": 59
+     },
+     {
+      "MILK": 3,
+      "WOOL": 248,
+      "EGG": 60
+     },
+     {
+      "MILK": 17,
+      "WOOL": 248,
+      "EGG": 61
+     },
+     {
+      "MILK": 32,
+      "WOOL": 249,
+      "EGG": 62
+     },
+     {
+      "MILK": 47,
+      "WOOL": 249,
+      "EGG": 63
+     },
+     {
+      "MILK": 11,
+      "WOOL": 250,
+      "EGG": 65
+     },
+     {
+      "MILK": 26,
+      "WOOL": 250,
+      "EGG": 66
+     },
+     {
+      "MILK": 40,
+      "WOOL": 250,
+      "EGG": 68
+     },
+     {
+      "MILK": 13,
+      "WOOL": 251,
+      "EGG": 69
+     },
+     {
+      "MILK": 28,
+      "WOOL": 252,
+      "EGG": 71
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6695,
+    "latency_p50_ms": 1.1371,
+    "latency_p99_ms": 10.836,
+    "latency_max_ms": 32.1711,
+    "latency_max_step": 309,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4308.0,
+     8324.0,
+     8687.0,
+     12491.0,
+     14949.0,
+     15651.0,
+     17394.0,
+     18401.0,
+     20657.0,
+     22546.0,
+     24640.0,
+     26013.0,
+     26559.0,
+     28903.0,
+     31145.0,
+     31258.0,
+     32748.0,
+     34508.0,
+     36426.0,
+     38546.0,
+     39617.0,
+     39657.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 3,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   52194.0,
+   52194.0
+  ],
+  "rewards": [
+   52194.0,
+   52194.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 36.421,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 44974,
+     "FERTILIZER": 10641,
+     "WOOL": 21135,
+     "MILK": 14550
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 227,
+      "EGG": 53
+     },
+     {
+      "MILK": 105,
+      "WOOL": 230,
+      "EGG": 53
+     },
+     {
+      "MILK": 95,
+      "WOOL": 230,
+      "EGG": 54
+     },
+     {
+      "MILK": 72,
+      "WOOL": 230,
+      "EGG": 55
+     },
+     {
+      "MILK": 74,
+      "WOOL": 233,
+      "EGG": 56
+     },
+     {
+      "MILK": 63,
+      "WOOL": 234,
+      "EGG": 57
+     },
+     {
+      "MILK": 66,
+      "WOOL": 235,
+      "EGG": 57
+     },
+     {
+      "MILK": 68,
+      "WOOL": 235,
+      "EGG": 58
+     },
+     {
+      "MILK": 70,
+      "WOOL": 236,
+      "EGG": 59
+     },
+     {
+      "MILK": 84,
+      "WOOL": 236,
+      "EGG": 60
+     },
+     {
+      "MILK": 112,
+      "WOOL": 236,
+      "EGG": 61
+     },
+     {
+      "MILK": 126,
+      "WOOL": 238,
+      "EGG": 61
+     },
+     {
+      "MILK": 141,
+      "WOOL": 238,
+      "EGG": 62
+     },
+     {
+      "MILK": 187,
+      "WOOL": 238,
+      "EGG": 63
+     },
+     {
+      "MILK": 207,
+      "WOOL": 239,
+      "EGG": 64
+     },
+     {
+      "MILK": 216,
+      "WOOL": 240,
+      "EGG": 64
+     },
+     {
+      "MILK": 228,
+      "WOOL": 240,
+      "EGG": 65
+     },
+     {
+      "MILK": 235,
+      "WOOL": 240,
+      "EGG": 66
+     },
+     {
+      "MILK": 244,
+      "WOOL": 240,
+      "EGG": 67
+     },
+     {
+      "MILK": 249,
+      "WOOL": 241,
+      "EGG": 68
+     },
+     {
+      "MILK": 259,
+      "WOOL": 242,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 2.1553,
+    "latency_p50_ms": 1.4975,
+    "latency_p99_ms": 13.5596,
+    "latency_max_ms": 22.9029,
+    "latency_max_step": 186,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4297.0,
+     8243.0,
+     8579.0,
+     12449.0,
+     14856.0,
+     15602.0,
+     17348.0,
+     18493.0,
+     21292.0,
+     23642.0,
+     25848.0,
+     27090.0,
+     28380.0,
+     31955.0,
+     34493.0,
+     35172.0,
+     38006.0,
+     40166.0,
+     43718.0,
+     46492.0,
+     49129.0,
+     49178.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 44974,
+     "FERTILIZER": 10641,
+     "WOOL": 21135,
+     "MILK": 14550
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 227,
+      "EGG": 53
+     },
+     {
+      "MILK": 105,
+      "WOOL": 230,
+      "EGG": 53
+     },
+     {
+      "MILK": 95,
+      "WOOL": 230,
+      "EGG": 54
+     },
+     {
+      "MILK": 72,
+      "WOOL": 230,
+      "EGG": 55
+     },
+     {
+      "MILK": 74,
+      "WOOL": 233,
+      "EGG": 56
+     },
+     {
+      "MILK": 63,
+      "WOOL": 234,
+      "EGG": 57
+     },
+     {
+      "MILK": 66,
+      "WOOL": 235,
+      "EGG": 57
+     },
+     {
+      "MILK": 68,
+      "WOOL": 235,
+      "EGG": 58
+     },
+     {
+      "MILK": 70,
+      "WOOL": 236,
+      "EGG": 59
+     },
+     {
+      "MILK": 84,
+      "WOOL": 236,
+      "EGG": 60
+     },
+     {
+      "MILK": 112,
+      "WOOL": 236,
+      "EGG": 61
+     },
+     {
+      "MILK": 126,
+      "WOOL": 238,
+      "EGG": 61
+     },
+     {
+      "MILK": 141,
+      "WOOL": 238,
+      "EGG": 62
+     },
+     {
+      "MILK": 187,
+      "WOOL": 238,
+      "EGG": 63
+     },
+     {
+      "MILK": 207,
+      "WOOL": 239,
+      "EGG": 64
+     },
+     {
+      "MILK": 216,
+      "WOOL": 240,
+      "EGG": 64
+     },
+     {
+      "MILK": 228,
+      "WOOL": 240,
+      "EGG": 65
+     },
+     {
+      "MILK": 235,
+      "WOOL": 240,
+      "EGG": 66
+     },
+     {
+      "MILK": 244,
+      "WOOL": 240,
+      "EGG": 67
+     },
+     {
+      "MILK": 249,
+      "WOOL": 241,
+      "EGG": 68
+     },
+     {
+      "MILK": 259,
+      "WOOL": 242,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.7992,
+    "latency_p50_ms": 1.1228,
+    "latency_p99_ms": 10.6058,
+    "latency_max_ms": 98.9435,
+    "latency_max_step": 88,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4297.0,
+     8243.0,
+     8579.0,
+     12449.0,
+     14856.0,
+     15602.0,
+     17348.0,
+     18493.0,
+     21292.0,
+     23642.0,
+     25848.0,
+     27090.0,
+     28380.0,
+     31955.0,
+     34493.0,
+     35172.0,
+     38006.0,
+     40166.0,
+     43718.0,
+     46492.0,
+     49129.0,
+     49178.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 3,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   52194.0,
+   52194.0
+  ],
+  "rewards": [
+   52194.0,
+   52194.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 22.76,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 44974,
+     "FERTILIZER": 10641,
+     "WOOL": 21135,
+     "MILK": 14550
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 227,
+      "EGG": 53
+     },
+     {
+      "MILK": 105,
+      "WOOL": 230,
+      "EGG": 53
+     },
+     {
+      "MILK": 95,
+      "WOOL": 230,
+      "EGG": 54
+     },
+     {
+      "MILK": 72,
+      "WOOL": 230,
+      "EGG": 55
+     },
+     {
+      "MILK": 74,
+      "WOOL": 233,
+      "EGG": 56
+     },
+     {
+      "MILK": 63,
+      "WOOL": 234,
+      "EGG": 57
+     },
+     {
+      "MILK": 66,
+      "WOOL": 235,
+      "EGG": 57
+     },
+     {
+      "MILK": 68,
+      "WOOL": 235,
+      "EGG": 58
+     },
+     {
+      "MILK": 70,
+      "WOOL": 236,
+      "EGG": 59
+     },
+     {
+      "MILK": 84,
+      "WOOL": 236,
+      "EGG": 60
+     },
+     {
+      "MILK": 112,
+      "WOOL": 236,
+      "EGG": 61
+     },
+     {
+      "MILK": 126,
+      "WOOL": 238,
+      "EGG": 61
+     },
+     {
+      "MILK": 141,
+      "WOOL": 238,
+      "EGG": 62
+     },
+     {
+      "MILK": 187,
+      "WOOL": 238,
+      "EGG": 63
+     },
+     {
+      "MILK": 207,
+      "WOOL": 239,
+      "EGG": 64
+     },
+     {
+      "MILK": 216,
+      "WOOL": 240,
+      "EGG": 64
+     },
+     {
+      "MILK": 228,
+      "WOOL": 240,
+      "EGG": 65
+     },
+     {
+      "MILK": 235,
+      "WOOL": 240,
+      "EGG": 66
+     },
+     {
+      "MILK": 244,
+      "WOOL": 240,
+      "EGG": 67
+     },
+     {
+      "MILK": 249,
+      "WOOL": 241,
+      "EGG": 68
+     },
+     {
+      "MILK": 259,
+      "WOOL": 242,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.2506,
+    "latency_p50_ms": 0.9403,
+    "latency_p99_ms": 7.9125,
+    "latency_max_ms": 22.2147,
+    "latency_max_step": 528,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4297.0,
+     8243.0,
+     8579.0,
+     12449.0,
+     14856.0,
+     15602.0,
+     17348.0,
+     18493.0,
+     21292.0,
+     23642.0,
+     25848.0,
+     27090.0,
+     28380.0,
+     31955.0,
+     34493.0,
+     35172.0,
+     38006.0,
+     40166.0,
+     43718.0,
+     46492.0,
+     49129.0,
+     49178.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 44974,
+     "FERTILIZER": 10641,
+     "WOOL": 21135,
+     "MILK": 14550
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 226,
+      "EGG": 52
+     },
+     {
+      "MILK": 129,
+      "WOOL": 227,
+      "EGG": 53
+     },
+     {
+      "MILK": 105,
+      "WOOL": 230,
+      "EGG": 53
+     },
+     {
+      "MILK": 95,
+      "WOOL": 230,
+      "EGG": 54
+     },
+     {
+      "MILK": 72,
+      "WOOL": 230,
+      "EGG": 55
+     },
+     {
+      "MILK": 74,
+      "WOOL": 233,
+      "EGG": 56
+     },
+     {
+      "MILK": 63,
+      "WOOL": 234,
+      "EGG": 57
+     },
+     {
+      "MILK": 66,
+      "WOOL": 235,
+      "EGG": 57
+     },
+     {
+      "MILK": 68,
+      "WOOL": 235,
+      "EGG": 58
+     },
+     {
+      "MILK": 70,
+      "WOOL": 236,
+      "EGG": 59
+     },
+     {
+      "MILK": 84,
+      "WOOL": 236,
+      "EGG": 60
+     },
+     {
+      "MILK": 112,
+      "WOOL": 236,
+      "EGG": 61
+     },
+     {
+      "MILK": 126,
+      "WOOL": 238,
+      "EGG": 61
+     },
+     {
+      "MILK": 141,
+      "WOOL": 238,
+      "EGG": 62
+     },
+     {
+      "MILK": 187,
+      "WOOL": 238,
+      "EGG": 63
+     },
+     {
+      "MILK": 207,
+      "WOOL": 239,
+      "EGG": 64
+     },
+     {
+      "MILK": 216,
+      "WOOL": 240,
+      "EGG": 64
+     },
+     {
+      "MILK": 228,
+      "WOOL": 240,
+      "EGG": 65
+     },
+     {
+      "MILK": 235,
+      "WOOL": 240,
+      "EGG": 66
+     },
+     {
+      "MILK": 244,
+      "WOOL": 240,
+      "EGG": 67
+     },
+     {
+      "MILK": 249,
+      "WOOL": 241,
+      "EGG": 68
+     },
+     {
+      "MILK": 259,
+      "WOOL": 242,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.4651,
+    "latency_p50_ms": 1.1086,
+    "latency_p99_ms": 8.9902,
+    "latency_max_ms": 22.8942,
+    "latency_max_step": 554,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4297.0,
+     8243.0,
+     8579.0,
+     12449.0,
+     14856.0,
+     15602.0,
+     17348.0,
+     18493.0,
+     21292.0,
+     23642.0,
+     25848.0,
+     27090.0,
+     28380.0,
+     31955.0,
+     34493.0,
+     35172.0,
+     38006.0,
+     40166.0,
+     43718.0,
+     46492.0,
+     49129.0,
+     49178.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 4,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   45953.0,
+   44964.0
+  ],
+  "rewards": [
+   45953.0,
+   44964.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 23.154,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4595,
+    "effective_rate": 0.9468,
+    "travel": 2799,
+    "categories": {
+     "build": 6,
+     "move": 2799,
+     "logistics": 408,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 165,
+     "fertilizer": 156,
+     "clear": 11,
+     "idle": 258,
+     "harvest": 168
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5768,
+     "logistics": 0.0841,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.034,
+     "fertilizer": 0.0321,
+     "clear": 0.0023,
+     "idle": 0.0532,
+     "harvest": 0.0346
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 935,
+     "WEST": 764,
+     "PICKUP": 302,
+     "EAST": 510,
+     "PLACE": 6,
+     "SOUTH": 590,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 100,
+     "FEED": 167,
+     "CARE": 165,
+     "COLLECT_FERTILIZER": 156,
+     "DIG": 11,
+     "PASS": 258,
+     "HARVEST": 168
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 452,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "harvested_units": 646,
+    "fertilizer_collected": 156,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1443,
+     "FERTILIZER": 153,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "sell_revenue": {
+     "WHEAT": 43411,
+     "FERTILIZER": 10680,
+     "WOOL": 6069,
+     "MILK": 23545
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 189,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 151,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 53
+     },
+     {
+      "MILK": 198,
+      "WOOL": 112,
+      "EGG": 53
+     },
+     {
+      "MILK": 199,
+      "WOOL": 77,
+      "EGG": 54
+     },
+     {
+      "MILK": 205,
+      "WOOL": 37,
+      "EGG": 54
+     },
+     {
+      "MILK": 211,
+      "WOOL": 43,
+      "EGG": 55
+     },
+     {
+      "MILK": 216,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 224,
+      "WOOL": 55,
+      "EGG": 55
+     },
+     {
+      "MILK": 231,
+      "WOOL": 1,
+      "EGG": 56
+     },
+     {
+      "MILK": 235,
+      "WOOL": 5,
+      "EGG": 57
+     },
+     {
+      "MILK": 238,
+      "WOOL": 11,
+      "EGG": 58
+     },
+     {
+      "MILK": 244,
+      "WOOL": 18,
+      "EGG": 59
+     },
+     {
+      "MILK": 250,
+      "WOOL": 24,
+      "EGG": 60
+     },
+     {
+      "MILK": 253,
+      "WOOL": 31,
+      "EGG": 61
+     },
+     {
+      "MILK": 258,
+      "WOOL": 37,
+      "EGG": 62
+     },
+     {
+      "MILK": 261,
+      "WOOL": 43,
+      "EGG": 63
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 65
+     },
+     {
+      "MILK": 268,
+      "WOOL": 5,
+      "EGG": 66
+     },
+     {
+      "MILK": 274,
+      "WOOL": 11,
+      "EGG": 67
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 18,
+     "MILK": 1
+    },
+    "unsold_units": 19,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.5788,
+    "latency_p50_ms": 1.1404,
+    "latency_p99_ms": 8.976,
+    "latency_max_ms": 39.0876,
+    "latency_max_step": 564,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8588.0,
+     9365.0,
+     13184.0,
+     15675.0,
+     16776.0,
+     18731.0,
+     19597.0,
+     22326.0,
+     24562.0,
+     25347.0,
+     26241.0,
+     28268.0,
+     31253.0,
+     32244.0,
+     33066.0,
+     35177.0,
+     36445.0,
+     39153.0,
+     40058.0,
+     42900.0,
+     42963.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4596,
+    "effective_rate": 0.947,
+    "travel": 2806,
+    "categories": {
+     "build": 6,
+     "move": 2806,
+     "logistics": 406,
+     "plant": 130,
+     "water": 584,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 13,
+     "idle": 257,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5782,
+     "logistics": 0.0837,
+     "plant": 0.0268,
+     "water": 0.1203,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0027,
+     "idle": 0.053,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 935,
+     "WEST": 766,
+     "PICKUP": 301,
+     "EAST": 512,
+     "PLACE": 6,
+     "SOUTH": 593,
+     "PLANT": 130,
+     "WATER": 584,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 13,
+     "PASS": 257,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 212
+    },
+    "sell_requested": {
+     "WHEAT": 1439,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 43267,
+     "FERTILIZER": 10641,
+     "WOOL": 6069,
+     "MILK": 22990
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 189,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 151,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 53
+     },
+     {
+      "MILK": 198,
+      "WOOL": 112,
+      "EGG": 53
+     },
+     {
+      "MILK": 199,
+      "WOOL": 77,
+      "EGG": 54
+     },
+     {
+      "MILK": 205,
+      "WOOL": 37,
+      "EGG": 54
+     },
+     {
+      "MILK": 211,
+      "WOOL": 43,
+      "EGG": 55
+     },
+     {
+      "MILK": 216,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 224,
+      "WOOL": 55,
+      "EGG": 55
+     },
+     {
+      "MILK": 231,
+      "WOOL": 1,
+      "EGG": 56
+     },
+     {
+      "MILK": 235,
+      "WOOL": 5,
+      "EGG": 57
+     },
+     {
+      "MILK": 238,
+      "WOOL": 11,
+      "EGG": 58
+     },
+     {
+      "MILK": 244,
+      "WOOL": 18,
+      "EGG": 59
+     },
+     {
+      "MILK": 250,
+      "WOOL": 24,
+      "EGG": 60
+     },
+     {
+      "MILK": 253,
+      "WOOL": 31,
+      "EGG": 61
+     },
+     {
+      "MILK": 258,
+      "WOOL": 37,
+      "EGG": 62
+     },
+     {
+      "MILK": 261,
+      "WOOL": 43,
+      "EGG": 63
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 65
+     },
+     {
+      "MILK": 268,
+      "WOOL": 5,
+      "EGG": 66
+     },
+     {
+      "MILK": 274,
+      "WOOL": 11,
+      "EGG": 67
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.2057,
+    "latency_p50_ms": 0.9172,
+    "latency_p99_ms": 8.234,
+    "latency_max_ms": 25.4913,
+    "latency_max_step": 52,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8588.0,
+     9365.0,
+     13184.0,
+     15675.0,
+     16776.0,
+     18731.0,
+     19597.0,
+     22326.0,
+     24562.0,
+     25347.0,
+     26241.0,
+     28268.0,
+     31253.0,
+     32244.0,
+     33066.0,
+     35177.0,
+     36445.0,
+     39153.0,
+     40058.0,
+     42528.0,
+     42933.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 4,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   44994.0,
+   45923.0
+  ],
+  "rewards": [
+   44994.0,
+   45923.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 1,
+  "wall_seconds": 29.939,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 213
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 43031,
+     "FERTILIZER": 10641,
+     "WOOL": 6069,
+     "MILK": 22990
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 189,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 151,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 53
+     },
+     {
+      "MILK": 198,
+      "WOOL": 112,
+      "EGG": 53
+     },
+     {
+      "MILK": 199,
+      "WOOL": 77,
+      "EGG": 54
+     },
+     {
+      "MILK": 205,
+      "WOOL": 37,
+      "EGG": 54
+     },
+     {
+      "MILK": 211,
+      "WOOL": 43,
+      "EGG": 55
+     },
+     {
+      "MILK": 216,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 224,
+      "WOOL": 55,
+      "EGG": 55
+     },
+     {
+      "MILK": 231,
+      "WOOL": 1,
+      "EGG": 56
+     },
+     {
+      "MILK": 235,
+      "WOOL": 5,
+      "EGG": 57
+     },
+     {
+      "MILK": 238,
+      "WOOL": 11,
+      "EGG": 58
+     },
+     {
+      "MILK": 244,
+      "WOOL": 18,
+      "EGG": 59
+     },
+     {
+      "MILK": 250,
+      "WOOL": 24,
+      "EGG": 60
+     },
+     {
+      "MILK": 253,
+      "WOOL": 31,
+      "EGG": 61
+     },
+     {
+      "MILK": 258,
+      "WOOL": 37,
+      "EGG": 62
+     },
+     {
+      "MILK": 261,
+      "WOOL": 43,
+      "EGG": 63
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 65
+     },
+     {
+      "MILK": 268,
+      "WOOL": 5,
+      "EGG": 66
+     },
+     {
+      "MILK": 274,
+      "WOOL": 11,
+      "EGG": 67
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6381,
+    "latency_p50_ms": 1.0741,
+    "latency_p99_ms": 10.0571,
+    "latency_max_ms": 29.9713,
+    "latency_max_step": 279,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8588.0,
+     9365.0,
+     13184.0,
+     15675.0,
+     16776.0,
+     18731.0,
+     19597.0,
+     22326.0,
+     24562.0,
+     25347.0,
+     26241.0,
+     28268.0,
+     31253.0,
+     32244.0,
+     33066.0,
+     35177.0,
+     36445.0,
+     39153.0,
+     40058.0,
+     42900.0,
+     42963.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4594,
+    "effective_rate": 0.9466,
+    "travel": 2800,
+    "categories": {
+     "build": 6,
+     "move": 2800,
+     "logistics": 405,
+     "plant": 130,
+     "water": 584,
+     "feed": 167,
+     "care": 165,
+     "fertilizer": 156,
+     "clear": 13,
+     "idle": 259,
+     "harvest": 168
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.577,
+     "logistics": 0.0835,
+     "plant": 0.0268,
+     "water": 0.1203,
+     "feed": 0.0344,
+     "care": 0.034,
+     "fertilizer": 0.0321,
+     "clear": 0.0027,
+     "idle": 0.0534,
+     "harvest": 0.0346
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 933,
+     "WEST": 765,
+     "PICKUP": 299,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 591,
+     "PLANT": 130,
+     "WATER": 584,
+     "DROP": 100,
+     "FEED": 167,
+     "CARE": 165,
+     "COLLECT_FERTILIZER": 156,
+     "DIG": 13,
+     "PASS": 259,
+     "HARVEST": 168
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 452,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "harvested_units": 646,
+    "fertilizer_collected": 156,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 215
+    },
+    "sell_requested": {
+     "WHEAT": 1451,
+     "FERTILIZER": 153,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "sell_revenue": {
+     "WHEAT": 43647,
+     "FERTILIZER": 10680,
+     "WOOL": 6069,
+     "MILK": 23545
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 189,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 151,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 107,
+      "EGG": 53
+     },
+     {
+      "MILK": 198,
+      "WOOL": 112,
+      "EGG": 53
+     },
+     {
+      "MILK": 199,
+      "WOOL": 77,
+      "EGG": 54
+     },
+     {
+      "MILK": 205,
+      "WOOL": 37,
+      "EGG": 54
+     },
+     {
+      "MILK": 211,
+      "WOOL": 43,
+      "EGG": 55
+     },
+     {
+      "MILK": 216,
+      "WOOL": 49,
+      "EGG": 55
+     },
+     {
+      "MILK": 224,
+      "WOOL": 55,
+      "EGG": 55
+     },
+     {
+      "MILK": 231,
+      "WOOL": 1,
+      "EGG": 56
+     },
+     {
+      "MILK": 235,
+      "WOOL": 5,
+      "EGG": 57
+     },
+     {
+      "MILK": 238,
+      "WOOL": 11,
+      "EGG": 58
+     },
+     {
+      "MILK": 244,
+      "WOOL": 18,
+      "EGG": 59
+     },
+     {
+      "MILK": 250,
+      "WOOL": 24,
+      "EGG": 60
+     },
+     {
+      "MILK": 253,
+      "WOOL": 31,
+      "EGG": 61
+     },
+     {
+      "MILK": 258,
+      "WOOL": 37,
+      "EGG": 62
+     },
+     {
+      "MILK": 261,
+      "WOOL": 43,
+      "EGG": 63
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 65
+     },
+     {
+      "MILK": 268,
+      "WOOL": 5,
+      "EGG": 66
+     },
+     {
+      "MILK": 274,
+      "WOOL": 11,
+      "EGG": 67
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 18,
+     "MILK": 1
+    },
+    "unsold_units": 19,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.8526,
+    "latency_p50_ms": 1.2777,
+    "latency_p99_ms": 12.1155,
+    "latency_max_ms": 36.8826,
+    "latency_max_step": 257,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     8588.0,
+     9365.0,
+     13184.0,
+     15675.0,
+     16776.0,
+     18731.0,
+     19597.0,
+     22326.0,
+     24562.0,
+     25347.0,
+     26241.0,
+     28268.0,
+     31253.0,
+     32244.0,
+     33066.0,
+     35177.0,
+     36445.0,
+     39153.0,
+     40058.0,
+     42528.0,
+     42933.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 5,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   35970.0,
+   35970.0
+  ],
+  "rewards": [
+   35970.0,
+   35970.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 27.611,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 219
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 48759,
+     "FERTILIZER": 10641,
+     "WOOL": 9082,
+     "MILK": 10404
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 7,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 54
+     },
+     {
+      "MILK": 105,
+      "WOOL": 189,
+      "EGG": 55
+     },
+     {
+      "MILK": 95,
+      "WOOL": 151,
+      "EGG": 56
+     },
+     {
+      "MILK": 72,
+      "WOOL": 107,
+      "EGG": 57
+     },
+     {
+      "MILK": 74,
+      "WOOL": 112,
+      "EGG": 58
+     },
+     {
+      "MILK": 63,
+      "WOOL": 77,
+      "EGG": 60
+     },
+     {
+      "MILK": 66,
+      "WOOL": 37,
+      "EGG": 61
+     },
+     {
+      "MILK": 55,
+      "WOOL": 43,
+      "EGG": 62
+     },
+     {
+      "MILK": 45,
+      "WOOL": 49,
+      "EGG": 64
+     },
+     {
+      "MILK": 47,
+      "WOOL": 55,
+      "EGG": 65
+     },
+     {
+      "MILK": 61,
+      "WOOL": 1,
+      "EGG": 67
+     },
+     {
+      "MILK": 63,
+      "WOOL": 5,
+      "EGG": 68
+     },
+     {
+      "MILK": 66,
+      "WOOL": 11,
+      "EGG": 70
+     },
+     {
+      "MILK": 80,
+      "WOOL": 18,
+      "EGG": 72
+     },
+     {
+      "MILK": 95,
+      "WOOL": 49,
+      "EGG": 76
+     },
+     {
+      "MILK": 97,
+      "WOOL": 77,
+      "EGG": 81
+     },
+     {
+      "MILK": 124,
+      "WOOL": 102,
+      "EGG": 89
+     },
+     {
+      "MILK": 139,
+      "WOOL": 125,
+      "EGG": 98
+     },
+     {
+      "MILK": 175,
+      "WOOL": 112,
+      "EGG": 109
+     },
+     {
+      "MILK": 187,
+      "WOOL": 161,
+      "EGG": 122
+     },
+     {
+      "MILK": 207,
+      "WOOL": 190,
+      "EGG": 137
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 2.0068,
+    "latency_p50_ms": 1.216,
+    "latency_p99_ms": 15.5415,
+    "latency_max_ms": 39.4555,
+    "latency_max_step": 448,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     7986.0,
+     8304.0,
+     11883.0,
+     13747.0,
+     14479.0,
+     15647.0,
+     16103.0,
+     18149.0,
+     19526.0,
+     19712.0,
+     20064.0,
+     21089.0,
+     23396.0,
+     24016.0,
+     24539.0,
+     25934.0,
+     27075.0,
+     29403.0,
+     30986.0,
+     33190.0,
+     33243.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 219
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 48759,
+     "FERTILIZER": 10641,
+     "WOOL": 9082,
+     "MILK": 10404
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 7,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 54
+     },
+     {
+      "MILK": 105,
+      "WOOL": 189,
+      "EGG": 55
+     },
+     {
+      "MILK": 95,
+      "WOOL": 151,
+      "EGG": 56
+     },
+     {
+      "MILK": 72,
+      "WOOL": 107,
+      "EGG": 57
+     },
+     {
+      "MILK": 74,
+      "WOOL": 112,
+      "EGG": 58
+     },
+     {
+      "MILK": 63,
+      "WOOL": 77,
+      "EGG": 60
+     },
+     {
+      "MILK": 66,
+      "WOOL": 37,
+      "EGG": 61
+     },
+     {
+      "MILK": 55,
+      "WOOL": 43,
+      "EGG": 62
+     },
+     {
+      "MILK": 45,
+      "WOOL": 49,
+      "EGG": 64
+     },
+     {
+      "MILK": 47,
+      "WOOL": 55,
+      "EGG": 65
+     },
+     {
+      "MILK": 61,
+      "WOOL": 1,
+      "EGG": 67
+     },
+     {
+      "MILK": 63,
+      "WOOL": 5,
+      "EGG": 68
+     },
+     {
+      "MILK": 66,
+      "WOOL": 11,
+      "EGG": 70
+     },
+     {
+      "MILK": 80,
+      "WOOL": 18,
+      "EGG": 72
+     },
+     {
+      "MILK": 95,
+      "WOOL": 49,
+      "EGG": 76
+     },
+     {
+      "MILK": 97,
+      "WOOL": 77,
+      "EGG": 81
+     },
+     {
+      "MILK": 124,
+      "WOOL": 102,
+      "EGG": 89
+     },
+     {
+      "MILK": 139,
+      "WOOL": 125,
+      "EGG": 98
+     },
+     {
+      "MILK": 175,
+      "WOOL": 112,
+      "EGG": 109
+     },
+     {
+      "MILK": 187,
+      "WOOL": 161,
+      "EGG": 122
+     },
+     {
+      "MILK": 207,
+      "WOOL": 190,
+      "EGG": 137
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.3232,
+    "latency_p50_ms": 0.9543,
+    "latency_p99_ms": 8.258,
+    "latency_max_ms": 26.6751,
+    "latency_max_step": 56,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     7986.0,
+     8304.0,
+     11883.0,
+     13747.0,
+     14479.0,
+     15647.0,
+     16103.0,
+     18149.0,
+     19526.0,
+     19712.0,
+     20064.0,
+     21089.0,
+     23396.0,
+     24016.0,
+     24539.0,
+     25934.0,
+     27075.0,
+     29403.0,
+     30986.0,
+     33190.0,
+     33243.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 5,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   35970.0,
+   35970.0
+  ],
+  "rewards": [
+   35970.0,
+   35970.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 28.268,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 219
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 48759,
+     "FERTILIZER": 10641,
+     "WOOL": 9082,
+     "MILK": 10404
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 7,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 54
+     },
+     {
+      "MILK": 105,
+      "WOOL": 189,
+      "EGG": 55
+     },
+     {
+      "MILK": 95,
+      "WOOL": 151,
+      "EGG": 56
+     },
+     {
+      "MILK": 72,
+      "WOOL": 107,
+      "EGG": 57
+     },
+     {
+      "MILK": 74,
+      "WOOL": 112,
+      "EGG": 58
+     },
+     {
+      "MILK": 63,
+      "WOOL": 77,
+      "EGG": 60
+     },
+     {
+      "MILK": 66,
+      "WOOL": 37,
+      "EGG": 61
+     },
+     {
+      "MILK": 55,
+      "WOOL": 43,
+      "EGG": 62
+     },
+     {
+      "MILK": 45,
+      "WOOL": 49,
+      "EGG": 64
+     },
+     {
+      "MILK": 47,
+      "WOOL": 55,
+      "EGG": 65
+     },
+     {
+      "MILK": 61,
+      "WOOL": 1,
+      "EGG": 67
+     },
+     {
+      "MILK": 63,
+      "WOOL": 5,
+      "EGG": 68
+     },
+     {
+      "MILK": 66,
+      "WOOL": 11,
+      "EGG": 70
+     },
+     {
+      "MILK": 80,
+      "WOOL": 18,
+      "EGG": 72
+     },
+     {
+      "MILK": 95,
+      "WOOL": 49,
+      "EGG": 76
+     },
+     {
+      "MILK": 97,
+      "WOOL": 77,
+      "EGG": 81
+     },
+     {
+      "MILK": 124,
+      "WOOL": 102,
+      "EGG": 89
+     },
+     {
+      "MILK": 139,
+      "WOOL": 125,
+      "EGG": 98
+     },
+     {
+      "MILK": 175,
+      "WOOL": 112,
+      "EGG": 109
+     },
+     {
+      "MILK": 187,
+      "WOOL": 161,
+      "EGG": 122
+     },
+     {
+      "MILK": 207,
+      "WOOL": 190,
+      "EGG": 137
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.7413,
+    "latency_p50_ms": 1.0051,
+    "latency_p99_ms": 11.1624,
+    "latency_max_ms": 44.6848,
+    "latency_max_step": 212,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     7986.0,
+     8304.0,
+     11883.0,
+     13747.0,
+     14479.0,
+     15647.0,
+     16103.0,
+     18149.0,
+     19526.0,
+     19712.0,
+     20064.0,
+     21089.0,
+     23396.0,
+     24016.0,
+     24539.0,
+     25934.0,
+     27075.0,
+     29403.0,
+     30986.0,
+     33190.0,
+     33243.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 219
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 48759,
+     "FERTILIZER": 10641,
+     "WOOL": 9082,
+     "MILK": 10404
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 7,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 51
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 51
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 51
+     },
+     {
+      "MILK": 183,
+      "WOOL": 218,
+      "EGG": 52
+     },
+     {
+      "MILK": 185,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 129,
+      "WOOL": 187,
+      "EGG": 54
+     },
+     {
+      "MILK": 105,
+      "WOOL": 189,
+      "EGG": 55
+     },
+     {
+      "MILK": 95,
+      "WOOL": 151,
+      "EGG": 56
+     },
+     {
+      "MILK": 72,
+      "WOOL": 107,
+      "EGG": 57
+     },
+     {
+      "MILK": 74,
+      "WOOL": 112,
+      "EGG": 58
+     },
+     {
+      "MILK": 63,
+      "WOOL": 77,
+      "EGG": 60
+     },
+     {
+      "MILK": 66,
+      "WOOL": 37,
+      "EGG": 61
+     },
+     {
+      "MILK": 55,
+      "WOOL": 43,
+      "EGG": 62
+     },
+     {
+      "MILK": 45,
+      "WOOL": 49,
+      "EGG": 64
+     },
+     {
+      "MILK": 47,
+      "WOOL": 55,
+      "EGG": 65
+     },
+     {
+      "MILK": 61,
+      "WOOL": 1,
+      "EGG": 67
+     },
+     {
+      "MILK": 63,
+      "WOOL": 5,
+      "EGG": 68
+     },
+     {
+      "MILK": 66,
+      "WOOL": 11,
+      "EGG": 70
+     },
+     {
+      "MILK": 80,
+      "WOOL": 18,
+      "EGG": 72
+     },
+     {
+      "MILK": 95,
+      "WOOL": 49,
+      "EGG": 76
+     },
+     {
+      "MILK": 97,
+      "WOOL": 77,
+      "EGG": 81
+     },
+     {
+      "MILK": 124,
+      "WOOL": 102,
+      "EGG": 89
+     },
+     {
+      "MILK": 139,
+      "WOOL": 125,
+      "EGG": 98
+     },
+     {
+      "MILK": 175,
+      "WOOL": 112,
+      "EGG": 109
+     },
+     {
+      "MILK": 187,
+      "WOOL": 161,
+      "EGG": 122
+     },
+     {
+      "MILK": 207,
+      "WOOL": 190,
+      "EGG": 137
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.7271,
+    "latency_p50_ms": 1.2322,
+    "latency_p99_ms": 9.7215,
+    "latency_max_ms": 60.3474,
+    "latency_max_step": 475,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     994.0,
+     798.0,
+     1719.0,
+     2089.0,
+     4210.0,
+     7986.0,
+     8304.0,
+     11883.0,
+     13747.0,
+     14479.0,
+     15647.0,
+     16103.0,
+     18149.0,
+     19526.0,
+     19712.0,
+     20064.0,
+     21089.0,
+     23396.0,
+     24016.0,
+     24539.0,
+     25934.0,
+     27075.0,
+     29403.0,
+     30986.0,
+     33190.0,
+     33243.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 6,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   42083.0,
+   41234.0
+  ],
+  "rewards": [
+   42083.0,
+   41234.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 0,
+  "wall_seconds": 28.638,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4595,
+    "effective_rate": 0.9468,
+    "travel": 2799,
+    "categories": {
+     "build": 6,
+     "move": 2799,
+     "logistics": 408,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 165,
+     "fertilizer": 156,
+     "clear": 11,
+     "idle": 258,
+     "harvest": 168
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5768,
+     "logistics": 0.0841,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.034,
+     "fertilizer": 0.0321,
+     "clear": 0.0023,
+     "idle": 0.0532,
+     "harvest": 0.0346
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 935,
+     "WEST": 764,
+     "PICKUP": 302,
+     "EAST": 510,
+     "PLACE": 6,
+     "SOUTH": 590,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 100,
+     "FEED": 167,
+     "CARE": 165,
+     "COLLECT_FERTILIZER": 156,
+     "DIG": 11,
+     "PASS": 258,
+     "HARVEST": 168
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 452,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "harvested_units": 646,
+    "fertilizer_collected": 156,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1443,
+     "FERTILIZER": 153,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "sell_revenue": {
+     "WHEAT": 32253,
+     "FERTILIZER": 10680,
+     "WOOL": 6069,
+     "MILK": 21915
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 156,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 158,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 147,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 169,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 172,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 186,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 195,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 202,
+      "WOOL": 49,
+      "EGG": 51
+     },
+     {
+      "MILK": 212,
+      "WOOL": 55,
+      "EGG": 51
+     },
+     {
+      "MILK": 221,
+      "WOOL": 1,
+      "EGG": 52
+     },
+     {
+      "MILK": 225,
+      "WOOL": 5,
+      "EGG": 52
+     },
+     {
+      "MILK": 229,
+      "WOOL": 11,
+      "EGG": 52
+     },
+     {
+      "MILK": 236,
+      "WOOL": 18,
+      "EGG": 53
+     },
+     {
+      "MILK": 242,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 245,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 253,
+      "WOOL": 37,
+      "EGG": 55
+     },
+     {
+      "MILK": 258,
+      "WOOL": 43,
+      "EGG": 56
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 57
+     },
+     {
+      "MILK": 270,
+      "WOOL": 5,
+      "EGG": 58
+     },
+     {
+      "MILK": 278,
+      "WOOL": 11,
+      "EGG": 59
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 18,
+     "MILK": 1
+    },
+    "unsold_units": 19,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.8393,
+    "latency_p50_ms": 1.258,
+    "latency_p99_ms": 11.9722,
+    "latency_max_ms": 30.7423,
+    "latency_max_step": 416,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2067.0,
+     4133.0,
+     8324.0,
+     8968.0,
+     12320.0,
+     14530.0,
+     15502.0,
+     17290.0,
+     18112.0,
+     20420.0,
+     22555.0,
+     23285.0,
+     24200.0,
+     26041.0,
+     28778.0,
+     29719.0,
+     30550.0,
+     32480.0,
+     33637.0,
+     36059.0,
+     36959.0,
+     39535.0,
+     39575.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 213
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32001,
+     "FERTILIZER": 10641,
+     "WOOL": 6069,
+     "MILK": 21349
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 156,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 158,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 147,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 169,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 172,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 186,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 195,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 202,
+      "WOOL": 49,
+      "EGG": 51
+     },
+     {
+      "MILK": 212,
+      "WOOL": 55,
+      "EGG": 51
+     },
+     {
+      "MILK": 221,
+      "WOOL": 1,
+      "EGG": 52
+     },
+     {
+      "MILK": 225,
+      "WOOL": 5,
+      "EGG": 52
+     },
+     {
+      "MILK": 229,
+      "WOOL": 11,
+      "EGG": 52
+     },
+     {
+      "MILK": 236,
+      "WOOL": 18,
+      "EGG": 53
+     },
+     {
+      "MILK": 242,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 245,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 253,
+      "WOOL": 37,
+      "EGG": 55
+     },
+     {
+      "MILK": 258,
+      "WOOL": 43,
+      "EGG": 56
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 57
+     },
+     {
+      "MILK": 270,
+      "WOOL": 5,
+      "EGG": 58
+     },
+     {
+      "MILK": 278,
+      "WOOL": 11,
+      "EGG": 59
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.3854,
+    "latency_p50_ms": 0.9895,
+    "latency_p99_ms": 9.3531,
+    "latency_max_ms": 11.9172,
+    "latency_max_step": 429,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2067.0,
+     4133.0,
+     8324.0,
+     8968.0,
+     12320.0,
+     14530.0,
+     15502.0,
+     17290.0,
+     18112.0,
+     20420.0,
+     22555.0,
+     23285.0,
+     24200.0,
+     26041.0,
+     28778.0,
+     29719.0,
+     30550.0,
+     32480.0,
+     33637.0,
+     36059.0,
+     36959.0,
+     39535.0,
+     39575.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 6,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   41234.0,
+   42083.0
+  ],
+  "rewards": [
+   41234.0,
+   42083.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": 1,
+  "wall_seconds": 26.288,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 213
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32001,
+     "FERTILIZER": 10641,
+     "WOOL": 6069,
+     "MILK": 21349
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 156,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 158,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 147,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 169,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 172,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 186,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 195,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 202,
+      "WOOL": 49,
+      "EGG": 51
+     },
+     {
+      "MILK": 212,
+      "WOOL": 55,
+      "EGG": 51
+     },
+     {
+      "MILK": 221,
+      "WOOL": 1,
+      "EGG": 52
+     },
+     {
+      "MILK": 225,
+      "WOOL": 5,
+      "EGG": 52
+     },
+     {
+      "MILK": 229,
+      "WOOL": 11,
+      "EGG": 52
+     },
+     {
+      "MILK": 236,
+      "WOOL": 18,
+      "EGG": 53
+     },
+     {
+      "MILK": 242,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 245,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 253,
+      "WOOL": 37,
+      "EGG": 55
+     },
+     {
+      "MILK": 258,
+      "WOOL": 43,
+      "EGG": 56
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 57
+     },
+     {
+      "MILK": 270,
+      "WOOL": 5,
+      "EGG": 58
+     },
+     {
+      "MILK": 278,
+      "WOOL": 11,
+      "EGG": 59
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.5359,
+    "latency_p50_ms": 0.976,
+    "latency_p99_ms": 9.8508,
+    "latency_max_ms": 41.2916,
+    "latency_max_step": 86,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2067.0,
+     4133.0,
+     8324.0,
+     8968.0,
+     12320.0,
+     14530.0,
+     15502.0,
+     17290.0,
+     18112.0,
+     20420.0,
+     22555.0,
+     23285.0,
+     24200.0,
+     26041.0,
+     28778.0,
+     29719.0,
+     30550.0,
+     32480.0,
+     33637.0,
+     36059.0,
+     36959.0,
+     39535.0,
+     39575.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4595,
+    "effective_rate": 0.9468,
+    "travel": 2799,
+    "categories": {
+     "build": 6,
+     "move": 2799,
+     "logistics": 408,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 165,
+     "fertilizer": 156,
+     "clear": 11,
+     "idle": 258,
+     "harvest": 168
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.5768,
+     "logistics": 0.0841,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.034,
+     "fertilizer": 0.0321,
+     "clear": 0.0023,
+     "idle": 0.0532,
+     "harvest": 0.0346
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 935,
+     "WEST": 764,
+     "PICKUP": 302,
+     "EAST": 510,
+     "PLACE": 6,
+     "SOUTH": 590,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 100,
+     "FEED": 167,
+     "CARE": 165,
+     "COLLECT_FERTILIZER": 156,
+     "DIG": 11,
+     "PASS": 258,
+     "HARVEST": 168
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 452,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "harvested_units": 646,
+    "fertilizer_collected": 156,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 216
+    },
+    "sell_requested": {
+     "WHEAT": 1443,
+     "FERTILIZER": 153,
+     "WOOL": 90,
+     "MILK": 104
+    },
+    "sell_revenue": {
+     "WHEAT": 32253,
+     "FERTILIZER": 10680,
+     "WOOL": 6069,
+     "MILK": 21915
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 36,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 177,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 179,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 181,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 191,
+      "WOOL": 218,
+      "EGG": 50
+     },
+     {
+      "MILK": 199,
+      "WOOL": 199,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 187,
+      "EGG": 51
+     },
+     {
+      "MILK": 156,
+      "WOOL": 189,
+      "EGG": 51
+     },
+     {
+      "MILK": 158,
+      "WOOL": 151,
+      "EGG": 51
+     },
+     {
+      "MILK": 147,
+      "WOOL": 107,
+      "EGG": 51
+     },
+     {
+      "MILK": 169,
+      "WOOL": 112,
+      "EGG": 51
+     },
+     {
+      "MILK": 172,
+      "WOOL": 77,
+      "EGG": 51
+     },
+     {
+      "MILK": 186,
+      "WOOL": 37,
+      "EGG": 51
+     },
+     {
+      "MILK": 195,
+      "WOOL": 43,
+      "EGG": 51
+     },
+     {
+      "MILK": 202,
+      "WOOL": 49,
+      "EGG": 51
+     },
+     {
+      "MILK": 212,
+      "WOOL": 55,
+      "EGG": 51
+     },
+     {
+      "MILK": 221,
+      "WOOL": 1,
+      "EGG": 52
+     },
+     {
+      "MILK": 225,
+      "WOOL": 5,
+      "EGG": 52
+     },
+     {
+      "MILK": 229,
+      "WOOL": 11,
+      "EGG": 52
+     },
+     {
+      "MILK": 236,
+      "WOOL": 18,
+      "EGG": 53
+     },
+     {
+      "MILK": 242,
+      "WOOL": 24,
+      "EGG": 54
+     },
+     {
+      "MILK": 245,
+      "WOOL": 31,
+      "EGG": 55
+     },
+     {
+      "MILK": 253,
+      "WOOL": 37,
+      "EGG": 55
+     },
+     {
+      "MILK": 258,
+      "WOOL": 43,
+      "EGG": 56
+     },
+     {
+      "MILK": 265,
+      "WOOL": 49,
+      "EGG": 57
+     },
+     {
+      "MILK": 270,
+      "WOOL": 5,
+      "EGG": 58
+     },
+     {
+      "MILK": 278,
+      "WOOL": 11,
+      "EGG": 59
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 18,
+     "MILK": 1
+    },
+    "unsold_units": 19,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6768,
+    "latency_p50_ms": 1.1141,
+    "latency_p99_ms": 10.9001,
+    "latency_max_ms": 60.7702,
+    "latency_max_step": 78,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2067.0,
+     4133.0,
+     8324.0,
+     8968.0,
+     12320.0,
+     14530.0,
+     15502.0,
+     17290.0,
+     18112.0,
+     20420.0,
+     22555.0,
+     23285.0,
+     24200.0,
+     26041.0,
+     28778.0,
+     29719.0,
+     30550.0,
+     32480.0,
+     33637.0,
+     36059.0,
+     36959.0,
+     39535.0,
+     39575.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ },
+ {
+  "seed": 7,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B2",
+   "B0"
+  ],
+  "money": [
+   54356.0,
+   54356.0
+  ],
+  "rewards": [
+   54356.0,
+   54356.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 25.966,
+  "failure": null,
+  "players": [
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32545,
+     "FERTILIZER": 10641,
+     "WOOL": 20137,
+     "MILK": 19954
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 200,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 191,
+      "WOOL": 220,
+      "EGG": 53
+     },
+     {
+      "MILK": 185,
+      "WOOL": 223,
+      "EGG": 54
+     },
+     {
+      "MILK": 186,
+      "WOOL": 226,
+      "EGG": 54
+     },
+     {
+      "MILK": 177,
+      "WOOL": 228,
+      "EGG": 55
+     },
+     {
+      "MILK": 158,
+      "WOOL": 229,
+      "EGG": 56
+     },
+     {
+      "MILK": 160,
+      "WOOL": 228,
+      "EGG": 57
+     },
+     {
+      "MILK": 183,
+      "WOOL": 230,
+      "EGG": 57
+     },
+     {
+      "MILK": 185,
+      "WOOL": 233,
+      "EGG": 58
+     },
+     {
+      "MILK": 186,
+      "WOOL": 234,
+      "EGG": 59
+     },
+     {
+      "MILK": 195,
+      "WOOL": 233,
+      "EGG": 60
+     },
+     {
+      "MILK": 202,
+      "WOOL": 235,
+      "EGG": 61
+     },
+     {
+      "MILK": 203,
+      "WOOL": 236,
+      "EGG": 62
+     },
+     {
+      "MILK": 208,
+      "WOOL": 236,
+      "EGG": 63
+     },
+     {
+      "MILK": 209,
+      "WOOL": 237,
+      "EGG": 65
+     },
+     {
+      "MILK": 214,
+      "WOOL": 237,
+      "EGG": 66
+     },
+     {
+      "MILK": 215,
+      "WOOL": 238,
+      "EGG": 67
+     },
+     {
+      "MILK": 223,
+      "WOOL": 239,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6758,
+    "latency_p50_ms": 1.2448,
+    "latency_p99_ms": 7.4538,
+    "latency_max_ms": 18.0562,
+    "latency_max_step": 146,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4155.0,
+     8538.0,
+     9360.0,
+     13136.0,
+     16007.0,
+     17077.0,
+     19517.0,
+     21000.0,
+     24241.0,
+     27125.0,
+     29546.0,
+     31078.0,
+     32633.0,
+     36065.0,
+     38738.0,
+     39451.0,
+     42065.0,
+     44036.0,
+     47122.0,
+     49771.0,
+     51878.0,
+     51920.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32545,
+     "FERTILIZER": 10641,
+     "WOOL": 20137,
+     "MILK": 19954
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 200,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 191,
+      "WOOL": 220,
+      "EGG": 53
+     },
+     {
+      "MILK": 185,
+      "WOOL": 223,
+      "EGG": 54
+     },
+     {
+      "MILK": 186,
+      "WOOL": 226,
+      "EGG": 54
+     },
+     {
+      "MILK": 177,
+      "WOOL": 228,
+      "EGG": 55
+     },
+     {
+      "MILK": 158,
+      "WOOL": 229,
+      "EGG": 56
+     },
+     {
+      "MILK": 160,
+      "WOOL": 228,
+      "EGG": 57
+     },
+     {
+      "MILK": 183,
+      "WOOL": 230,
+      "EGG": 57
+     },
+     {
+      "MILK": 185,
+      "WOOL": 233,
+      "EGG": 58
+     },
+     {
+      "MILK": 186,
+      "WOOL": 234,
+      "EGG": 59
+     },
+     {
+      "MILK": 195,
+      "WOOL": 233,
+      "EGG": 60
+     },
+     {
+      "MILK": 202,
+      "WOOL": 235,
+      "EGG": 61
+     },
+     {
+      "MILK": 203,
+      "WOOL": 236,
+      "EGG": 62
+     },
+     {
+      "MILK": 208,
+      "WOOL": 236,
+      "EGG": 63
+     },
+     {
+      "MILK": 209,
+      "WOOL": 237,
+      "EGG": 65
+     },
+     {
+      "MILK": 214,
+      "WOOL": 237,
+      "EGG": 66
+     },
+     {
+      "MILK": 215,
+      "WOOL": 238,
+      "EGG": 67
+     },
+     {
+      "MILK": 223,
+      "WOOL": 239,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.3235,
+    "latency_p50_ms": 0.9344,
+    "latency_p99_ms": 6.7777,
+    "latency_max_ms": 24.0528,
+    "latency_max_step": 422,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4155.0,
+     8538.0,
+     9360.0,
+     13136.0,
+     16007.0,
+     17077.0,
+     19517.0,
+     21000.0,
+     24241.0,
+     27125.0,
+     29546.0,
+     31078.0,
+     32633.0,
+     36065.0,
+     38738.0,
+     39451.0,
+     42065.0,
+     44036.0,
+     47122.0,
+     49771.0,
+     51878.0,
+     51920.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 0
+ },
+ {
+  "seed": 7,
+  "episode_steps": 720,
+  "turns_played": 719,
+  "agents": [
+   "B0",
+   "B2"
+  ],
+  "money": [
+   54356.0,
+   54356.0
+  ],
+  "rewards": [
+   54356.0,
+   54356.0
+  ],
+  "statuses": [
+   "DONE",
+   "DONE"
+  ],
+  "winner": null,
+  "wall_seconds": 22.234,
+  "failure": null,
+  "players": [
+   {
+    "name": "B0",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32545,
+     "FERTILIZER": 10641,
+     "WOOL": 20137,
+     "MILK": 19954
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 200,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 191,
+      "WOOL": 220,
+      "EGG": 53
+     },
+     {
+      "MILK": 185,
+      "WOOL": 223,
+      "EGG": 54
+     },
+     {
+      "MILK": 186,
+      "WOOL": 226,
+      "EGG": 54
+     },
+     {
+      "MILK": 177,
+      "WOOL": 228,
+      "EGG": 55
+     },
+     {
+      "MILK": 158,
+      "WOOL": 229,
+      "EGG": 56
+     },
+     {
+      "MILK": 160,
+      "WOOL": 228,
+      "EGG": 57
+     },
+     {
+      "MILK": 183,
+      "WOOL": 230,
+      "EGG": 57
+     },
+     {
+      "MILK": 185,
+      "WOOL": 233,
+      "EGG": 58
+     },
+     {
+      "MILK": 186,
+      "WOOL": 234,
+      "EGG": 59
+     },
+     {
+      "MILK": 195,
+      "WOOL": 233,
+      "EGG": 60
+     },
+     {
+      "MILK": 202,
+      "WOOL": 235,
+      "EGG": 61
+     },
+     {
+      "MILK": 203,
+      "WOOL": 236,
+      "EGG": 62
+     },
+     {
+      "MILK": 208,
+      "WOOL": 236,
+      "EGG": 63
+     },
+     {
+      "MILK": 209,
+      "WOOL": 237,
+      "EGG": 65
+     },
+     {
+      "MILK": 214,
+      "WOOL": 237,
+      "EGG": 66
+     },
+     {
+      "MILK": 215,
+      "WOOL": 238,
+      "EGG": 67
+     },
+     {
+      "MILK": 223,
+      "WOOL": 239,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.6121,
+    "latency_p50_ms": 0.9384,
+    "latency_p99_ms": 11.4943,
+    "latency_max_ms": 196.547,
+    "latency_max_step": 529,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4155.0,
+     8538.0,
+     9360.0,
+     13136.0,
+     16007.0,
+     17077.0,
+     19517.0,
+     21000.0,
+     24241.0,
+     27125.0,
+     29546.0,
+     31078.0,
+     32633.0,
+     36065.0,
+     38738.0,
+     39451.0,
+     42065.0,
+     44036.0,
+     47122.0,
+     49771.0,
+     51878.0,
+     51920.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   },
+   {
+    "name": "B2",
+    "turns": 719,
+    "unit_turns": 4853,
+    "hand_turns": 4134,
+    "hires": 180,
+    "effective_actions": 4597,
+    "effective_rate": 0.9472,
+    "travel": 2805,
+    "categories": {
+     "build": 6,
+     "move": 2805,
+     "logistics": 409,
+     "plant": 130,
+     "water": 585,
+     "feed": 167,
+     "care": 164,
+     "fertilizer": 155,
+     "clear": 11,
+     "idle": 256,
+     "harvest": 165
+    },
+    "category_share": {
+     "build": 0.0012,
+     "move": 0.578,
+     "logistics": 0.0843,
+     "plant": 0.0268,
+     "water": 0.1205,
+     "feed": 0.0344,
+     "care": 0.0338,
+     "fertilizer": 0.0319,
+     "clear": 0.0023,
+     "idle": 0.0528,
+     "harvest": 0.034
+    },
+    "ops": {
+     "BUILD_PASTURE": 6,
+     "NORTH": 937,
+     "WEST": 765,
+     "PICKUP": 304,
+     "EAST": 511,
+     "PLACE": 6,
+     "SOUTH": 592,
+     "PLANT": 130,
+     "WATER": 585,
+     "DROP": 99,
+     "FEED": 167,
+     "CARE": 164,
+     "COLLECT_FERTILIZER": 155,
+     "DIG": 11,
+     "PASS": 256,
+     "HARVEST": 165
+    },
+    "top_waste": {},
+    "harvested": {
+     "WHEAT": 448,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "harvested_units": 640,
+    "fertilizer_collected": 155,
+    "market_ops": {
+     "HIRE": 180,
+     "BUY_ANIMAL": 3,
+     "BUY_SEED": 92,
+     "BUY_PRODUCT": 168,
+     "SELL": 224
+    },
+    "sell_requested": {
+     "WHEAT": 1431,
+     "FERTILIZER": 152,
+     "WOOL": 90,
+     "MILK": 102
+    },
+    "sell_revenue": {
+     "WHEAT": 32545,
+     "FERTILIZER": 10641,
+     "WOOL": 20137,
+     "MILK": 19954
+    },
+    "sell_floor_units": {
+     "WHEAT": 0,
+     "FERTILIZER": 0,
+     "WOOL": 0,
+     "MILK": 0
+    },
+    "price_by_day": [
+     {
+      "MILK": 160,
+      "WOOL": 200,
+      "EGG": 50
+     },
+     {
+      "MILK": 169,
+      "WOOL": 206,
+      "EGG": 50
+     },
+     {
+      "MILK": 172,
+      "WOOL": 209,
+      "EGG": 50
+     },
+     {
+      "MILK": 175,
+      "WOOL": 212,
+      "EGG": 50
+     },
+     {
+      "MILK": 187,
+      "WOOL": 214,
+      "EGG": 50
+     },
+     {
+      "MILK": 196,
+      "WOOL": 215,
+      "EGG": 50
+     },
+     {
+      "MILK": 203,
+      "WOOL": 217,
+      "EGG": 50
+     },
+     {
+      "MILK": 208,
+      "WOOL": 218,
+      "EGG": 51
+     },
+     {
+      "MILK": 214,
+      "WOOL": 199,
+      "EGG": 51
+     },
+     {
+      "MILK": 200,
+      "WOOL": 187,
+      "EGG": 52
+     },
+     {
+      "MILK": 195,
+      "WOOL": 200,
+      "EGG": 52
+     },
+     {
+      "MILK": 196,
+      "WOOL": 199,
+      "EGG": 52
+     },
+     {
+      "MILK": 190,
+      "WOOL": 199,
+      "EGG": 53
+     },
+     {
+      "MILK": 191,
+      "WOOL": 220,
+      "EGG": 53
+     },
+     {
+      "MILK": 185,
+      "WOOL": 223,
+      "EGG": 54
+     },
+     {
+      "MILK": 186,
+      "WOOL": 226,
+      "EGG": 54
+     },
+     {
+      "MILK": 177,
+      "WOOL": 228,
+      "EGG": 55
+     },
+     {
+      "MILK": 158,
+      "WOOL": 229,
+      "EGG": 56
+     },
+     {
+      "MILK": 160,
+      "WOOL": 228,
+      "EGG": 57
+     },
+     {
+      "MILK": 183,
+      "WOOL": 230,
+      "EGG": 57
+     },
+     {
+      "MILK": 185,
+      "WOOL": 233,
+      "EGG": 58
+     },
+     {
+      "MILK": 186,
+      "WOOL": 234,
+      "EGG": 59
+     },
+     {
+      "MILK": 195,
+      "WOOL": 233,
+      "EGG": 60
+     },
+     {
+      "MILK": 202,
+      "WOOL": 235,
+      "EGG": 61
+     },
+     {
+      "MILK": 203,
+      "WOOL": 236,
+      "EGG": 62
+     },
+     {
+      "MILK": 208,
+      "WOOL": 236,
+      "EGG": 63
+     },
+     {
+      "MILK": 209,
+      "WOOL": 237,
+      "EGG": 65
+     },
+     {
+      "MILK": 214,
+      "WOOL": 237,
+      "EGG": 66
+     },
+     {
+      "MILK": 215,
+      "WOOL": 238,
+      "EGG": 67
+     },
+     {
+      "MILK": 223,
+      "WOOL": 239,
+      "EGG": 68
+     }
+    ],
+    "animals": {
+     "SHEEP": 2,
+     "COW": 3
+    },
+    "animal_count": 5,
+    "dropped_orders": 0,
+    "malformed_orders": 0,
+    "drought_deaths": 2,
+    "decay_deaths": 1,
+    "decayed_units": 2,
+    "animals_escaped": 1,
+    "shed_overflow": 3,
+    "final_shed": {
+     "WHEAT": 10
+    },
+    "unsold_units": 10,
+    "unsold_seeds": 0,
+    "latency_mean_ms": 1.4461,
+    "latency_p50_ms": 1.0931,
+    "latency_p99_ms": 7.4397,
+    "latency_max_ms": 28.0197,
+    "latency_max_step": 525,
+    "min_overage_left": 60,
+    "money_by_day": [
+     3000.0,
+     160.0,
+     252.0,
+     108.0,
+     989.0,
+     793.0,
+     1688.0,
+     2061.0,
+     4155.0,
+     8538.0,
+     9360.0,
+     13136.0,
+     16007.0,
+     17077.0,
+     19517.0,
+     21000.0,
+     24241.0,
+     27125.0,
+     29546.0,
+     31078.0,
+     32633.0,
+     36065.0,
+     38738.0,
+     39451.0,
+     42065.0,
+     44036.0,
+     47122.0,
+     49771.0,
+     51878.0,
+     51920.0
+    ],
+    "errors": [],
+    "n_errors": 0
+   }
+  ],
+  "a_seat": 1
+ }
+]
