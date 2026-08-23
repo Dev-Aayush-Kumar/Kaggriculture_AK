@@ -44,6 +44,12 @@ def test_harvest_is_rescue_only_for_full_poor_tiles():
         {"item": "WOOL", "full": False, "quote": 1}) is False
 
 
+def test_escape_seen_at_dawn_is_the_previous_day():
+    assert H.escape_obs_to_loss_day(29, 0) == 28
+    assert H.escape_obs_to_loss_day(28, 0) == 27
+    assert H.escape_obs_to_loss_day(28, 12) == 28
+
+
 def test_farm_day_snapshot_counts_animals_shed_and_tile_yield():
     farm = {"tiles": [
         [{"animal": "SHEEP", "yield_units": 6},

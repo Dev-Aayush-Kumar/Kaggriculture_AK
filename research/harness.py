@@ -155,6 +155,13 @@ def sell_defer_bypass(ev, last_day=LAST_DAY, force_days=0, shed_frac=0.80,
     return "other"
 
 
+def escape_obs_to_loss_day(obs_day, obs_hour):
+    """End-of-day refresh is seen on the next dawn, so hour 0 means the prior day."""
+    if obs_hour == 0:
+        return max(0, obs_day - 1)
+    return obs_day
+
+
 # ------------------------------------------------------------ agent registry
 # Worker processes rebuild agents from a Spec rather than receiving a closure,
 # because closures are not picklable and Windows uses spawn.
@@ -189,7 +196,9 @@ def _tile_snapshot(tile):
         return ("PLANT", tile["crop"], tile["planted_day"], tile["yield_units"],
                 tile["max_lifespan_step"])
     if "animal" in tile:
-        return ("ANIMAL", tile["animal"], tile["yield_units"])
+        return ("ANIMAL", tile["animal"], tile["yield_units"],
+                bool(tile.get("fed_today")), int(tile.get("consecutive_unfed", 0)),
+                bool(tile.get("cared_today")), int(tile.get("placed_day", -1)))
     return (kind,)
 
 
@@ -243,6 +252,9 @@ class Probe:
         self.shed_by_day = []
         self.tile_held_by_day = []
         self.escape_days = []
+        self.escape_events = []
+        self.feed_events = []
+        self.at_risk_by_day = []
         self.errors = []
         self.turns = 0
 
@@ -269,6 +281,7 @@ class Probe:
         step = obs.get("step", day * self.turns_per_day + hour)
 
         self._diff_tiles(farm, step)
+        self._enrich_new_escapes(farm, private, obs)
         self.turns += 1
         if hour == 0:
             self.money_by_day.append(round(farm["money"], 2))
@@ -289,6 +302,19 @@ class Probe:
             self.animals_by_day.append(snap["animals"])
             self.shed_by_day.append(snap["shed"])
             self.tile_held_by_day.append(snap["tile"])
+            risk = []
+            for y, row in enumerate(farm.get("tiles") or []):
+                for x, tile in enumerate(row):
+                    if not (isinstance(tile, dict) and "animal" in tile):
+                        continue
+                    unfed = int(tile.get("consecutive_unfed", 0))
+                    if unfed >= 1:
+                        risk.append({
+                            "animal": tile["animal"], "x": x, "y": y,
+                            "unfed": unfed, "held": tile.get("yield_units", 0),
+                            "placed_day": tile.get("placed_day", -1),
+                        })
+            self.at_risk_by_day.append(risk)
         overage = obs.get("remainingOverageTime")
         if overage is not None:
             self._min_overage = overage if self._min_overage is None else min(self._min_overage, overage)
@@ -343,9 +369,42 @@ class Probe:
                             self.decayed_units += max(0, old[3] - cur[3])
                     elif old[0] == "ANIMAL" and cur[0] in ("COOP", "PASTURE"):
                         self.animals_escaped += 1
-                        self.escape_days.append(step // self.turns_per_day)
+                        obs_day = step // self.turns_per_day
+                        obs_hour = step % self.turns_per_day
+                        self.escape_days.append(obs_day)
+                        self.escape_events.append({
+                            "obs_day": obs_day, "obs_hour": obs_hour,
+                            "loss_day": escape_obs_to_loss_day(obs_day, obs_hour),
+                            "animal": old[1], "held": old[2],
+                            "fed_today": old[3] if len(old) > 3 else None,
+                            "consecutive_unfed": old[4] if len(old) > 4 else None,
+                            "cared_today": old[5] if len(old) > 5 else None,
+                            "placed_day": old[6] if len(old) > 6 else None,
+                            "x": x, "y": y,
+                        })
         self._prev_tiles = snap
         self._prev_step = step
+
+    def _enrich_new_escapes(self, farm, private, obs):
+        shed = private.get("shed") or {}
+        quotes = (obs.get("market") or {}).get("prices") or {}
+        farmer = farm.get("farmer") or [0, 0]
+        units = [tuple(farmer)]
+        for hand in farm.get("hands") or []:
+            if isinstance(hand, (list, tuple)) and len(hand) >= 2:
+                units.append((hand[0], hand[1]))
+        for ev in self.escape_events:
+            if "wheat" in ev:
+                continue
+            x, y = ev["x"], ev["y"]
+            ev["wheat"] = shed.get("WHEAT", 0)
+            ev["shed_used"] = sum(shed.values())
+            ev["money"] = farm.get("money")
+            ev["wool_quote"] = quotes.get("WOOL")
+            ev["milk_quote"] = quotes.get("MILK")
+            ev["n_units"] = len(units)
+            ev["nearest"] = (min(abs(ux - x) + abs(uy - y) for ux, uy in units)
+                             if units else None)
 
     def _score_action(self, action, farm, private, day, hour=0, market=None):
         if not isinstance(action, dict):
@@ -392,6 +451,15 @@ class Probe:
                             "day": day, "hour": hour, "item": product,
                             "qty": held, "quote": quotes.get(product),
                             "full": held >= spec["max_held"],
+                        })
+                elif op == "FEED":
+                    pos = A.unit_position(farm, idx)
+                    tile = farm["tiles"][pos[1]][pos[0]]
+                    if isinstance(tile, dict) and "animal" in tile:
+                        self.feed_events.append({
+                            "day": day, "hour": hour,
+                            "animal": tile["animal"],
+                            "x": pos[0], "y": pos[1],
                         })
                 elif op == "DROP":
                     dropped = True
@@ -495,6 +563,9 @@ class Probe:
             "shed_by_day": self.shed_by_day,
             "tile_held_by_day": self.tile_held_by_day,
             "escape_days": self.escape_days,
+            "escape_events": self.escape_events,
+            "feed_events": self.feed_events,
+            "at_risk_by_day": self.at_risk_by_day,
             "errors": self.errors[:5],
             "n_errors": len(self.errors),
         }
