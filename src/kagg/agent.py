@@ -82,18 +82,25 @@ def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
 
 
 def harvest_deferred(quote, base, held, max_held, harvest_defer_enabled,
-                     harvest_defer_floor_fraction):
+                     harvest_defer_floor_fraction, hold_full=False,
+                     day=0, last_day=29, force_days=0):
     """Whether animal yield should stay on the tile instead of going to the shed.
 
     Flag off never defers. Flag on holds a non-full load while the quote is
     below the existing sell-floor fraction, so a poor market does not fill
-    the shed and force a dump. A full tile is still harvested.
+    the shed and force a dump. A full tile is still harvested unless
+    hold_full is on, in which case it also waits for a good quote or the
+    existing last-day force.
     """
     if not harvest_defer_enabled or held <= 0:
         return False
-    if held >= max_held:
+    if quote >= base * harvest_defer_floor_fraction:
         return False
-    return quote < base * harvest_defer_floor_fraction
+    if held < max_held:
+        return True
+    if not hold_full:
+        return False
+    return last_day - day > force_days
 
 
 def capped_sale_qty(qty, item, inventory, sale_qty_floor, sale_qty_enabled,
@@ -404,7 +411,9 @@ class Executor:
             quote = w.prices.get(product, base)
             if not harvest_deferred(
                     quote, base, held, animal["max_held"],
-                    cfg.harvest_defer_enabled, cfg.harvest_defer_floor_fraction):
+                    cfg.harvest_defer_enabled, cfg.harvest_defer_floor_fraction,
+                    cfg.harvest_defer_hold_full, w.day, w.last_day,
+                    cfg.sell_defer_force_days):
                 full = held >= animal["max_held"]
                 out.append(Task(P_RESCUE if full else P_HARVEST_ANIMAL, x, y, ["HARVEST"]))
         if cfg.collect_fertilizer and tile["fertilizer_available"]:

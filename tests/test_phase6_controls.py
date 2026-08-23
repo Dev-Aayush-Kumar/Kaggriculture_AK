@@ -34,6 +34,7 @@ def test_p1s_differs_from_p1_only_by_sell_defer():
     assert p1s["sell_defer_enabled"] is True
     assert p1s["sale_qty_enabled"] is False
     assert p1s["harvest_defer_enabled"] is False
+    assert p1s["harvest_defer_hold_full"] is False
     assert p1s["sell_defer_force_days"] == 0
     assert p1s["sell_defer_shed_frac"] == 0.80
     changed = {k for k in p1 if p1[k] != p1s[k]}

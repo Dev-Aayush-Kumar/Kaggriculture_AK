@@ -68,6 +68,9 @@ class Config:
     # the tile is at max_held (the hard-loss rescue).
     harvest_defer_enabled = False
     harvest_defer_floor_fraction = 0.30
+    # Off by default so H1 is unchanged. When on with harvest_defer, a full
+    # tile is also held at a poor quote until the existing last-day force.
+    harvest_defer_hold_full = False
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip

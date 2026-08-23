@@ -28,6 +28,16 @@ def test_flag_on_still_lifts_a_full_tile():
     assert harvest_deferred(1, 200, 6, 6, True, 0.30) is False
 
 
+def test_hold_full_waits_on_a_poor_full_tile_until_the_last_day():
+    assert harvest_deferred(1, 200, 6, 6, True, 0.30, True, 20, 29, 0) is True
+    assert harvest_deferred(80, 200, 6, 6, True, 0.30, True, 20, 29, 0) is False
+    assert harvest_deferred(1, 200, 6, 6, True, 0.30, True, 29, 29, 0) is False
+
+
+def test_hold_full_off_leaves_h1_rescue_unchanged():
+    assert harvest_deferred(1, 200, 6, 6, True, 0.30, False, 20, 29, 0) is False
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     failed = 0
