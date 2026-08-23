@@ -66,7 +66,8 @@ def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
 
     Flag off is the original rule: sell if liquidating or the quote clears the
     floor. Flag on applies that floor even inside the liquidation window,
-    unless remaining time is gone or the shed is approaching capacity.
+    unless remaining days are at or below sell_defer_force_days (negative
+    means never time-force) or the shed is approaching capacity.
     """
     above_floor = quote >= base * sell_floor_fraction
     if not sell_defer_enabled:

@@ -38,6 +38,8 @@ class Config:
     # remaining days are at or below sell_defer_force_days or the shed is
     # approaching capacity (the hard-loss conditions).
     sell_defer_enabled = False
+    # Remaining days at or below this value force a poor-quote dump.
+    # 0 = last day only (P1-S). 1 = last two days. Negative = never time-force.
     sell_defer_force_days = 0
     sell_defer_shed_frac = 0.80
     # Land unlocks in the engine's fixed order NE, SW, SE at $1k/$2k/$4k, so the

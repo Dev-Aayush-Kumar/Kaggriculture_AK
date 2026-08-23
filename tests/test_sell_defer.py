@@ -48,6 +48,11 @@ def test_flag_on_dumps_on_the_last_day_and_when_the_shed_is_tight():
                  sell_defer_force_days=0, sell_defer_shed_frac=0.80) is True
 
 
+def test_negative_force_days_does_not_dump_on_the_last_day():
+    assert _call(quote=1, day=29, last_day=29, liquidating=True,
+                 sell_defer_enabled=True, sell_defer_force_days=-1) is False
+
+
 def test_flag_on_still_sells_a_healthy_quote():
     assert _call(quote=160, base=200, day=27, last_day=29, liquidating=True,
                  sell_defer_enabled=True) is True
