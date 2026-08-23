@@ -125,6 +125,8 @@ class Probe:
         self.sell_revenue = Counter()
         self.sell_floor_units = Counter()
         self.sell_qty_by_day = {"MILK": Counter(), "WOOL": Counter(), "EGG": Counter()}
+        self.harvest_by_day = {"MILK": Counter(), "WOOL": Counter(), "EGG": Counter()}
+        self.sell_events = []
         self.harvested = Counter()
         self.price_by_day = []
         self._animals = {}
@@ -199,7 +201,7 @@ class Probe:
         if elapsed > self._worst_latency[0]:
             self._worst_latency = (elapsed, step)
 
-        self._score_action(action, farm, private, day, obs.get("market") or {})
+        self._score_action(action, farm, private, day, hour, obs.get("market") or {})
 
         self._last_shed = dict(private["shed"])
         self._last_seeds = dict(private["seeds"])
@@ -240,7 +242,7 @@ class Probe:
         self._prev_tiles = snap
         self._prev_step = step
 
-    def _score_action(self, action, farm, private, day, market=None):
+    def _score_action(self, action, farm, private, day, hour=0, market=None):
         if not isinstance(action, dict):
             self.cats["wasted"] += 1
             self.reasons["action_not_a_dict"] += 1
@@ -274,6 +276,8 @@ class Probe:
                     product = (tile["crop"] if tile.get("kind") == "PLANT"
                                else engine.ANIMALS[tile["animal"]]["product"])
                     self.harvested[product] += tile["yield_units"]
+                    if product in self.harvest_by_day:
+                        self.harvest_by_day[product][day] += tile["yield_units"]
                 elif op == "COLLECT_FERTILIZER":
                     self.fertilizer_collected += 1
             elif reason == "pass":
@@ -304,6 +308,11 @@ class Probe:
                     rev, floor = quote_sale(item, qty, inv)
                     self.sell_revenue[item] += rev
                     self.sell_floor_units[item] += floor
+                    if item in ("MILK", "WOOL", "EGG"):
+                        self.sell_events.append({
+                            "day": day, "hour": hour, "item": item, "qty": qty,
+                            "quote": price(item, inv), "rev": rev, "floor": floor,
+                        })
                 if item in self.sell_qty_by_day:
                     self.sell_qty_by_day[item][day] += qty
 
@@ -333,6 +342,9 @@ class Probe:
             "sell_floor_units": dict(self.sell_floor_units),
             "sell_qty_by_day": {k: dict(sorted(v.items()))
                                 for k, v in self.sell_qty_by_day.items()},
+            "harvest_by_day": {k: dict(sorted(v.items()))
+                               for k, v in self.harvest_by_day.items()},
+            "sell_events": self.sell_events,
             "price_by_day": self.price_by_day,
             "animals": dict(self._animals),
             "animal_count": sum(self._animals.values()),
