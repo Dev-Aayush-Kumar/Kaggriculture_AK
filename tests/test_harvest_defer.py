@@ -38,6 +38,18 @@ def test_hold_full_off_leaves_h1_rescue_unchanged():
     assert harvest_deferred(1, 200, 6, 6, True, 0.30, False, 20, 29, 0) is False
 
 
+def test_wool_only_leaves_milk_on_the_always_lift_rule():
+    assert harvest_deferred(1, 160, 2, 6, True, 0.30, False, 20, 29, 0,
+                            "MILK", True) is False
+    assert harvest_deferred(1, 200, 2, 6, True, 0.30, False, 20, 29, 0,
+                            "WOOL", True) is True
+
+
+def test_wool_only_off_still_holds_poor_milk():
+    assert harvest_deferred(1, 160, 2, 6, True, 0.30, False, 20, 29, 0,
+                            "MILK", False) is True
+
+
 if __name__ == "__main__":
     fns = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
     failed = 0
