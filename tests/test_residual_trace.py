@@ -44,6 +44,21 @@ def test_harvest_is_rescue_only_for_full_poor_tiles():
         {"item": "WOOL", "full": False, "quote": 1}) is False
 
 
+def test_farm_day_snapshot_counts_animals_shed_and_tile_yield():
+    farm = {"tiles": [
+        [{"animal": "SHEEP", "yield_units": 6},
+         {"animal": "COW", "yield_units": 2}],
+    ]}
+    private = {"shed": {"WOOL": 12, "WHEAT": 8, "MILK": 3}}
+    snap = H.farm_day_snapshot(farm, private)
+    assert snap["animals"] == 2
+    assert snap["shed"]["used"] == 23
+    assert snap["shed"]["WOOL"] == 12
+    assert snap["tile"]["WOOL"] == 6
+    assert snap["tile"]["WOOL_full"] == 6
+    assert snap["tile"]["MILK"] == 2
+
+
 def test_sell_defer_bypass_names_the_existing_force_paths():
     assert H.sell_defer_bypass(
         {"item": "WOOL", "day": 29, "quote": 1, "shed_used": 10}) == "force_days"

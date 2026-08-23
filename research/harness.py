@@ -62,6 +62,31 @@ def quote_sale(item, qty, inventory):
     return rev, floor
 
 
+def farm_day_snapshot(farm, private):
+    """Hour-0 livestock, shed, and on-tile yield. Used by the Phase-10 traces."""
+    shed = private.get("shed") or {}
+    animals = 0
+    for row in farm.get("tiles") or []:
+        for tile in row:
+            if isinstance(tile, dict) and "animal" in tile:
+                animals += 1
+    milk_tile, milk_full = _product_on_tiles(farm, "MILK")
+    wool_tile, wool_full = _product_on_tiles(farm, "WOOL")
+    return {
+        "animals": animals,
+        "shed": {
+            "used": sum(shed.values()),
+            "MILK": shed.get("MILK", 0),
+            "WOOL": shed.get("WOOL", 0),
+            "WHEAT": shed.get("WHEAT", 0),
+        },
+        "tile": {
+            "MILK": milk_tile, "WOOL": wool_tile,
+            "MILK_full": milk_full, "WOOL_full": wool_full,
+        },
+    }
+
+
 def _product_on_tiles(farm, item):
     """How many units of `item` sit on animal tiles, and how many of those are full."""
     held = full = 0
@@ -214,6 +239,10 @@ class Probe:
         self.decayed_units = 0
         self.shed_overflow = 0
         self.money_by_day = []
+        self.animals_by_day = []
+        self.shed_by_day = []
+        self.tile_held_by_day = []
+        self.escape_days = []
         self.errors = []
         self.turns = 0
 
@@ -255,6 +284,11 @@ class Probe:
                 if isinstance(tile, dict) and "animal" in tile:
                     animals[tile["animal"]] = animals.get(tile["animal"], 0) + 1
         self._animals = animals
+        if hour == 0:
+            snap = farm_day_snapshot(farm, private)
+            self.animals_by_day.append(snap["animals"])
+            self.shed_by_day.append(snap["shed"])
+            self.tile_held_by_day.append(snap["tile"])
         overage = obs.get("remainingOverageTime")
         if overage is not None:
             self._min_overage = overage if self._min_overage is None else min(self._min_overage, overage)
@@ -309,6 +343,7 @@ class Probe:
                             self.decayed_units += max(0, old[3] - cur[3])
                     elif old[0] == "ANIMAL" and cur[0] in ("COOP", "PASTURE"):
                         self.animals_escaped += 1
+                        self.escape_days.append(step // self.turns_per_day)
         self._prev_tiles = snap
         self._prev_step = step
 
@@ -456,6 +491,10 @@ class Probe:
             "latency_max_step": self._worst_latency[1],
             "min_overage_left": self._min_overage,
             "money_by_day": self.money_by_day,
+            "animals_by_day": self.animals_by_day,
+            "shed_by_day": self.shed_by_day,
+            "tile_held_by_day": self.tile_held_by_day,
+            "escape_days": self.escape_days,
             "errors": self.errors[:5],
             "n_errors": len(self.errors),
         }
