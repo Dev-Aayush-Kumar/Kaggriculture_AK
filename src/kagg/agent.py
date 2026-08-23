@@ -125,6 +125,33 @@ def capped_sale_qty(qty, item, inventory, sale_qty_floor, sale_qty_enabled,
     return min(qty, units_until_price(item, inventory, sale_qty_floor))
 
 
+def rescue_feed_action(enabled, day, last_day, fed_today, consecutive_unfed,
+                       wheat_in_hand, remain_value, wheat_base=None):
+    """Whether a unit already on an at-risk animal should feed it tonight.
+
+    E46/E47: every late escape was end of day 28, consecutive_unfed=1,
+    wheat still in the shed, and the crew often harvested that same tile
+    without feeding. Remaining production is one event. Rescue only when
+    that event's quote exceeds the wheat base (class C) and the unit is
+    already carrying wheat — one action, no chase, no second planner.
+
+    Returns "FEED" or None. Flag off is always None.
+    """
+    if wheat_base is None:
+        wheat_base = MARKET_PARAMS["WHEAT"]["base"]
+    if not enabled:
+        return None
+    if day != last_day - 1:
+        return None
+    if fed_today or consecutive_unfed < 1:
+        return None
+    if remain_value is None or remain_value <= wheat_base:
+        return None
+    if wheat_in_hand >= 1:
+        return "FEED"
+    return None
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -558,6 +585,9 @@ class Executor:
         closing = self._endgame_action(w, pos, inv)
         if closing is not None:
             return closing
+        rescue = self._rescue_feed(w, pos, inv)
+        if rescue is not None:
+            return rescue
         if task is None:
             return self._idle_action(w, idx, pos, inv)
         if task.item and inv.get(task.item, 0) < 1:
@@ -576,6 +606,26 @@ class Executor:
         n_animals = sum(1 for y, row in enumerate(w.tiles) for x, t in enumerate(row)
                         if isinstance(t, dict) and "animal" in t)
         return max(1, min(w.shed.get("WHEAT", 0), max(1, n_animals)))
+
+    def _rescue_feed(self, w, pos, inv):
+        """On-tile last-day FEED if E47 class-C conditions hold. Default off."""
+        if not self.cfg.endgame_rescue_feed:
+            return None
+        tile = w.tile(*pos)
+        if not (isinstance(tile, dict) and "animal" in tile):
+            return None
+        animal = tile["animal"]
+        product = ANIMALS[animal]["product"]
+        quote = w.prices.get(product, MARKET_PARAMS[product]["base"])
+        n = remaining_yield_events(
+            animal, tile.get("placed_day", 0), w.day + 1, w.last_day)
+        kind = rescue_feed_action(
+            True, w.day, w.last_day, bool(tile.get("fed_today")),
+            int(tile.get("consecutive_unfed", 0)),
+            inv.get("WHEAT", 0), n * quote)
+        if kind == "FEED":
+            return ["FEED"]
+        return None
 
     def _endgame_action(self, w, pos, inv):
         """In the closing turns the only thing worth doing is banking stock.

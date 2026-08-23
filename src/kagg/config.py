@@ -74,6 +74,11 @@ class Config:
     # Off by default so H1 is unchanged. When on with harvest_defer, only
     # wool is held; milk stays on the original always-lift rule.
     harvest_defer_wool_only = False
+    # Off by default so P1-S/H1/H3 stay unchanged. When on, a unit standing
+    # on an animal that will escape at dusk (already one day unfed, not fed
+    # today) spends a small last-day budget to FEED it, but only when the
+    # remaining production exceeds the wheat base.
+    endgame_rescue_feed = False
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
