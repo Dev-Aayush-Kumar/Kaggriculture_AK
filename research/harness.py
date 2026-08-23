@@ -61,6 +61,75 @@ def quote_sale(item, qty, inventory):
             inv += 1
     return rev, floor
 
+
+def _product_on_tiles(farm, item):
+    """How many units of `item` sit on animal tiles, and how many of those are full."""
+    held = full = 0
+    for row in farm.get("tiles") or []:
+        for tile in row:
+            if not (isinstance(tile, dict) and "animal" in tile):
+                continue
+            spec = engine.ANIMALS[tile["animal"]]
+            if spec["product"] != item:
+                continue
+            qty = tile.get("yield_units", 0)
+            held += qty
+            if qty >= spec["max_held"]:
+                full += qty
+    return held, full
+
+
+LAST_DAY = 29
+FLOOR_FRAC = 0.30
+
+
+def classify_floor_sale(ev, last_day=LAST_DAY, floor_frac=FLOOR_FRAC):
+    """Label one quote-time $1-floor sale. Does not invent a harvest cause."""
+    from kagg.econ.tables import MARKET_PARAMS, PRICE_FLOOR
+    base = MARKET_PARAMS[ev["item"]]["base"]
+    last = ev["day"] >= last_day
+    already = ev["quote"] <= PRICE_FLOOR
+    poor = ev["quote"] < base * floor_frac
+    if last and already:
+        return "last_day_already_floor"
+    if last and poor:
+        return "last_day_poor_forced"
+    if last:
+        return "last_day_lot_walk"
+    if already:
+        return "mid_already_floor"
+    if poor:
+        return "mid_poor_forced"
+    return "mid_lot_walk"
+
+
+def harvest_is_rescue(ev, floor_frac=FLOOR_FRAC):
+    """True when a harvest is a full-tile lift at a poor quote."""
+    from kagg.econ.tables import MARKET_PARAMS
+    if not ev.get("full"):
+        return False
+    quote = ev.get("quote")
+    if quote is None:
+        return False
+    base = MARKET_PARAMS[ev["item"]]["base"]
+    return quote < base * floor_frac
+
+
+def sell_defer_bypass(ev, last_day=LAST_DAY, force_days=0, shed_frac=0.80,
+                      floor_frac=FLOOR_FRAC):
+    """Why a poor-quote sale was allowed through sell-defer, or None."""
+    from kagg.econ.tables import MARKET_PARAMS
+    base = MARKET_PARAMS[ev["item"]]["base"]
+    if ev["quote"] >= base * floor_frac:
+        return None
+    if last_day - ev["day"] <= force_days:
+        return "force_days"
+    cap = ev.get("shed_cap") or 100
+    if cap > 0 and ev.get("shed_used", 0) >= shed_frac * cap:
+        return "shed_frac"
+    return "other"
+
+
 # ------------------------------------------------------------ agent registry
 # Worker processes rebuild agents from a Spec rather than receiving a closure,
 # because closures are not picklable and Windows uses spawn.
@@ -127,6 +196,7 @@ class Probe:
         self.sell_qty_by_day = {"MILK": Counter(), "WOOL": Counter(), "EGG": Counter()}
         self.harvest_by_day = {"MILK": Counter(), "WOOL": Counter(), "EGG": Counter()}
         self.sell_events = []
+        self.harvest_events = []
         self.harvested = Counter()
         self.price_by_day = []
         self._animals = {}
@@ -253,6 +323,7 @@ class Probe:
             hands = []
         units = [farmer, *hands]
         blocked = A.blocked_plant_crops(units, private["seeds"])
+        dropped = False
 
         for idx, act in enumerate(units):
             if idx > 0 and idx - 1 >= len(farm["hands"]):
@@ -278,6 +349,17 @@ class Probe:
                     self.harvested[product] += tile["yield_units"]
                     if product in self.harvest_by_day:
                         self.harvest_by_day[product][day] += tile["yield_units"]
+                    if "animal" in tile:
+                        spec = engine.ANIMALS[tile["animal"]]
+                        held = tile["yield_units"]
+                        quotes = (market or {}).get("prices") or {}
+                        self.harvest_events.append({
+                            "day": day, "hour": hour, "item": product,
+                            "qty": held, "quote": quotes.get(product),
+                            "full": held >= spec["max_held"],
+                        })
+                elif op == "DROP":
+                    dropped = True
                 elif op == "COLLECT_FERTILIZER":
                     self.fertilizer_collected += 1
             elif reason == "pass":
@@ -309,9 +391,17 @@ class Probe:
                     self.sell_revenue[item] += rev
                     self.sell_floor_units[item] += floor
                     if item in ("MILK", "WOOL", "EGG"):
+                        shed = private.get("shed") or {}
+                        shed_used = sum(shed.values())
+                        on_tile, on_full = _product_on_tiles(farm, item)
                         self.sell_events.append({
                             "day": day, "hour": hour, "item": item, "qty": qty,
                             "quote": price(item, inv), "rev": rev, "floor": floor,
+                            "inv": inv, "inv_after": inv + qty - floor,
+                            "shed_used": shed_used, "shed_cap": self.shed_capacity,
+                            "item_shed": shed.get(item, 0),
+                            "on_tile": on_tile, "on_full": on_full,
+                            "dropped": dropped,
                         })
                 if item in self.sell_qty_by_day:
                     self.sell_qty_by_day[item][day] += qty
@@ -345,6 +435,7 @@ class Probe:
             "harvest_by_day": {k: dict(sorted(v.items()))
                                for k, v in self.harvest_by_day.items()},
             "sell_events": self.sell_events,
+            "harvest_events": self.harvest_events,
             "price_by_day": self.price_by_day,
             "animals": dict(self._animals),
             "animal_count": sum(self._animals.values()),
