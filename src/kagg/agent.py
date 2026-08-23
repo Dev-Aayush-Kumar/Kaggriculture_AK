@@ -81,6 +81,21 @@ def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
     return False
 
 
+def harvest_deferred(quote, base, held, max_held, harvest_defer_enabled,
+                     harvest_defer_floor_fraction):
+    """Whether animal yield should stay on the tile instead of going to the shed.
+
+    Flag off never defers. Flag on holds a non-full load while the quote is
+    below the existing sell-floor fraction, so a poor market does not fill
+    the shed and force a dump. A full tile is still harvested.
+    """
+    if not harvest_defer_enabled or held <= 0:
+        return False
+    if held >= max_held:
+        return False
+    return quote < base * harvest_defer_floor_fraction
+
+
 def capped_sale_qty(qty, item, inventory, sale_qty_floor, sale_qty_enabled,
                     day, last_day, shed_used, shed_capacity,
                     sale_qty_force_days, sale_qty_shed_frac):
@@ -384,8 +399,14 @@ class Executor:
             out.append(Task(P_CARE, x, y, ["CARE"]))
         held = tile["yield_units"]
         if held > 0:
-            full = held >= animal["max_held"]
-            out.append(Task(P_RESCUE if full else P_HARVEST_ANIMAL, x, y, ["HARVEST"]))
+            product = animal["product"]
+            base = MARKET_PARAMS[product]["base"]
+            quote = w.prices.get(product, base)
+            if not harvest_deferred(
+                    quote, base, held, animal["max_held"],
+                    cfg.harvest_defer_enabled, cfg.harvest_defer_floor_fraction):
+                full = held >= animal["max_held"]
+                out.append(Task(P_RESCUE if full else P_HARVEST_ANIMAL, x, y, ["HARVEST"]))
         if cfg.collect_fertilizer and tile["fertilizer_available"]:
             out.append(Task(P_COLLECT, x, y, ["COLLECT_FERTILIZER"]))
         return out

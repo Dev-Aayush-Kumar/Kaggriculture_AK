@@ -63,6 +63,12 @@ class Config:
     sale_qty_force_days = 0
     sale_qty_shed_frac = 0.80
 
+    # Off by default so P1-S is unchanged. When on, animal harvest is skipped
+    # while the product quote is below harvest_defer_floor_fraction, unless
+    # the tile is at max_held (the hard-loss rescue).
+    harvest_defer_enabled = False
+    harvest_defer_floor_fraction = 0.30
+
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
     # Off by default so P0/B2 is unchanged. When on, an idle shed walk is taken
