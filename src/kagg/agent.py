@@ -177,6 +177,19 @@ def feed_pickup_qty(shed_wheat, n_animals, feed_pickup_cap=0):
     return max(1, min(max(0, shed_wheat), want))
 
 
+def plant_hour_allowed(hour, plant_latest_hour):
+    """Whether a PLANT task may be issued this hour.
+
+    Flag off (<0) never blocks. Flag on refuses planting after
+    plant_latest_hour so the same day still has a turn left to WATER:
+    the engine starts consecutive_unwatered at 1 on the planting day,
+    and two unwatered days turn the tile into a weed.
+    """
+    if plant_latest_hour < 0:
+        return True
+    return hour <= plant_latest_hour
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -493,7 +506,8 @@ class Executor:
                     crop = self._crop_for_tile((x, y), w.board)
                 else:
                     crop = cfg.crops[i % len(cfg.crops)] if cfg.crops else None
-                if crop and seeds.get(crop, 0) > 0 and self._can_mature(w, crop):
+                if (crop and seeds.get(crop, 0) > 0 and self._can_mature(w, crop)
+                        and plant_hour_allowed(w.hour, cfg.plant_latest_hour)):
                     seeds[crop] -= 1
                     tasks.append(Task(P_PLANT, x, y, ["PLANT", crop]))
             elif not isinstance(tile, dict):

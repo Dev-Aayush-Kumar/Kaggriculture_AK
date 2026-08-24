@@ -84,6 +84,11 @@ class Config:
     # today) spends a small last-day budget to FEED it, but only when the
     # remaining production exceeds the wheat base.
     endgame_rescue_feed = False
+    # Off (<0) keeps the original plant-any-hour rule. When 0-23, PLANT is
+    # refused after this hour so a same-day WATER can still land. The engine
+    # starts consecutive_unwatered at 1 on the planting day; two unwatered
+    # days kill the plant (harness "drought").
+    plant_latest_hour = -1
 
     # Off (0) keeps the original feed PICKUP: min(shed wheat, n_animals).
     # When >0, a unit drawing wheat for FEED takes at most this many, so a
