@@ -42,6 +42,11 @@ class Config:
     # 0 = last day only (P1-S). 1 = last two days. Negative = never time-force.
     sell_defer_force_days = 0
     sell_defer_shed_frac = 0.80
+    # Off by default so P1-S/H4 stay wheat-only. When set to a CROPS key
+    # (typically "CARROT" or "TOMATO"), non-NW crop tiles are planted with
+    # that crop instead of wheat. Livestock slots are pinned to tiles that
+    # already hold animals so a later BUY_LAND does not orphan pastures.
+    extra_crop = ""
     # Land unlocks in the engine's fixed order NE, SW, SE at $1k/$2k/$4k, so the
     # only decision is how many to buy.
     buy_land = 0

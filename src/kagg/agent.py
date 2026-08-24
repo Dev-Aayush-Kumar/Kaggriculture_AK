@@ -22,7 +22,8 @@ from .config import Config
 from .econ.market import (buy_cost, expected_remaining_demand, marginal_value,
                           units_until_price)
 from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_I0, MARKET_PARAMS,
-                          PRODUCTS, cumulative_hire_cost, shed_access_tiles)
+                          PRODUCTS, cumulative_hire_cost, quadrant_of,
+                          shed_access_tiles)
 
 # Task urgency. Lower runs first; anything that can be permanently lost today
 # outranks anything that merely earns money.
@@ -368,6 +369,48 @@ class Executor:
             out[animal] = n
         return out
 
+    def _extra_crop(self):
+        extra = (self.cfg.extra_crop or "").upper()
+        return extra if extra in CROPS else ""
+
+    def _crop_for_tile(self, tile, board):
+        extra = self._extra_crop()
+        if extra and quadrant_of(tile[0], tile[1], board) != "NW":
+            return extra
+        return self.cfg.crops[0] if self.cfg.crops else None
+
+    def _pinned_livestock_slots(self, w, wanted, ordered):
+        """Keep animals on tiles they already occupy; fill remaining nearest.
+
+        Unlocking NE changes the nearest-N owned set. Reassigning livestock
+        onto the new nearest tiles orphans the old pastures (no FEED → escape).
+        """
+        want_left = {a: 0 for a in ANIMALS}
+        for animal in wanted:
+            want_left[animal] = want_left.get(animal, 0) + 1
+        occupied = {}
+        owned = set(w.owned)
+        for y, row in enumerate(w.tiles):
+            for x, t in enumerate(row):
+                if (x, y) in owned and isinstance(t, dict) and t.get("animal"):
+                    occupied[(x, y)] = t["animal"]
+        slots = {}
+        for pos in ordered:
+            kind = occupied.get(pos)
+            if kind and want_left.get(kind, 0) > 0:
+                slots[pos] = kind
+                want_left[kind] -= 1
+        remaining = []
+        for animal in ("GOOSE", "COW", "SHEEP"):
+            remaining.extend([animal] * want_left.get(animal, 0))
+        for pos in ordered:
+            if not remaining:
+                break
+            if pos in slots:
+                continue
+            slots[pos] = remaining.pop(0)
+        return slots
+
     # -- layout -------------------------------------------------------------
     def _layout(self, w):
         """Livestock takes the tiles nearest the shed; crops get the rest.
@@ -383,16 +426,26 @@ class Executor:
         targets = self._livestock_targets(w)
         wanted = (["GOOSE"] * targets["GOOSE"] + ["COW"] * targets["COW"]
                   + ["SHEEP"] * targets["SHEEP"])
-        slots = {}
-        for animal, pos in zip(wanted, ordered):
-            slots[pos] = animal
-        # Never open more crop ground than the crew can water in a day. An
-        # unwatered tile is not merely idle, it dies and leaves a weed behind.
-        # Sized off the intended crew, not today's, so the field stays stable
-        # on turns where the hands have not been hired yet.
-        crew = max(1, cfg.hands_per_day + 1)
-        limit = min(cfg.max_crop_tiles, int(crew * cfg.tiles_per_unit))
-        crop_tiles = [p for p in ordered[len(slots):]][:limit]
+        extra = self._extra_crop()
+        if extra:
+            slots = self._pinned_livestock_slots(w, wanted, ordered)
+            nw_crop = [p for p in ordered if p not in slots
+                       and quadrant_of(p[0], p[1], w.board) == "NW"]
+            other_crop = [p for p in ordered if p not in slots
+                          and quadrant_of(p[0], p[1], w.board) != "NW"]
+            crew = max(1, cfg.hands_per_day + 1)
+            limit = min(cfg.max_crop_tiles, int(crew * cfg.tiles_per_unit))
+            crop_tiles = nw_crop[:limit]
+            leftover = limit - len(crop_tiles)
+            if leftover > 0:
+                crop_tiles = crop_tiles + other_crop[:leftover]
+        else:
+            slots = {}
+            for animal, pos in zip(wanted, ordered):
+                slots[pos] = animal
+            crew = max(1, cfg.hands_per_day + 1)
+            limit = min(cfg.max_crop_tiles, int(crew * cfg.tiles_per_unit))
+            crop_tiles = ordered[len(slots):][:limit]
         w.layout_cache = (slots, crop_tiles)
         return w.layout_cache
 
@@ -432,10 +485,14 @@ class Executor:
                 tasks.append(Task(P_DIG, x, y, ["DIG"]))   # wrong structure here
 
         seeds = dict(w.seeds)
+        extra = self._extra_crop()
         for i, (x, y) in enumerate(crop_tiles):
             tile = w.tile(x, y)
             if tile is None:
-                crop = cfg.crops[i % len(cfg.crops)] if cfg.crops else None
+                if extra:
+                    crop = self._crop_for_tile((x, y), w.board)
+                else:
+                    crop = cfg.crops[i % len(cfg.crops)] if cfg.crops else None
                 if crop and seeds.get(crop, 0) > 0 and self._can_mature(w, crop):
                     seeds[crop] -= 1
                     tasks.append(Task(P_PLANT, x, y, ["PLANT", crop]))
@@ -814,12 +871,25 @@ class Executor:
                 purse -= qty * cost
 
         if cfg.crops:
-            empty = sum(1 for (x, y) in crop_tiles if w.tile(x, y) is None)
-            for crop in cfg.crops:
+            extra = self._extra_crop()
+            if extra:
+                empty_by = {}
+                for (x, y) in crop_tiles:
+                    if w.tile(x, y) is None:
+                        crop = self._crop_for_tile((x, y), w.board)
+                        if crop:
+                            empty_by[crop] = empty_by.get(crop, 0) + 1
+                wanted_seeds = list(empty_by.items())
+            else:
+                empty = sum(1 for (x, y) in crop_tiles if w.tile(x, y) is None)
+                wanted_seeds = []
+                for crop in cfg.crops:
+                    share = -(-empty // len(cfg.crops))          # ceil
+                    wanted_seeds.append((crop, share))
+            for crop, empty in wanted_seeds:
                 if not self._can_mature(w, crop):
                     continue
-                share = -(-empty // len(cfg.crops))          # ceil
-                need = min(share, cfg.seed_batch) - w.seeds.get(crop, 0)
+                need = min(empty, cfg.seed_batch) - w.seeds.get(crop, 0)
                 cost = CROPS[crop]["seed"]
                 qty = min(need, int(max(0, purse - cfg.seed_reserve) // cost))
                 if qty > 0:
