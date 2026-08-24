@@ -152,6 +152,18 @@ def rescue_feed_action(enabled, day, last_day, fed_today, consecutive_unfed,
     return None
 
 
+def feed_pickup_qty(shed_wheat, n_animals, feed_pickup_cap=0):
+    """How many wheat a unit should PICKUP for a FEED task.
+
+    Cap 0 is the original rule: take min(shed, n_animals), at least 1.
+    Cap > 0 limits that draw so one trip cannot empty the day's buffer.
+    """
+    want = max(1, n_animals)
+    if feed_pickup_cap > 0:
+        want = min(want, feed_pickup_cap)
+    return max(1, min(max(0, shed_wheat), want))
+
+
 def remaining_yield_events(animal, placed_day, from_day, last_day):
     """How many production events `animal` still has if placed on `placed_day`.
 
@@ -605,7 +617,8 @@ class Executor:
     def _feed_pickup_qty(self, w):
         n_animals = sum(1 for y, row in enumerate(w.tiles) for x, t in enumerate(row)
                         if isinstance(t, dict) and "animal" in t)
-        return max(1, min(w.shed.get("WHEAT", 0), max(1, n_animals)))
+        return feed_pickup_qty(
+            w.shed.get("WHEAT", 0), n_animals, self.cfg.feed_pickup_cap)
 
     def _rescue_feed(self, w, pos, inv):
         """On-tile last-day FEED if E47 class-C conditions hold. Default off."""

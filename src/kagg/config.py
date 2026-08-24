@@ -80,6 +80,12 @@ class Config:
     # remaining production exceeds the wheat base.
     endgame_rescue_feed = False
 
+    # Off (0) keeps the original feed PICKUP: min(shed wheat, n_animals).
+    # When >0, a unit drawing wheat for FEED takes at most this many, so a
+    # second unit does not empty the shed and trigger a market restock of
+    # wheat that is still being carried.
+    feed_pickup_cap = 0
+
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
     # Off by default so P0/B2 is unchanged. When on, an idle shed walk is taken
