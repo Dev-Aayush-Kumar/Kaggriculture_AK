@@ -1,0 +1,5 @@
+seed,seat,agent,opponent,money,opp_money,won,status,turns,wall_s,unit_turns,effective_rate,move_share,harvested_units,milk_harvested,wool_harvested,milk_sold,wool_sold,milk_revenue,wool_revenue,milk_floor,wool_floor,animal_count,fertilizer_collected,unsold_units,unsold_milk,unsold_wool,drought_deaths,animals_escaped,shed_overflow,latency_p99_ms,n_errors
+0,0,H4,P1S,47596.0,46316.0,1,DONE,719,28.459,4853,0.9458,0.5739,651,104,94,104,94,13269,19124,0,0,5,158,20,0,0,2,1,3,12.2424,0
+0,1,P1S,H4,46316.0,47596.0,0,DONE,719,28.459,4853,0.946,0.5741,647,104,90,103,90,13091,18185,0,0,5,157,20,0,0,2,1,3,7.6811,0
+0,0,P1S,H4,46316.0,47596.0,0,DONE,719,31.04,4853,0.946,0.5741,647,104,90,103,90,13091,18185,0,0,5,157,20,0,0,2,1,3,11.8081,0
+0,1,H4,P1S,47596.0,46316.0,1,DONE,719,31.04,4853,0.9458,0.5739,651,104,94,104,94,13269,19124,0,0,5,158,20,0,0,2,1,3,13.2396,0
