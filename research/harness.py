@@ -39,6 +39,7 @@ from kagg import actions as A  # noqa: E402
 from kagg.agent import Executor  # noqa: E402
 from kagg.config import Config  # noqa: E402
 from kagg.econ.market import PRICE_FLOOR, price, sell_revenue  # noqa: E402
+from kagg.econ.tables import shed_access_tiles  # noqa: E402
 
 RESULTS_DIR = os.path.join(_ROOT, "results")
 
@@ -162,6 +163,17 @@ def escape_obs_to_loss_day(obs_day, obs_hour):
     return obs_day
 
 
+def pickup_return_feed_cost(dist_shed, wheat_in_hand):
+    """Turns to FEED an animal the unit is already standing on.
+
+    Wheat in hand is one FEED. Otherwise: walk to shed, PICKUP, return, FEED.
+    Standing on a shed-access pasture is pickup then feed (2 turns).
+    """
+    if wheat_in_hand >= 1:
+        return 1
+    return 2 * max(0, dist_shed) + 2
+
+
 # ------------------------------------------------------------ agent registry
 # Worker processes rebuild agents from a Spec rather than receiving a closure,
 # because closures are not picklable and Windows uses spawn.
@@ -255,6 +267,7 @@ class Probe:
         self.escape_events = []
         self.feed_events = []
         self.at_risk_by_day = []
+        self.at_risk_visits = []
         self.errors = []
         self.turns = 0
 
@@ -406,6 +419,43 @@ class Probe:
             ev["nearest"] = (min(abs(ux - x) + abs(uy - y) for ux, uy in units)
                              if units else None)
 
+    def _shed_dist(self, pos):
+        if not pos:
+            return None
+        access = shed_access_tiles(self.board_size)
+        return min(abs(pos[0] - x) + abs(pos[1] - y) for x, y in access)
+
+    def _note_at_risk_visit(self, idx, pos, op, reason, farm, private, day, hour, market):
+        """A unit standing on an animal that will escape tonight if unfed."""
+        if not pos:
+            return
+        tile = farm["tiles"][pos[1]][pos[0]]
+        if not (isinstance(tile, dict) and "animal" in tile):
+            return
+        if tile.get("fed_today") or int(tile.get("consecutive_unfed", 0)) < 1:
+            return
+        inv = A.unit_inventory(private, idx) or {}
+        wheat_hand = inv.get("WHEAT", 0)
+        dist = self._shed_dist(pos)
+        quotes = (market or {}).get("prices") or {}
+        product = engine.ANIMALS[tile["animal"]]["product"]
+        self.at_risk_visits.append({
+            "day": day, "hour": hour, "unit": idx,
+            "animal": tile["animal"], "x": pos[0], "y": pos[1],
+            "held": tile.get("yield_units", 0),
+            "fed_today": bool(tile.get("fed_today")),
+            "consecutive_unfed": int(tile.get("consecutive_unfed", 0)),
+            "placed_day": tile.get("placed_day", -1),
+            "wheat_hand": wheat_hand,
+            "wheat_shed": (private.get("shed") or {}).get("WHEAT", 0),
+            "dist_shed": dist,
+            "pickup_cost": pickup_return_feed_cost(dist or 0, wheat_hand),
+            "hours_left": self.turns_per_day - hour,
+            "op": op, "reason": reason,
+            "quote": quotes.get(product),
+            "carried": dict(inv),
+        })
+
     def _score_action(self, action, farm, private, day, hour=0, market=None):
         if not isinstance(action, dict):
             self.cats["wasted"] += 1
@@ -430,6 +480,10 @@ class Probe:
                 act, farm, private, idx, day, self.board_size,
                 self.shed_capacity, blocked)
             self.reasons[reason] += 1
+            if day >= 27:
+                pos = A.unit_position(farm, idx)
+                self._note_at_risk_visit(
+                    idx, pos, op, reason, farm, private, day, hour, market)
             if reason == A.OK:
                 self.unit_actions_ok += 1
                 self.cats[A.category(act)] += 1
@@ -566,6 +620,7 @@ class Probe:
             "escape_events": self.escape_events,
             "feed_events": self.feed_events,
             "at_risk_by_day": self.at_risk_by_day,
+            "at_risk_visits": self.at_risk_visits,
             "errors": self.errors[:5],
             "n_errors": len(self.errors),
         }
