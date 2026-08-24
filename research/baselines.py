@@ -2,7 +2,7 @@
 
 These dicts are Config overrides only; they do not change executor behaviour
 by themselves. P1 is the Phase-5 fallback. QD is the Phase-5 incumbent.
-P1_S is the Phase-6 control: sell-defer on P1 with sale quantity off.
+P1_S is the Phase-6 historical control. H4 is the Phase-18 official champion.
 """
 
 CORE = dict(routing="zone_nearest", geese=0, cows=3, sheep=3, crops=("WHEAT",),
@@ -20,12 +20,12 @@ P1 = dict(CORE, move_ev_enabled=True, sell_defer_enabled=False,
 P2 = dict(CORE, move_ev_enabled=False, sell_defer_enabled=True,
           sale_qty_enabled=False)
 
-# Phase-6 incumbent: P1 plus sell-defer only. Last-day force dump.
-# Official research control until a later promotion writes a new incumbent.
+# Phase-6 historical control: P1 plus sell-defer only. Last-day force dump.
+# Kept for paired experiments. No longer the official submission after E70.
 P1_S = dict(P1, sell_defer_enabled=True, sale_qty_enabled=False,
             sell_defer_force_days=0, sell_defer_shed_frac=0.80)
 
-# Phase-12 experimental champion. Not the official submission.
+# Official research champion and Kaggle submission after Phase 18 (E70).
 # Differs from P1_S only by the three stacked harvest/rescue flags.
 H4 = dict(P1_S, harvest_defer_enabled=True, harvest_defer_wool_only=True,
           endgame_rescue_feed=True)

@@ -78,6 +78,23 @@ def test_bare_config_does_not_enable_h4_flags():
     assert cfg.extra_crop == ""
 
 
+def test_main_py_matches_named_h4():
+    path = os.path.join(ROOT, "main.py")
+    with open(path, encoding="utf-8") as f:
+        tree = ast.parse(f.read(), filename=path)
+    kwargs = None
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Assign):
+            continue
+        for target in node.targets:
+            if isinstance(target, ast.Name) and target.id == "CONFIG":
+                call = node.value
+                assert isinstance(call, ast.Call)
+                kwargs = {kw.arg: ast.literal_eval(kw.value) for kw in call.keywords}
+    assert kwargs is not None
+    assert _fields(Config(**kwargs)) == _fields(Config(**B.H4))
+
+
 def test_main_py_does_not_import_research():
     path = os.path.join(ROOT, "main.py")
     with open(path, encoding="utf-8") as f:
