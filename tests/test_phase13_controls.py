@@ -34,6 +34,7 @@ def test_defaults_leave_reserve_and_fertilize_untouched():
     assert Config().livestock_reserve == 300
     assert Config().fertilize_crops is False
     assert Config().feed_pickup_cap == 0
+    assert Config().feed_count_carried is False
     p1s, h4 = Config(**B.P1_S), Config(**H4)
     assert p1s.livestock_reserve == 300
     assert h4.livestock_reserve == 300
@@ -41,6 +42,8 @@ def test_defaults_leave_reserve_and_fertilize_untouched():
     assert h4.fertilize_crops is False
     assert p1s.feed_pickup_cap == 0
     assert h4.feed_pickup_cap == 0
+    assert p1s.feed_count_carried is False
+    assert h4.feed_count_carried is False
 
 
 def test_h4_day0_buys_two_sheep_at_reserve_300():

@@ -152,6 +152,18 @@ def rescue_feed_action(enabled, day, last_day, fed_today, consecutive_unfed,
     return None
 
 
+def wheat_feed_short(shed_wheat, carried_wheat, n_animals, feed_buffer,
+                     count_carried=False):
+    """How many wheat the market should buy to refill the feed buffer.
+
+    Flag off is the original shed-only check. Flag on includes wheat already
+    in unit inventories so a pickup does not look like a shortage.
+    """
+    target = n_animals * feed_buffer
+    held = shed_wheat + (carried_wheat if count_carried else 0)
+    return max(0, target - held)
+
+
 def feed_pickup_qty(shed_wheat, n_animals, feed_pickup_cap=0):
     """How many wheat a unit should PICKUP for a FEED task.
 
@@ -720,7 +732,12 @@ class Executor:
         # Feed outranks every other purchase: two missed days and the animal is
         # gone along with the capital that bought it. It draws on the whole
         # purse for that reason.
-        wheat_short = feed_target - w.shed.get("WHEAT", 0)
+        carried = 0
+        if cfg.feed_count_carried:
+            carried = sum(w.inv(i).get("WHEAT", 0) for i in range(w.n_units))
+        wheat_short = wheat_feed_short(
+            w.shed.get("WHEAT", 0), carried, n_animals, cfg.feed_buffer,
+            cfg.feed_count_carried)
         if n_animals and wheat_short > 0:
             room = w.shed_capacity - w.shed_used()
             want = max(0, min(wheat_short, room))

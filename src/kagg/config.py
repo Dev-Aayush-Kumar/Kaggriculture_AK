@@ -85,6 +85,10 @@ class Config:
     # second unit does not empty the shed and trigger a market restock of
     # wheat that is still being carried.
     feed_pickup_cap = 0
+    # Off by default so P1-S/H4 stay unchanged. When on, wheat already in
+    # unit inventories counts toward the feed buffer, so the market does not
+    # restock wheat that has only left the shed.
+    feed_count_carried = False
 
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
