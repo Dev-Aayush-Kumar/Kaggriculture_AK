@@ -21,8 +21,14 @@ P2 = dict(CORE, move_ev_enabled=False, sell_defer_enabled=True,
           sale_qty_enabled=False)
 
 # Phase-6 incumbent: P1 plus sell-defer only. Last-day force dump.
+# Official research control until a later promotion writes a new incumbent.
 P1_S = dict(P1, sell_defer_enabled=True, sale_qty_enabled=False,
             sell_defer_force_days=0, sell_defer_shed_frac=0.80)
+
+# Phase-12 experimental champion. Not the official submission.
+# Differs from P1_S only by the three stacked harvest/rescue flags.
+H4 = dict(P1_S, harvest_defer_enabled=True, harvest_defer_wool_only=True,
+          endgame_rescue_feed=True)
 
 # Phase-5 incumbent: P1-S plus the 0.15 sale-qty cap.
 QD = dict(P1_S, sale_qty_enabled=True, sale_qty_floor=0.15)
