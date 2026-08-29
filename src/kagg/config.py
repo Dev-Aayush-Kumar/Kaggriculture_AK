@@ -100,6 +100,77 @@ class Config:
     # restock wheat that has only left the shed.
     feed_count_carried = False
 
+    # --- H5 experimental gates (all default-off so H4 is unchanged) ---
+    # Pin livestock to tiles they already occupy when land unlocks. extra_crop
+    # already pins; this flag pins without changing the crop mix.
+    pin_livestock = False
+    # Require purse >= this amount before BUY_LAND. 0 = no extra cash gate.
+    land_min_money = 0
+    # Refuse BUY_LAND before this day. Negative = no extra day gate.
+    land_min_day = -1
+    # Do not target or buy animals before this day (melon-opener conversion).
+    livestock_start_day = 0
+    # Add this many sheep to the target once at least one extra quadrant is owned.
+    sheep_after_land = 0
+    # Add this many sheep to the target while YARN_STORE is in unlocked_shops.
+    sheep_yarn_bonus = 0
+
+    # --- late-game conversion (all default-off so H4 is unchanged) ---
+    # When liquidating, do not BUY_PRODUCT wheat. Rescue-feed still uses
+    # wheat already in hand. Off keeps the original sell-then-rebuy loop.
+    liquidate_stop_feed_buy = False
+    # When liquidating, skip the dawn HIRE batch (frees market slots).
+    liquidate_stop_hire = False
+    # When >= 0, harvest_defer is skipped once remaining days are at or
+    # below this value, so wool can enter the shed during liquidation.
+    # -1 keeps the original defer (H4).
+    harvest_defer_force_days = -1
+    # When on, stop buying wheat once remaining livestock quote-value is
+    # below the remaining feed bill. Not a calendar gate.
+    feed_roi_gate = False
+    # When on, BUY_LAND + extra sheep only if quote-time NPV of n extra
+    # sheep minus the next land price exceeds roi_expand_min_npv, and the
+    # purse still covers land + sheep cost + livestock_reserve. Not a
+    # calendar day==X gate. Off keeps H4 (no land, 3 sheep).
+    roi_expand_enabled = False
+    roi_expand_sheep = 3
+    roi_expand_min_npv = 0
+
+    # --- adaptive opportunity layer (default-off; H4 is unchanged) ---
+    # When on, dawn of each day ranks packages against STAY_H4 and commits
+    # only if conservative NPV clears opportunity_min_npv. Off never calls
+    # the evaluator from the executor.
+    opportunity_enabled = False
+    opportunity_min_npv = 0
+    opportunity_min_expected = 0
+    opportunity_floor_fraction = 0.30
+
+    # --- stay-vs-convert (default-off; H4 is unchanged) ---
+    # When on, dawn ranks packages but commits a conversion only if STAY_H4
+    # is projected to lose on visible remaining output AND a conservative
+    # package still pays back. Off never calls the decider from the executor.
+    # Not a calendar gate. Does not identify named opponents.
+    ceiling_convert_enabled = False
+    ceiling_convert_min_npv = 0
+    ceiling_convert_min_expected = 0
+    # Must be behind by more than this many dollars on the symmetric
+    # cash+remaining-EV gap before a conversion is considered. Twin noise
+    # is a few hundred to ~$1.5k; structural H5A holes are larger.
+    ceiling_convert_min_deficit = 1500
+
+    # --- elite mix (default-off; H4 is unchanged) ---
+    # When on, empty crop tiles are allocated by kagg.econ.engine.choose_tile_use
+    # (crop_only): melon opener while justified, then strawberry fill, wheat
+    # as feed/backfill. Does not change labor, livestock targets, land, or
+    # fertilizer. Not a calendar rule and not a copied action sequence.
+    elite_mix_enabled = False
+    # Melon occupancy policy for elite mix (None = E77 conservative absorption).
+    # An int is a state occupancy cap (E78 M18 uses 18). Not a calendar batch.
+    melon_policy = None
+    # After the melon opener is saturated: "pa" = strawberry/wheat fill (E78);
+    # "wheat_feed" = wheat only when feed binds (E78 MALL ablation).
+    melon_fallback = "pa"
+
     # --- safety
     drop_threshold = 4         # carry this many items before making a shed trip
     # Off by default so P0/B2 is unchanged. When on, an idle shed walk is taken

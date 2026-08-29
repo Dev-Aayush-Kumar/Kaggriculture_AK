@@ -21,6 +21,9 @@ from .actions import (OK, blocked_plant_crops, check_unit_action,
 from .config import Config
 from .econ.market import (buy_cost, expected_remaining_demand, marginal_value,
                           units_until_price)
+from .econ.opportunity import (evaluate_opportunities, select_opportunity,
+                                snapshot_from_obs)
+from .econ.momentum import decide_stay_or_convert
 from .econ.tables import (ANIMALS, CROPS, LAND_PRICES, MARKET_I0, MARKET_PARAMS,
                           PRODUCTS, cumulative_hire_cost, quadrant_of,
                           shed_access_tiles)
@@ -85,7 +88,7 @@ def sale_justified(quote, base, day, last_day, shed_used, shed_capacity,
 def harvest_deferred(quote, base, held, max_held, harvest_defer_enabled,
                      harvest_defer_floor_fraction, hold_full=False,
                      day=0, last_day=29, force_days=0, product=None,
-                     wool_only=False):
+                     wool_only=False, harvest_defer_force_days=-1):
     """Whether animal yield should stay on the tile instead of going to the shed.
 
     Flag off never defers. Flag on holds a non-full load while the quote is
@@ -93,9 +96,12 @@ def harvest_deferred(quote, base, held, max_held, harvest_defer_enabled,
     the shed and force a dump. A full tile is still harvested unless
     hold_full is on, in which case it also waits for a good quote or the
     existing last-day force. wool_only leaves milk (and eggs) on the
-    original always-lift rule.
+    original always-lift rule. harvest_defer_force_days >= 0 lifts once
+    remaining days are at or below that value (H4 passes -1).
     """
     if not harvest_defer_enabled or held <= 0:
+        return False
+    if harvest_defer_force_days >= 0 and last_day - day <= harvest_defer_force_days:
         return False
     if wool_only and product != "WOOL":
         return False
@@ -206,6 +212,70 @@ def remaining_yield_events(animal, placed_day, from_day, last_day):
     return n
 
 
+def livestock_continuation_ev(tiles, day, last_day, prices):
+    """Quote-time remaining livestock output vs feed bill if we keep feeding.
+
+    One remaining yield event is treated as one unit at the current quote,
+    matching rescue_feed_action. Animals eat one wheat per day. Used by
+    feed_roi_gate; callers that pass H4's off flag never see this.
+    """
+    wheat_q = prices.get("WHEAT") or MARKET_PARAMS["WHEAT"]["base"]
+    days_left = max(0, last_day - day + 1)
+    n_animals = 0
+    prod_value = 0.0
+    for row in tiles or []:
+        for tile in row:
+            if not (isinstance(tile, dict) and "animal" in tile):
+                continue
+            n_animals += 1
+            animal = tile["animal"]
+            spec = ANIMALS[animal]
+            product = spec["product"]
+            quote = prices.get(product) or MARKET_PARAMS[product]["base"]
+            held = tile.get("yield_units", 0) or 0
+            events = remaining_yield_events(
+                animal, tile.get("placed_day", day), day, last_day)
+            prod_value += events * quote + held * quote
+    feed_cost = n_animals * days_left * wheat_q
+    return {
+        "n_animals": n_animals,
+        "days_left": days_left,
+        "prod_value": prod_value,
+        "feed_cost": feed_cost,
+        "stop": n_animals > 0 and prod_value < feed_cost,
+    }
+
+
+def extra_sheep_npv(day, last_day, prices, n=1):
+    """Break-even for buying `n` sheep today. Negative if they cannot mature."""
+    sheep_q = prices.get("WOOL") or MARKET_PARAMS["WOOL"]["base"]
+    wheat_q = prices.get("WHEAT") or MARKET_PARAMS["WHEAT"]["base"]
+    first = ANIMALS["SHEEP"]["first_yield_day"]
+    if day + first > last_day:
+        return -ANIMALS["SHEEP"]["cost"] * n
+    events = remaining_yield_events("SHEEP", day, day + 1, last_day)
+    days_fed = max(0, last_day - day + 1)
+    revenue = events * sheep_q * n
+    cost = ANIMALS["SHEEP"]["cost"] * n + days_fed * wheat_q * n
+    return revenue - cost
+
+
+def expansion_npv(day, last_day, prices, n_sheep=3, land_price=None):
+    """Quote-time NPV of buying the next quadrant and `n_sheep` extra sheep.
+
+    Does not include wheat-tile opportunity cost (this path keeps existing
+    wheat). land_price defaults to the first paid quadrant (NE, $1000).
+    """
+    if land_price is None:
+        land_price = LAND_PRICES[0]
+    return extra_sheep_npv(day, last_day, prices, n_sheep) - land_price
+
+
+def crop_can_mature(crop, day, last_day):
+    """Whether a crop planted today still has a first harvest before the end."""
+    return day + CROPS[crop]["first_yield_day"] <= last_day
+
+
 class Task:
     __slots__ = ("prio", "x", "y", "action", "item")
 
@@ -227,6 +297,8 @@ class World:
         cfg = config or {}
         self.player = obs["player"]
         self.farm = obs["farms"][self.player]
+        farms = obs.get("farms") or []
+        self.opp_farm = farms[1 - self.player] if len(farms) > 1 else None
         self.private = obs["private"]
         self.tiles = self.farm["tiles"]
         self.board = len(self.tiles)
@@ -255,6 +327,7 @@ class World:
         self.owned = [(x, y) for y, row in enumerate(self.tiles)
                       for x, t in enumerate(row) if t != "LOCKED"]
         self.layout_cache = None
+        self.crop_plan = {}
 
     def inv(self, idx):
         return self.inventories[idx] if idx < len(self.inventories) else {}
@@ -292,6 +365,12 @@ class Executor:
 
     def __init__(self, config=None):
         self.cfg = config or Config()
+        self._opportunity = None
+        self.opportunity_log = []
+        self.mix_log = []
+        self._displace_tiles = set()
+        self._mix_plan = {}
+        self._mix_plan_day = -1
 
     # -- entry point --------------------------------------------------------
     def __call__(self, obs, configuration=None):
@@ -309,12 +388,66 @@ class Executor:
     def _plan(self, obs, configuration):
         deadline = time.perf_counter() + self.cfg.turn_budget_ms / 1000.0
         w = World(obs, configuration)
+        if w.step == 0:
+            self.mix_log = []
+            self._mix_plan = {}
+            self._mix_plan_day = -1
+        self._maybe_commit_opportunity(w, obs)
         orders = self._market_orders(w)
         tasks = self._tasks(w)
         assignment = self._assign(w, tasks, deadline)
         raw = self._actions(w, assignment, tasks)
         raw = self._finalize(w, raw)
         return {"farmer": raw[0], "hands": raw[1:], "market": orders[:MAX_MARKET_ORDERS]}
+
+    def _committed(self):
+        p = self._opportunity
+        if p and p.get("id") and p["id"] != "STAY_H4":
+            return p
+        return None
+
+    def _maybe_commit_opportunity(self, w, obs):
+        """Rank packages at dawn; freeze the first non-H4 commit. Flag off is a no-op."""
+        cfg = self.cfg
+        if not (cfg.opportunity_enabled or cfg.ceiling_convert_enabled):
+            return
+        if w.step == 0:
+            self._opportunity = None
+            self.opportunity_log = []
+            self._displace_tiles = set()
+        if self._committed() is not None:
+            return
+        if w.hour != 0:
+            return
+        snap = snapshot_from_obs(obs)
+        snap["last_day"] = w.last_day
+        ranked = evaluate_opportunities(
+            snap, min_npv=cfg.opportunity_min_npv,
+            min_expected=cfg.opportunity_min_expected,
+            floor_fraction=cfg.opportunity_floor_fraction,
+            livestock_reserve=cfg.livestock_reserve,
+            land_reserve=cfg.land_reserve)
+        if cfg.ceiling_convert_enabled:
+            pick = decide_stay_or_convert(
+                snap, ranked,
+                min_npv=cfg.ceiling_convert_min_npv,
+                min_expected=cfg.ceiling_convert_min_expected,
+                floor_fraction=cfg.opportunity_floor_fraction,
+                livestock_reserve=cfg.livestock_reserve,
+                land_reserve=cfg.land_reserve,
+                min_deficit=cfg.ceiling_convert_min_deficit)
+        else:
+            pick = select_opportunity(ranked)
+        self._opportunity = pick
+        self.opportunity_log.append({
+            "day": w.day, "hour": w.hour, "chosen": pick.get("id"),
+            "expected": round(pick.get("expected_npv", 0), 2),
+            "conservative": round(pick.get("conservative_npv", 0), 2),
+            "cost": pick.get("cost"), "reject": pick.get("reject"),
+            "reason": pick.get("reason"),
+            "decision_reason": pick.get("decision_reason"),
+            "top": [p["id"] for p in ranked[1:4]],
+        })
 
     # -- livestock targets --------------------------------------------------
     def _owned_animals(self, w, animal):
@@ -368,7 +501,25 @@ class Executor:
 
     def _livestock_targets(self, w):
         cfg = self.cfg
-        raw = {"GOOSE": cfg.geese, "COW": cfg.cows, "SHEEP": cfg.sheep}
+        if w.day < cfg.livestock_start_day:
+            return {"GOOSE": 0, "COW": 0, "SHEEP": 0}
+        sheep = cfg.sheep
+        n_quads = len(w.farm.get("unlocked_quadrants") or [])
+        if cfg.sheep_after_land and n_quads > 1:
+            sheep += cfg.sheep_after_land
+        if cfg.roi_expand_enabled and n_quads > 1:
+            sheep += cfg.roi_expand_sheep
+        pkg = self._committed()
+        if pkg and pkg.get("sheep_bonus"):
+            if not pkg.get("buy_land") or n_quads > 1:
+                sheep += pkg["sheep_bonus"]
+        if cfg.sheep_yarn_bonus and "YARN_STORE" in (w.shops or []):
+            sheep += cfg.sheep_yarn_bonus
+        cows = cfg.cows
+        if pkg and pkg.get("cow_bonus"):
+            if not pkg.get("buy_land") or n_quads > 1:
+                cows += pkg["cow_bonus"]
+        raw = {"GOOSE": cfg.geese, "COW": cows, "SHEEP": sheep}
         if not cfg.livestock_cap_enabled:
             return raw
         out = {}
@@ -383,14 +534,114 @@ class Executor:
         return out
 
     def _extra_crop(self):
+        pkg = self._committed()
+        if pkg and pkg.get("extra_crop"):
+            extra = (pkg["extra_crop"] or "").upper()
+            return extra if extra in CROPS else ""
         extra = (self.cfg.extra_crop or "").upper()
         return extra if extra in CROPS else ""
 
-    def _crop_for_tile(self, tile, board):
+    def _crop_for_tile(self, tile, board, world=None):
+        if world is not None and getattr(world, "crop_plan", None):
+            planned = world.crop_plan.get(tile)
+            if planned:
+                return planned
         extra = self._extra_crop()
         if extra and quadrant_of(tile[0], tile[1], board) != "NW":
             return extra
+        pkg = self._committed()
+        if pkg and pkg.get("displace_crop") and tile in self._displace_tiles:
+            return pkg["displace_crop"]
         return self.cfg.crops[0] if self.cfg.crops else None
+
+    def _snap_from_world(self, w):
+        opp_tiles = None
+        if w.opp_farm:
+            opp_tiles = w.opp_farm.get("tiles")
+        return {
+            "day": w.day,
+            "last_day": w.last_day,
+            "money": w.money,
+            "prices": dict(w.prices or {}),
+            "inventory": dict(w.market_inventory or {}),
+            "shops": list(w.shops or []),
+            "n_quads": len(w.farm.get("unlocked_quadrants") or []),
+            "own_tiles": w.tiles,
+            "own_shed": dict(w.shed or {}),
+            "opp_tiles": opp_tiles,
+            # Elite-mix melon cap (None = E77 conservative). M18 sets 18.
+            "melon_policy": getattr(self.cfg, "melon_policy", None),
+            "melon_fallback": getattr(self.cfg, "melon_fallback", "pa"),
+        }
+
+    def _fill_elite_crop_plan(self, w, crop_tiles):
+        """Assign one crop per empty crop tile from the state-based mix.
+
+        Livestock slots are untouched. Pending counts stop a single hour from
+        planting an entire melon glut. Nested import keeps H4's default path
+        from loading the candidate engine.
+        """
+        from .econ import engine as elite_engine
+        if not any(w.tile(p[0], p[1]) is None for p in crop_tiles):
+            w.crop_plan = {}
+            return
+        if w.hour == 0 or w.day != self._mix_plan_day:
+            self._mix_plan = {}
+            self._mix_plan_day = w.day
+        pending = {}
+        for crop in self._mix_plan.values():
+            pending[crop] = pending.get(crop, 0) + 1
+        snap = self._snap_from_world(w)
+        plan = dict(self._mix_plan)
+        for pos in crop_tiles:
+            if w.tile(pos[0], pos[1]) is not None:
+                continue
+            if pos in plan:
+                continue
+            chosen, ranked = elite_engine.choose_tile_use(
+                snap, pending=pending, crop_only=True)
+            crop = chosen.get("use") if chosen and not chosen.get("reject") else None
+            if crop not in CROPS:
+                crop = None
+            if crop:
+                plan[pos] = crop
+                pending[crop] = pending.get(crop, 0) + 1
+            if w.hour == 0 and len(self.mix_log) < 500:
+                straw = next((r for r in ranked if r["use"] == "STRAWBERRY"), {})
+                melon = next((r for r in ranked if r["use"] == "MELON"), {})
+                wheat = next((r for r in ranked if r["use"] == "WHEAT"), {})
+                others = [r.get("npv") or 0 for r in ranked if r.get("use") != crop]
+                opp_cost = max(others) if others else 0
+                self.mix_log.append({
+                    "day": w.day, "hour": w.hour, "tile": list(pos),
+                    "crop": crop, "reject": chosen.get("reject") if chosen else None,
+                    "reason": (chosen or {}).get("reason"),
+                    "cons_npv": round((chosen or {}).get("npv") or 0, 2),
+                    "exp_npv": round((chosen or {}).get("expected_npv") or 0, 2),
+                    "revenue": round((chosen or {}).get("revenue") or 0, 2),
+                    "cost": round((chosen or {}).get("cost") or 0, 2),
+                    "absorption": (chosen or {}).get("absorption"),
+                    "maturity": CROPS[crop]["first_yield_day"] if crop else None,
+                    "opp_cost": round(opp_cost, 2),
+                    "velocity_gap": bool((chosen or {}).get("velocity_gap")),
+                    "pending": dict(pending),
+                    "melon_justified": elite_engine.melon_justified_tiles(snap)[0],
+                    "straw_cons": round(straw.get("npv") or 0, 2),
+                    "straw_exp": round(straw.get("expected_npv") or 0, 2),
+                    "melon_cons": round(melon.get("npv") or 0, 2),
+                    "melon_exp": round(melon.get("expected_npv") or 0, 2),
+                    "wheat_cons": round(wheat.get("npv") or 0, 2),
+                    "money": round(float(w.money), 2),
+                })
+                # Conservative reject / expected accept on the runner-up premium.
+                for row in ranked:
+                    if row.get("velocity_gap"):
+                        self.mix_log[-1].setdefault("gaps", []).append({
+                            "use": row["use"], "reject": row.get("reject"),
+                            "exp_npv": round(row.get("expected_npv") or 0, 2),
+                        })
+        w.crop_plan = plan
+        self._mix_plan = plan
 
     def _pinned_livestock_slots(self, w, wanted, ordered):
         """Keep animals on tiles they already occupy; fill remaining nearest.
@@ -440,14 +691,21 @@ class Executor:
         wanted = (["GOOSE"] * targets["GOOSE"] + ["COW"] * targets["COW"]
                   + ["SHEEP"] * targets["SHEEP"])
         extra = self._extra_crop()
-        if extra:
+        pkg = self._committed()
+        pin = extra or cfg.pin_livestock or (
+            cfg.roi_expand_enabled and len(w.farm.get("unlocked_quadrants") or []) > 1
+        ) or (pkg and pkg.get("pin"))
+        tpu = cfg.tiles_per_unit
+        if pkg and pkg.get("tiles_per_unit"):
+            tpu = pkg["tiles_per_unit"]
+        if pin:
             slots = self._pinned_livestock_slots(w, wanted, ordered)
             nw_crop = [p for p in ordered if p not in slots
                        and quadrant_of(p[0], p[1], w.board) == "NW"]
             other_crop = [p for p in ordered if p not in slots
                           and quadrant_of(p[0], p[1], w.board) != "NW"]
             crew = max(1, cfg.hands_per_day + 1)
-            limit = min(cfg.max_crop_tiles, int(crew * cfg.tiles_per_unit))
+            limit = min(cfg.max_crop_tiles, int(crew * tpu))
             crop_tiles = nw_crop[:limit]
             leftover = limit - len(crop_tiles)
             if leftover > 0:
@@ -457,8 +715,16 @@ class Executor:
             for animal, pos in zip(wanted, ordered):
                 slots[pos] = animal
             crew = max(1, cfg.hands_per_day + 1)
-            limit = min(cfg.max_crop_tiles, int(crew * cfg.tiles_per_unit))
+            limit = min(cfg.max_crop_tiles, int(crew * tpu))
             crop_tiles = ordered[len(slots):][:limit]
+        w.crop_plan = {}
+        if cfg.elite_mix_enabled:
+            self._fill_elite_crop_plan(w, crop_tiles)
+        if pkg and pkg.get("displace_n") and pkg.get("displace_crop") and crop_tiles:
+            n = min(int(pkg["displace_n"]), len(crop_tiles))
+            self._displace_tiles = set(crop_tiles[-n:])
+        else:
+            self._displace_tiles = set()
         w.layout_cache = (slots, crop_tiles)
         return w.layout_cache
 
@@ -502,8 +768,8 @@ class Executor:
         for i, (x, y) in enumerate(crop_tiles):
             tile = w.tile(x, y)
             if tile is None:
-                if extra:
-                    crop = self._crop_for_tile((x, y), w.board)
+                if cfg.elite_mix_enabled or extra:
+                    crop = self._crop_for_tile((x, y), w.board, world=w)
                 else:
                     crop = cfg.crops[i % len(cfg.crops)] if cfg.crops else None
                 if (crop and seeds.get(crop, 0) > 0 and self._can_mature(w, crop)
@@ -540,7 +806,7 @@ class Executor:
                     cfg.harvest_defer_enabled, cfg.harvest_defer_floor_fraction,
                     cfg.harvest_defer_hold_full, w.day, w.last_day,
                     cfg.sell_defer_force_days, product,
-                    cfg.harvest_defer_wool_only):
+                    cfg.harvest_defer_wool_only, cfg.harvest_defer_force_days):
                 full = held >= animal["max_held"]
                 out.append(Task(P_RESCUE if full else P_HARVEST_ANIMAL, x, y, ["HARVEST"]))
         if cfg.collect_fertilizer and tile["fertilizer_available"]:
@@ -787,8 +1053,10 @@ class Executor:
         purse = w.money
 
         # The final day still has a full harvest and the liquidation on it, so
-        # hire right through it.
-        if w.hour == cfg.hire_hour and w.day <= w.last_day and cfg.hands_per_day > 0:
+        # hire right through it unless a conversion flag skips late hires.
+        skip_hire = cfg.liquidate_stop_hire and self._liquidating(w)
+        if (not skip_hire and w.hour == cfg.hire_hour
+                and w.day <= w.last_day and cfg.hands_per_day > 0):
             n = min(cfg.hands_per_day, MAX_MARKET_ORDERS)
             cost = cumulative_hire_cost(n)
             if purse - cost >= cfg.hire_reserve:
@@ -802,14 +1070,19 @@ class Executor:
 
         # Feed outranks every other purchase: two missed days and the animal is
         # gone along with the capital that bought it. It draws on the whole
-        # purse for that reason.
+        # purse for that reason. Conversion flags may skip the restock.
+        skip_feed_buy = cfg.liquidate_stop_feed_buy and self._liquidating(w)
+        if cfg.feed_roi_gate:
+            ev = livestock_continuation_ev(w.tiles, w.day, w.last_day, w.prices)
+            if ev["stop"]:
+                skip_feed_buy = True
         carried = 0
         if cfg.feed_count_carried:
             carried = sum(w.inv(i).get("WHEAT", 0) for i in range(w.n_units))
         wheat_short = wheat_feed_short(
             w.shed.get("WHEAT", 0), carried, n_animals, cfg.feed_buffer,
             cfg.feed_count_carried)
-        if n_animals and wheat_short > 0:
+        if (not skip_feed_buy) and n_animals and wheat_short > 0:
             room = w.shed_capacity - w.shed_used()
             want = max(0, min(wheat_short, room))
             cost, qty = w.priced_buy("WHEAT", want, purse)
@@ -884,13 +1157,13 @@ class Executor:
                 out.append(["BUY_ANIMAL", animal, qty])
                 purse -= qty * cost
 
-        if cfg.crops:
+        if cfg.crops or cfg.elite_mix_enabled:
             extra = self._extra_crop()
-            if extra:
+            if cfg.elite_mix_enabled or extra:
                 empty_by = {}
                 for (x, y) in crop_tiles:
                     if w.tile(x, y) is None:
-                        crop = self._crop_for_tile((x, y), w.board)
+                        crop = self._crop_for_tile((x, y), w.board, world=w)
                         if crop:
                             empty_by[crop] = empty_by.get(crop, 0) + 1
                 wanted_seeds = list(empty_by.items())
@@ -914,10 +1187,29 @@ class Executor:
         # and crops we then have to afford, and buying it first is what starved
         # the livestock in the screening run.
         bought = len(w.farm["unlocked_quadrants"]) - 1     # NW is free
-        if bought < cfg.buy_land:
+        want_land = bought < cfg.buy_land
+        if cfg.roi_expand_enabled and bought < 1:
+            npv = expansion_npv(w.day, w.last_day, w.prices, cfg.roi_expand_sheep,
+                                LAND_PRICES[0])
+            need = (LAND_PRICES[0] + cfg.roi_expand_sheep * ANIMALS["SHEEP"]["cost"]
+                    + cfg.livestock_reserve)
+            if npv > cfg.roi_expand_min_npv and purse >= need:
+                want_land = True
+        pkg = self._committed()
+        if pkg and pkg.get("buy_land") and bought < pkg["buy_land"]:
+            want_land = True
+        if want_land:
             price = LAND_PRICES[bought]
             # Only worth it while there is still season left to farm it.
-            if purse - price >= cfg.land_reserve and w.day <= w.last_day // 2:
+            day_ok = cfg.land_min_day < 0 or w.day >= cfg.land_min_day
+            cash_ok = cfg.land_min_money <= 0 or purse >= cfg.land_min_money
+            # ROI expansion and the opportunity layer use NPV as the time gate;
+            # calendar buy_land keeps the original half-season cap.
+            opp_land = bool(pkg and pkg.get("buy_land"))
+            season_ok = (cfg.roi_expand_enabled and cfg.buy_land == 0) or opp_land or (
+                w.day <= w.last_day // 2)
+            if (purse - price >= cfg.land_reserve and season_ok
+                    and day_ok and cash_ok):
                 out.append(["BUY_LAND"])
         return out
 
